@@ -1,0 +1,8 @@
+; cvdface.def : Declares the module parameters for the DLL.
+
+LIBRARY      "cvdface"
+
+EXPORTS
+	; Explicit exports can go here
+	cvfind @1
+	cvfindext @2

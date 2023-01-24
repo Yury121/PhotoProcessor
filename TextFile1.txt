@@ -1,0 +1,16 @@
+0x0018F3A4  12 01 00 00 02 00 00 00 03 00 00 00 b4 f3 18 00  ............´ó..
+0x0018F3B4  01 00
+
+0x0018F3A4  12 01 00 00 02 00 00 00 03 00 00 00 b4 f3 18 00  ............´ó..
+0x0018F3B4  08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+          1: RotateType := RotateNoneFlipNone; // Horizontal - No rotation required
+          2: RotateType := RotateNoneFlipX;
+          3: RotateType := Rotate180FlipNone;
+          4: RotateType := Rotate180FlipX;
+          5: RotateType := Rotate90FlipX;
+          6: RotateType := Rotate90FlipNone;
+          7: RotateType := Rotate270FlipX;
+          8: RotateType := Rotate270FlipNone;
+ATL::CSimpleStringT<wchar_t,0> = "0B1A1AB432A09F48B074744EFE49870D"
+ATL::CSimpleStringT<wchar_t,0> = "0B1A1AB432A09F48B074744EFE49870D"

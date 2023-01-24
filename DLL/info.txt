@@ -1,0 +1,216 @@
+---- ExifTool ----
+ExifToolVersion                 : 11.33
+---- System ----
+FileName                        : IMG_4725.JPG
+Directory                       : D:/Pictures/Tel
+FileSize                        : 8.6 MB
+FileModifyDate                  : 2017:09:07 21:12:00+03:00
+FileAccessDate                  : 2018:12:11 08:59:35+03:00
+FileCreateDate                  : 2018:12:11 08:59:35+03:00
+FilePermissions                 : rw-rw-rw-
+---- File ----
+FileType                        : JPEG
+FileTypeExtension               : jpg
+MIMEType                        : image/jpeg
+ExifByteOrder                   : Little-endian (Intel, II)
+ImageWidth                      : 5184
+ImageHeight                     : 3888
+EncodingProcess                 : Baseline DCT, Huffman coding
+BitsPerSample                   : 8
+ColorComponents                 : 3
+YCbCrSubSampling                : YCbCr4:2:2 (2 1)
+---- IFD0 ----
+ImageDescription                : 
+Make                            : Canon
+Model                           : Canon PowerShot SX710 HS
+Orientation                     : Rotate 90 CW
+XResolution                     : 180
+YResolution                     : 180
+ResolutionUnit                  : inches
+ModifyDate                      : 2017:09:07 15:23:09
+YCbCrPositioning                : Co-sited
+---- ExifIFD ----
+ExposureTime                    : 1/500
+FNumber                         : 5.0
+ISO                             : 80
+SensitivityType                 : Standard Output Sensitivity and Recommended Exposure Index
+ExifVersion                     : 0230
+DateTimeOriginal                : 2017:09:07 15:23:09
+CreateDate                      : 2017:09:07 15:23:09
+ComponentsConfiguration         : Y, Cb, Cr, -
+CompressedBitsPerPixel          : 3
+ShutterSpeedValue               : 1/501
+ApertureValue                   : 5.0
+ExposureCompensation            : 0
+MaxApertureValue                : 5.0
+MeteringMode                    : Multi-segment
+Flash                           : Off, Did not fire
+FocalLength                     : 20.8 mm
+UserComment                     : 
+SubSecTime                      : 50
+SubSecTimeOriginal              : 50
+SubSecTimeDigitized             : 50
+FlashpixVersion                 : 0100
+ColorSpace                      : sRGB
+ExifImageWidth                  : 5184
+ExifImageHeight                 : 3888
+FocalPlaneXResolution           : 21159.18367
+FocalPlaneYResolution           : 21130.43478
+FocalPlaneResolutionUnit        : inches
+SensingMethod                   : One-chip color area
+FileSource                      : Digital Camera
+CustomRendered                  : Normal
+ExposureMode                    : Auto
+WhiteBalance                    : Auto
+DigitalZoomRatio                : 1
+SceneCaptureType                : Standard
+OwnerName                       : Galochka
+---- Canon ----
+MacroMode                       : Normal
+SelfTimer                       : Off
+Quality                         : Fine
+CanonFlashMode                  : Off
+ContinuousDrive                 : Single
+FocusMode                       : Single
+RecordMode                      : JPEG
+CanonImageSize                  : Large
+EasyMode                        : Full auto
+DigitalZoom                     : None
+Contrast                        : Normal
+Saturation                      : Normal
+Sharpness                       : 0
+CameraISO                       : Auto
+MeteringMode                    : Evaluative
+FocusRange                      : Auto
+AFPoint                         : Face Detect
+CanonExposureMode               : Easy
+LensType                        : n/a
+MaxFocalLength                  : 135 mm
+MinFocalLength                  : 4.5 mm
+FocalUnits                      : 100/mm
+MaxAperture                     : 5
+MinAperture                     : 8
+FlashBits                       : (none)
+FocusContinuous                 : Continuous
+ImageStabilization              : On (2)
+ZoomSourceWidth                 : 5184
+ZoomTargetWidth                 : 5184
+SpotMeteringMode                : Center
+ManualFlashOutput               : n/a
+AutoISO                         : 38
+BaseISO                         : 200
+MeasuredEV                      : 14.94
+TargetAperture                  : 5
+TargetExposureTime              : 1/501
+ExposureCompensation            : 0
+WhiteBalance                    : Auto
+SlowShutter                     : Off
+SequenceNumber                  : 0
+OpticalZoomCode                 : 45
+FlashGuideNumber                : 0
+FlashExposureComp               : 0
+AutoExposureBracketing          : Off
+AEBBracketValue                 : 0
+ControlMode                     : Camera Local Control
+FocusDistanceUpper              : 22.53 m
+FocusDistanceLower              : 0 m
+FNumber                         : 5
+ExposureTime                    : 1/470
+BulbDuration                    : 0
+CameraType                      : Compact
+AutoRotate                      : Rotate 90 CW
+NDFilter                        : Off
+SelfTimer2                      : 0
+FlashOutput                     : 0
+CanonImageType                  : IMG:PowerShot SX710 HS JPEG
+CanonFirmwareVersion            : Firmware Version 1.00
+FileNumber                      : 127-4725
+CameraTemperature               : 34 C
+CanonModelID                    : PowerShot SX710 HS
+ThumbnailImageValidArea         : 0 0 0 0
+DateStampMode                   : Off
+MyColorMode                     : Off
+FirmwareRevision                : 1.00 rev 1.00
+Categories                      : (none)
+IntelligentContrast             : Off
+ImageUniqueID                   : 3919aa8ff38849a2a71c45581f29fb51
+FacesDetected                   : 0
+TimeZone                        : +02:00
+TimeZoneCity                    : (not set)
+DaylightSavings                 : Off
+AFAreaMode                      : Auto
+NumAFPoints                     : 9
+ValidAFPoints                   : 9
+CanonImageWidth                 : 5184
+CanonImageHeight                : 3888
+AFImageWidth                    : 100
+AFImageHeight                   : 100
+AFAreaWidths                    : 18 18 18 18 18 18 18 18 18
+AFAreaHeights                   : 18 18 18 18 18 18 18 18 18
+AFAreaXPositions                : -18 0 18 -18 0 18 -18 0 18
+AFAreaYPositions                : -18 -18 -18 0 0 0 18 18 18
+AFPointsInFocus                 : 6
+AspectRatio                     : 4:3
+CroppedImageWidth               : 5184
+CroppedImageHeight              : 3888
+CroppedImageLeft                : 0
+CroppedImageTop                 : 0
+VRDOffset                       : 0
+---- InteropIFD ----
+InteropIndex                    : R98 - DCF basic file (sRGB)
+InteropVersion                  : 0100
+RelatedImageWidth               : 5184
+RelatedImageHeight              : 3888
+---- GPS ----
+GPSVersionID                    : 2.3.0.0
+---- IFD1 ----
+Compression                     : JPEG (old-style)
+XResolution                     : 180
+YResolution                     : 180
+ResolutionUnit                  : inches
+ThumbnailOffset                 : 19456
+ThumbnailLength                 : 7159
+ThumbnailImage                  : (Binary data 7159 bytes, use -b option to extract)
+---- XMP-xmp ----
+Rating                          : 0
+---- MPF0 ----
+MPFVersion                      : 0100
+NumberOfImages                  : 2
+---- MPImage1 ----
+MPImageFlags                    : Dependent parent image
+MPImageFormat                   : JPEG
+MPImageType                     : Baseline MP Primary Image
+MPImageLength                   : 8063313
+MPImageStart                    : 0
+DependentImage1EntryNumber      : 2
+DependentImage2EntryNumber      : 0
+---- MPImage2 ----
+MPImageFlags                    : Dependent child image
+MPImageFormat                   : JPEG
+MPImageType                     : Large Thumbnail (full HD equivalent)
+MPImageLength                   : 906859
+MPImageStart                    : 8063488
+DependentImage1EntryNumber      : 0
+DependentImage2EntryNumber      : 0
+PreviewImage                    : (Binary data 906859 bytes, use -b option to extract)
+---- Composite ----
+Aperture                        : 5.0
+DriveMode                       : Single-frame Shooting
+ISO                             : 75
+ImageSize                       : 5184x3888
+Lens                            : 4.5 - 135.0 mm
+LensID                          : Unknown 4-135mm
+Megapixels                      : 20.2
+ScaleFactor35efl                : 5.6
+ShootingMode                    : Full auto
+ShutterSpeed                    : 1/500
+SubSecCreateDate                : 2017:09:07 15:23:09.50
+SubSecDateTimeOriginal          : 2017:09:07 15:23:09.50
+SubSecModifyDate                : 2017:09:07 15:23:09.50
+CircleOfConfusion               : 0.005 mm
+DOF                             : 31.43 m (6.61 - 38.04 m)
+FOV                             : 17.7 deg
+FocalLength35efl                : 20.8 mm (35 mm equivalent: 115.5 mm)
+HyperfocalDistance              : 15.97 m
+Lens35efl                       : 4.5 - 135.0 mm (35 mm equivalent: 25.0 - 750.5 mm)
+LightValue                      : 13.9

@@ -1,0 +1,235 @@
+// ChildView.cpp : implementation of the CChildView class
+//
+
+#include "stdafx.h"
+#include "PhotoProcessor.h"
+#include "ChildView.h"
+
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+using namespace Gdiplus;
+// CChildView
+
+CChildView::CChildView()
+{
+}
+
+CChildView::~CChildView()
+{
+}
+
+
+BEGIN_MESSAGE_MAP(CChildView, CWnd)
+	ON_WM_PAINT()
+END_MESSAGE_MAP()
+
+
+
+// CChildView message handlers
+
+BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) 
+{
+	if (!CWnd::PreCreateWindow(cs))
+		return FALSE;
+
+	cs.dwExStyle |= WS_EX_CLIENTEDGE;
+	cs.style &= ~WS_BORDER;
+	cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
+		::LoadCursor(NULL, IDC_ARROW), reinterpret_cast<HBRUSH>(COLOR_WINDOW+1), NULL);
+
+	return TRUE;
+}
+
+void CChildView::OnPaint() 
+{
+	CPaintDC dc(this); // device context for painting
+	//	Graphics graphics(this->m_hWnd, true);
+	CRect rect;
+	this->GetWindowRect(&rect);
+	int kof = 1;
+	CSize sz = src_sz;
+	CPChannel red1;
+	CPChannel blue1;
+	CPChannel green1;
+	int kk =1;
+	GetWindowRect(&clnRect);
+	if (img2.IsNull() == false){
+		if ((rect.right-rect.left < sz.cx)||(rect.bottom-rect.top < sz.cy)){
+			while((rect.right-rect.left < sz.cx)||(rect.bottom-rect.top < sz.cy)){
+				sz.cx /= 2;
+				sz.cy /= 2;
+			}
+			//			sz.cx &= 0xfffffffe; 
+			//			sz.cy &= 0xfffffffe;
+			kk = src_sz.cx/sz.cx;//max(sz.cx/rect.right, sz.cy/rect.bottom)+1;
+#if 0
+			if (kk > 2){
+				sz.cx /= kk;
+				sz.cy /= kk;
+			}
+			else {
+				sz.cx = src_sz.cx/2;
+				sz.cy = src_sz.cy/2;
+			}
+#endif
+			_RPTW2(_CRT_WARN, _T("\nPaint window %5d %5d "), rect.right, rect.bottom);
+			_RPTW2(_CRT_WARN, _T("=> img window %5d %5d "), sz.cx,sz.cy);
+			_RPTW2(_CRT_WARN, _T("=> src window %5d %5d\n"), src_sz.cx, src_sz.cy);
+			red1.Init(sz.cx, sz.cy);
+			blue1.Init(sz.cx,sz.cy);
+			green1.Init(sz.cx,sz.cy);
+			red.Scale(red1);
+			blue.Scale(blue1);
+			green.Scale(green1);
+			//	::StretchDIBits(dc.m_hDC, 0,0, sz.cx, sz.cy, 0,0, sz.cx, sz.cy, green1.arr, red1.bi,  DIB_RGB_COLORS, SRCCOPY);
+			BITMAPINFO tbi;
+			//tbi.bmiColors = 0;
+			int psz = 3; // pixel size
+			tbi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+			tbi.bmiHeader.biBitCount = psz*8;
+			tbi.bmiHeader.biClrImportant =0;
+			tbi.bmiHeader.biClrUsed = 0;
+			tbi.bmiHeader.biWidth = sz.cx;
+			tbi.bmiHeader.biHeight = sz.cy;
+			tbi.bmiHeader.biPlanes = 1;
+			tbi.bmiHeader.biCompression =   BI_RGB;
+			tbi.bmiHeader.biSizeImage = sz.cx*sz.cy*psz;
+			tbi.bmiHeader.biXPelsPerMeter = 0;
+			tbi.bmiHeader.biYPelsPerMeter = 0;
+
+			DWORD dwSize = sz.cx*sz.cy*psz;
+
+			uint8 * mem = (uint8 *) malloc(dwSize);
+			memset(mem, 0xff,dwSize); 
+
+			//bimg1.bmBits  //tut 0
+			int ind = 0;
+			for (int i = 0; i< sz.cy; i++){
+				for (int j = 0; j< sz.cx; j++){
+					ind = i*sz.cx + j; 
+					mem[ind* psz] =  red1.arr[ind];
+					mem[ind*psz+1] =  green1.arr[ind];
+					mem[ind*psz+2] =  blue1.arr[ind];
+
+				};
+			}
+			::StretchDIBits(dc.m_hDC, 0, 0, sz.cx, sz.cy, 0,0, sz.cx, sz.cy, mem, &tbi,  DIB_RGB_COLORS, SRCCOPY);
+			free(mem);
+
+		}
+		else{
+			//			img1.BitBlt(dc.m_hDC, m_cp.x, m_cp.y);
+			//			img1.StretchBlt(dc.m_hDC,0, 0, sz.cx, sz.cy);
+
+			BITMAPINFO tbi;
+			//tbi.bmiColors = 0;
+			int psz = 3; // pixel size
+			tbi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+			tbi.bmiHeader.biBitCount = psz*8;
+			tbi.bmiHeader.biClrImportant =0;
+			tbi.bmiHeader.biClrUsed = 0;
+			tbi.bmiHeader.biWidth = src_sz.cx;
+			tbi.bmiHeader.biHeight = src_sz.cy;
+			tbi.bmiHeader.biPlanes = 1;
+			tbi.bmiHeader.biCompression =   BI_RGB;
+			tbi.bmiHeader.biSizeImage = src_sz.cx*src_sz.cy*psz;
+			tbi.bmiHeader.biXPelsPerMeter = 0;
+			tbi.bmiHeader.biYPelsPerMeter = 0;
+
+			DWORD dwSize = src_sz.cx*src_sz.cy*psz;
+
+			uint8 * mem = (uint8 *) malloc(dwSize);
+			memset(mem, 0xff,dwSize); 
+
+			//bimg1.bmBits  //tut 0
+			int ind = 0;
+			for (int i = 0; i< src_sz.cy; i++){
+				for (int j = 0; j< src_sz.cx; j++){
+					ind = i*src_sz.cx + j; 
+					mem[ind* psz] =  red.arr[ind];
+					mem[ind*psz+1] =  green.arr[ind];
+					mem[ind*psz+2] =  blue.arr[ind];
+
+				};
+			}
+			::StretchDIBits(dc.m_hDC, 0, 0, sz.cx, sz.cy, 0,0, sz.cx, sz.cy, mem, &tbi,  DIB_RGB_COLORS, SRCCOPY);
+			free(mem);
+
+		}// show source
+
+#if 0
+
+		while((rect.right < sz.cx)||(rect.bottom < sz.cy)){
+			sz.cx /= 2;
+			sz.cy /= 2;
+		}
+		//		rect.right = sz.cx;
+		//		rect.bottom =sz.cy;
+		//	img2.BitBlt(dc.m_hDC, 0,0);
+		//		img2.StretchBlt(dc.m_hDC, 0,0, rect.right, rect.bottom);
+		CImage disp;
+
+
+		//		this->GetWindowRect(&rect);
+		if ((sz.cx < src_sz.cx)||(sz.cy < src_sz.cy)){  // test to big image
+			int u =0, v=0;
+			if (img1.GetWidth()/rect.right > img1.GetHeight()/rect.bottom ){
+				u = rect.right-2;
+				v = img1.GetWidth();
+			}
+			else {
+				u = rect.bottom -2;
+				v = img1.GetHeight();
+			}
+			unsigned char * out = scale((unsigned char *)img1.GetBits(),img1.GetHeight(),  img1.GetWidth(), u, v, img1.GetBPP());
+			sz.cx = u;
+			sz.cy = v;
+			//			CBitmap * bmp = new CBitmap;
+			//			bmp->CreateBitmap(u,v, 1, img1.GetBPP(),out);
+			//		bmp->SetBitmapBits(u*v*img1.GetBPP(), out);
+			unsigned int pa =0;
+			disp.Create(sz.cx,sz.cy, img1.GetBPP());
+			for (int i = 0; i<u; i++){
+				for(int j=0; j< v; j++){
+					pa = (i*u +j)*img1.GetBPP()/8;
+					disp.SetPixelRGB(i,j, out[pa], out[pa+1],out[pa+2]);
+				}
+			}
+			//			CDC* pDC = CDC::FromHandle(disp.GetDC());
+			//			pDC->SelectObject(bmp);
+			//			disp.ReleaseDC();
+			//			delete bmp;
+			free(out);
+			disp.BitBlt(dc.m_hDC, 0,0);
+
+		}//end scale
+		else{
+			img1.BitBlt(dc.m_hDC, 0,0);
+		}// show source
+#endif
+
+#if 0
+
+
+		//		CDC mem;
+		//		mem.CreateCompatibleDC(&dc);
+		//		HBITMAP memBM = CreateCompatibleBitmap ( mem,hbi.biWidth,hbi.biHeight );
+		//		mem.SelectObject(memBM);
+		//		SetDIBitsToDevice(mem.m_hDC,0,0,hbi.biWidth,hbi.biHeight, 0, 0, 0, hbi.biHeight,bimg.bmBits, (BITMAPINFO *) &hbi, DIB_RGB_COLORS);
+
+		//		dc.StretchBlt(0,0, sz.cx,sz.cy, &mem,0,0, src_sz.cx, src_sz.cy, SRCCOPY   );
+		//SetDIBitsToDevice(dc.m_hDC,0,0,sz.cx,sz.cy, 0, 0, 0, hbi.biHeight,bimg.bmBits, (BITMAPINFO *) &hbi, DIB_RGB_COLORS);
+		graphics.DrawImage(BMP1, 0,0,  rect.right, rect.bottom); //src_sz.cx,  src_sz.cy);//
+#endif
+		isz = sz;
+	}
+	else{
+		isz = CSize(0,0);
+	}
+	GetParent()->PostMessage(WM_USER+22,0);
+	// Do not call CWnd::OnPaint() for painting messages
+}
+

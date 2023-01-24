@@ -1,0 +1,26 @@
+// Cryptography.cpp : Defines the entry point for the DLL application.
+//
+
+#include "stdafx.h"
+#include "../../include/domserver.h"
+#include "Rijndael.h"
+#include "des.h"
+#include "cast256.h"
+#include "blowfish.h"
+#include "gost.h"
+#include "rc6.h"
+#include "rsa.h"
+#include "DiffieHellman.h"
+#include "MVL.h"
+
+BEGIN_CLASS_EXPORT
+	CLASS(CRijndael)
+	CLASS(CDes)
+	CLASS(CCast256)
+	CLASS(CBlowfish)
+	CLASS(CGost)
+	CLASS(CRc6)
+	CLASS(CRsa)
+	CLASS(CDiffieHellman)
+	CLASS(CMV2)
+END_CLASS_EXPORT

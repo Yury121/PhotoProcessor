@@ -1,0 +1,590 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\bitmap1.bmp"
+
+IDB_BITMAP2             BITMAP                  "res\\bitmap2.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EXIFDLG DIALOGEX 0, 0, 291, 229
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Exif Information"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,121,208,50,14
+    EDITTEXT        IDC_EDIT1,7,7,277,196,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL
+END
+
+IDD_FACESDLG DIALOGEX 0, 0, 368, 205
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Найденные лица"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,311,159,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,311,184,50,14
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_SINGLESEL | LVS_AUTOARRANGE | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,199,191
+    GROUPBOX        "Static",IDC_STATIC,209,5,152,99
+    EDITTEXT        IDC_EDIT1,215,26,138,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Delete image",ID_DELIMG,226,184,50,14
+    LTEXT           "File:",IDC_STATIC,215,17,14,8
+    LTEXT           "Number of images:",IDC_STATIC,215,89,61,8
+    EDITTEXT        IDC_EDIT2,286,89,52,12,ES_RIGHT | ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER | NOT WS_BORDER,WS_EX_RIGHT
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 239, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Scanning folder for images.."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,90,61,50,14
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,7,40,225,12
+    EDITTEXT        IDC_EDIT1,7,7,225,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT2,7,22,225,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+END
+
+IDD_GISTOGRAMM DIALOGEX 0, 0, 344, 174
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Gistogramm"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Close",IDCANCEL,231,153,50,14
+    GROUPBOX        "info",IDC_STATIC,185,7,152,143
+    LTEXT           "max:",IDC_STATIC,195,16,17,8
+    EDITTEXT        IDC_EDIT111,253,14,74,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "min:",IDC_STATIC,195,32,17,8
+    EDITTEXT        IDC_EDIT112,253,30,74,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "max difference",IDC_STATIC,195,47,49,8
+    EDITTEXT        IDC_EDIT113,253,45,74,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "min difference",IDC_STATIC,195,65,49,8
+    EDITTEXT        IDC_EDIT114,253,63,74,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "pixels:",IDC_STATIC,195,82,49,8
+    EDITTEXT        IDC_EDIT115,253,80,74,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_STATICW1,"Static",SS_BLACKFRAME | SS_CENTERIMAGE | SS_REALSIZEIMAGE,7,7,174,160
+    LTEXT           "width",IDC_STATIC,195,100,49,8
+    EDITTEXT        IDC_EDIT116,253,98,74,12,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "",IDC_STATIC,185,91,152,58
+    LTEXT           "threshold:",IDC_STATIC,195,115,49,8
+    EDITTEXT        IDC_EDIT117,253,113,74,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "overfall:",IDC_STATIC,195,131,49,8
+    EDITTEXT        IDC_EDIT118,253,129,74,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_EXIFDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 284
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 222
+    END
+
+    IDD_FACESDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 361
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 198
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_GISTOGRAMM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 337
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 167
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\PhotoProcessor.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About PhotoProcessor"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,20
+    LTEXT           "PhotoProcessor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    CONTROL         "Copyright (C) Yury Vilanski 2018.\r\n\r\nThis software is based in part\r\non the work of the Independent JPEG Group",IDC_STATIC,
+                    "Static",SS_LEFTNOWORDWRAP | WS_GROUP,40,25,150,37
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_TESTDB_DIALOG DIALOGEX 0, 0, 320, 210
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "TestDb"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Open",IDOK,263,111,50,16
+    PUSHBUTTON      "Cancel",IDCANCEL,263,130,50,16
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,306,101,WS_EX_LEFTSCROLLBAR
+    EDITTEXT        1002,7,111,250,92,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+    EDITTEXT        IDC_EDIT1,264,191,49,12,ES_AUTOHSCROLL | ES_READONLY,WS_EX_RIGHT
+    PUSHBUTTON      "Delete",IDC_DELIMG,265,170,50,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_TESTDB_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)\r\n"
+    "LANGUAGE 25, 1\r\n"
+    "#pragma code_page(1251)\r\n"
+    "#include ""res\\PhotoProcessor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+    BUTTON      ID_CONTEXT_HELP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENUEX
+BEGIN
+    POPUP "&File",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Open",                        32771,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Open old image",              IDC_OPEN_OLD_IMAGE,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Open from Folder",            ID_OPEN_FOLDER,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Save Screen",                 ID_FILE_SAVESCREEN,MFT_STRING,MFS_ENABLED
+        MENUITEM "Save SQRT",                   32799,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Edit",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Add miniature",               32797,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&View",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR,MFT_STRING,MFS_ENABLED
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "1:1",                         32785,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "All color",                   ID_VIEW_ALLCOLAR,MFT_STRING,MFS_ENABLED
+        MENUITEM "Grayscale",                   ID_VIEW_GRAYSCALE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Red",                         ID_VIEW_RED,MFT_STRING,MFS_ENABLED
+        MENUITEM "Green",                       ID_VIEW_GREEN,MFT_STRING,MFS_ENABLED
+        MENUITEM "Blue",                        ID_VIEW_BLUE,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Show found faces",            32802,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Show all faces",              ID_VIEW_SHOWALLFACES,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Tools",                          65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "DinDiap",                     32772,MFT_STRING,MFS_ENABLED
+        MENUITEM "Gauss",                       32773,MFT_STRING,MFS_ENABLED
+        POPUP "GAMMA",                          65535,MFT_STRING,MFS_ENABLED
+        BEGIN
+            MENUITEM "0.4",                         ID_GAMMA_0,MFT_STRING,MFS_ENABLED
+            MENUITEM "0.6",                         ID_GAMMA_1,MFT_STRING,MFS_ENABLED
+            MENUITEM "0.8",                         ID_GAMMA_2,MFT_STRING,MFS_ENABLED
+            MENUITEM "1.0",                         ID_GAMMA_3,MFT_STRING,MFS_ENABLED
+            MENUITEM "1.2",                         ID_GAMMA_4,MFT_STRING,MFS_ENABLED
+            MENUITEM "1.4",                         ID_GAMMA_5,MFT_STRING,MFS_ENABLED
+            MENUITEM "1.6",                         ID_GAMMA_6,MFT_STRING,MFS_ENABLED
+            MENUITEM "1.8",                         ID_GAMMA_7,MFT_STRING,MFS_ENABLED
+            MENUITEM "2.0",                         ID_GAMMA_8,MFT_STRING,MFS_ENABLED
+            MENUITEM "BIG",                         ID_GAMMA_BIG,MFT_STRING,MFS_ENABLED
+        END
+        MENUITEM "Inverse",                     ID_TOOLS_INVERSE,MFT_STRING,MFS_ENABLED
+        MENUITEM "Sobel",                       32793,MFT_STRING,MFS_ENABLED
+        MENUITEM "Integrator",                  ID_TOOLS_INTEGRATOR,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Test Faces",                  ID_TOOLS_TESTFACES,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "histogram",                   ID_GISTDLG,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Restore Original path",       ID_TOOLS_RESTOREORIGINALPATH,MFT_STRING,MFS_ENABLED
+    END
+    MENUITEM "Exif",                        ID_EXIF,MFT_STRING,MFS_ENABLED
+    POPUP "Scan folder",                    65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Scan Folder to new",          ID_DIR_SCAN,MFT_STRING,MFS_ENABLED
+        MENUITEM "Scan folder",                 32809,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "Operations",                     65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "Контур макс",                 ID_CONTURMAX,MFT_STRING,MFS_ENABLED
+        MENUITEM "Контур точно",                ID_CONTUREQU,MFT_STRING,MFS_ENABLED
+        MENUITEM "Контур мин",                  ID_CONTURMIN,MFT_STRING,MFS_ENABLED
+        MENUITEM "Контур уровень",              ID_CONTURLEVAL,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Select good point",           32821,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        POPUP "Filters",                        65535,MFT_STRING,MFS_ENABLED
+        BEGIN
+            MENUITEM "Gradient DX",                 32823,MFT_STRING,MFS_ENABLED
+            MENUITEM "Gradient DY",                 32824,MFT_STRING,MFS_ENABLED
+            MENUITEM "Gradient DX Gauss",           ID_GRADDX_GAUSS,MFT_STRING,MFS_ENABLED
+            MENUITEM "Gradient DY Gauss",           ID_GRADDY_GAUSS,MFT_STRING,MFS_ENABLED
+        END
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "Ввостановить",                ID_OPER_RESTORE,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "&Help",                          65535,MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "&About PhotoProcessor...",    ID_APP_ABOUT,MFT_STRING,MFS_ENABLED
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Yury Vilanski"
+            VALUE "FileDescription", "Test Photo Applicatins"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "PhotoProcessor.exe"
+            VALUE "LegalCopyright", "(c) Yury Vilanski.  All rights reserved."
+            VALUE "OriginalFilename", "PhotoProcessor.exe"
+            VALUE "ProductName", "Photo Processor"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "PhotoProcessor"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "PhotoProcessor"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_SAVE_SQRT           "save resize to1/2"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_OPEN_OLD_IMAGE      "open from saved images"
+    ID_DIR_SCAN             "Scan folder for images and save information into selected folder"
+    ID_VIEW_SHOWALLFACES    "Show all founds faces"
+    ID_SCAN_TO_OLD          "Scan folder and save information into current database"
+END
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE 25, 1
+#pragma code_page(1251)
+#include "res\PhotoProcessor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

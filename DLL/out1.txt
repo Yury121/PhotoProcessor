@@ -1,0 +1,231 @@
+---- ExifTool ----
+ExifTool Version Number         : 11.33
+---- System ----
+File Name                       : IMG_4661.JPG
+Directory                       : D:/Pictures/Tel
+File Size                       : 6.8 MB
+File Modification Date/Time     : 2017:09:07 21:11:22+03:00
+File Access Date/Time           : 2018:12:11 08:59:35+03:00
+File Creation Date/Time         : 2018:12:11 08:59:35+03:00
+File Permissions                : rw-rw-rw-
+---- File ----
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+Exif Byte Order                 : Little-endian (Intel, II)
+Image Width                     : 5184
+Image Height                    : 3888
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:2 (2 1)
+---- IFD0 ----
+Image Description               : 
+Make                            : Canon
+Camera Model Name               : Canon PowerShot SX710 HS
+Orientation                     : Horizontal (normal)
+X Resolution                    : 180
+Y Resolution                    : 180
+Resolution Unit                 : inches
+Modify Date                     : 2017:09:07 14:40:09
+Y Cb Cr Positioning             : Co-sited
+---- ExifIFD ----
+Exposure Time                   : 1/1000
+F Number                        : 4.5
+ISO                             : 125
+Sensitivity Type                : Standard Output Sensitivity and Recommended Exposure Index
+Exif Version                    : 0230
+Date/Time Original              : 2017:09:07 14:40:09
+Create Date                     : 2017:09:07 14:40:09
+Components Configuration        : Y, Cb, Cr, -
+Compressed Bits Per Pixel       : 3
+Shutter Speed Value             : 1/1002
+Aperture Value                  : 4.5
+Exposure Compensation           : 0
+Max Aperture Value              : 4.5
+Metering Mode                   : Multi-segment
+Flash                           : Off, Did not fire
+Focal Length                    : 12.6 mm
+User Comment                    : 
+Sub Sec Time                    : 84
+Sub Sec Time Original           : 84
+Sub Sec Time Digitized          : 84
+Flashpix Version                : 0100
+Color Space                     : sRGB
+Exif Image Width                : 5184
+Exif Image Height               : 3888
+Focal Plane X Resolution        : 21159.18367
+Focal Plane Y Resolution        : 21130.43478
+Focal Plane Resolution Unit     : inches
+Sensing Method                  : One-chip color area
+File Source                     : Digital Camera
+Custom Rendered                 : Normal
+Exposure Mode                   : Auto
+White Balance                   : Auto
+Digital Zoom Ratio              : 1
+Scene Capture Type              : Standard
+Owner Name                      : Galochka
+---- Canon ----
+Macro Mode                      : Normal
+Self Timer                      : Off
+Quality                         : Fine
+Canon Flash Mode                : Off
+Continuous Drive                : Single
+Focus Mode                      : Single
+Record Mode                     : JPEG
+Canon Image Size                : Large
+Easy Mode                       : Full auto
+Digital Zoom                    : None
+Contrast                        : Normal
+Saturation                      : Normal
+Sharpness                       : 0
+Camera ISO                      : Auto
+Metering Mode                   : Evaluative
+Focus Range                     : Auto
+AF Point                        : Face Detect
+Canon Exposure Mode             : Easy
+Lens Type                       : n/a
+Max Focal Length                : 135 mm
+Min Focal Length                : 4.5 mm
+Focal Units                     : 100/mm
+Max Aperture                    : 4.5
+Min Aperture                    : 8
+Flash Bits                      : (none)
+Focus Continuous                : Continuous
+Image Stabilization             : On (2)
+Zoom Source Width               : 5184
+Zoom Target Width               : 5184
+Spot Metering Mode              : Center
+Manual Flash Output             : n/a
+Canon Flash Info                : 0 0 0 0
+Auto ISO                        : 59
+Base ISO                        : 200
+Measured EV                     : 15.69
+Target Aperture                 : 4.5
+Target Exposure Time            : 1/1002
+Exposure Compensation           : 0
+White Balance                   : Auto
+Slow Shutter                    : Off
+Shot Number In Continuous Burst : 0
+Optical Zoom Code               : 28
+Flash Guide Number              : 0
+Flash Exposure Compensation     : 0
+Auto Exposure Bracketing        : Off
+AEB Bracket Value               : 0
+Control Mode                    : Camera Local Control
+Focus Distance Upper            : 6.65 m
+Focus Distance Lower            : 0 m
+F Number                        : 4.3
+Exposure Time                   : 1/1069
+Bulb Duration                   : 0
+Camera Type                     : Compact
+Auto Rotate                     : None
+ND Filter                       : Off
+Self Timer 2                    : 0
+Flash Output                    : 0
+Canon Image Type                : IMG:PowerShot SX710 HS JPEG
+Canon Firmware Version          : Firmware Version 1.00
+File Number                     : 127-4661
+Camera Temperature              : 38 C
+Canon Model ID                  : PowerShot SX710 HS
+Thumbnail Image Valid Area      : 0 0 0 0
+Canon 0x0018                    : 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0[...]
+Canon 0x0019                    : 1
+Date Stamp Mode                 : Off
+My Color Mode                   : Off
+Firmware Revision               : 1.00 rev 1.00
+Canon 0x001f                    : 138 2 0 4 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0[...]
+Canon 0x0022                    : 416 0 0 16 8 1 1 640 480 0 0 0 0 0 8 384 0 0 0 0 0 0 0 [...]
+Categories                      : People
+Intelligent Contrast            : Off
+Image Unique ID                 : 791984f3f38849a2a71c45581f29fb51
+Canon 0x002d                    : 0
+Canon 0x002e                    : 58 32767 32767 65535 65535 65531 0 32767 120 65535 3 65[...]
+Faces Detected                  : 1
+Canon 0x0031                    : 12 1 2 1 0 0
+Canon 0x0032                    : 28 1 0 4085520761 2722728179 1480924327 1375414559
+Canon 0x0033                    : 1192233805 2722708369 1480924327 1375414559
+Time Zone                       : +02:00
+Time Zone City                  : (not set)
+Daylight Savings                : Off
+Canon 0x0037                    : 8 0
+Canon 0x0038                    : .ö×.
+Canon 0x003a                    : 233 8 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0[...]
+AF Info Size                    : 98
+AF Area Mode                    : Single-point AF
+Num AF Points                   : 9
+Valid AF Points                 : 1
+Canon Image Width               : 5184
+Canon Image Height              : 3888
+AF Image Width                  : 5184
+AF Image Height                 : 3888
+AF Area Widths                  : 186 -1 8421 140 496 21553 8359 -16808 21623
+AF Area Heights                 : 186 70 83 -5536 0 70 83 140 -16808
+AF Area X Positions             : 599 23 29696 -1 69 1 9005 138 26512
+AF Area Y Positions             : -226 0 29696 5720 0 -6120 83 5720 -6060
+AF Points In Focus              : 0
+Canon AF Info 2 0x000d          : 0 0
+Aspect Ratio                    : 4:3
+Cropped Image Width             : 5184
+Cropped Image Height            : 3888
+Cropped Image Left              : 0
+Cropped Image Top               : 0
+VRD Offset                      : 0
+---- InteropIFD ----
+Interoperability Index          : R98 - DCF basic file (sRGB)
+Interoperability Version        : 0100
+Related Image Width             : 5184
+Related Image Height            : 3888
+---- GPS ----
+GPS Version ID                  : 2.3.0.0
+---- IFD1 ----
+Compression                     : JPEG (old-style)
+X Resolution                    : 180
+Y Resolution                    : 180
+Resolution Unit                 : inches
+Thumbnail Offset                : 19456
+Thumbnail Length                : 6953
+Thumbnail Image                 : (Binary data 6953 bytes, use -b option to extract)
+---- XMP-xmp ----
+Rating                          : 0
+---- MPF0 ----
+MPF Version                     : 0100
+Number Of Images                : 2
+---- MPImage1 ----
+MP Image Flags                  : Dependent parent image
+MP Image Format                 : JPEG
+MP Image Type                   : Baseline MP Primary Image
+MP Image Length                 : 6410972
+MP Image Start                  : 0
+Dependent Image 1 Entry Number  : 2
+Dependent Image 2 Entry Number  : 0
+---- MPImage2 ----
+MP Image Flags                  : Dependent child image
+MP Image Format                 : JPEG
+MP Image Type                   : Large Thumbnail (full HD equivalent)
+MP Image Length                 : 712756
+MP Image Start                  : 6411264
+Dependent Image 1 Entry Number  : 0
+Dependent Image 2 Entry Number  : 0
+Preview Image                   : (Binary data 712756 bytes, use -b option to extract)
+---- Composite ----
+Aperture                        : 4.5
+Drive Mode                      : Single-frame Shooting
+ISO                             : 119
+Image Size                      : 5184x3888
+Lens                            : 4.5 - 135.0 mm
+Lens ID                         : Unknown 4-135mm
+Megapixels                      : 20.2
+Scale Factor To 35 mm Equivalent: 5.6
+Shooting Mode                   : Full auto
+Shutter Speed                   : 1/1000
+Create Date                     : 2017:09:07 14:40:09.84
+Date/Time Original              : 2017:09:07 14:40:09.84
+Modify Date                     : 2017:09:07 14:40:09.84
+Circle Of Confusion             : 0.005 mm
+Depth Of Field                  : 4.53 m (2.21 - 6.74 m)
+Field Of View                   : 28.8 deg
+Focal Length                    : 12.6 mm (35 mm equivalent: 70.1 mm)
+Hyperfocal Distance             : 6.54 m
+Lens                            : 4.5 - 135.0 mm (35 mm equivalent: 25.0 - 750.5 mm)
+Light Value                     : 14.0

@@ -1,0 +1,3729 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[    132768,       3720]
+NotebookOptionsPosition[    132178,       3698]
+NotebookOutlinePosition[    132523,       3713]
+CellTagsIndexPosition[    132480,       3710]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fl1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"478", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "397"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "398"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "396"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"890", ",", "397"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"894", ",", "397"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "418"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"890", ",", "398"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"894", ",", "396"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "420"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"890", ",", "396"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"894", ",", "398"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "399"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "418"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "395"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "443"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"890", ",", "399"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"890", ",", "395"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"894", ",", "395"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "414"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "420"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "427"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "427"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "414"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "441"}], "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"val1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "158", ",", "157", ",", "154", ",", "150", ",", "150", ",", "149", ",", 
+     "148", ",", "145", ",", "144", ",", "140", ",", "139", ",", "138", ",", 
+     "136", ",", "130", ",", "129", ",", "125", ",", "124", ",", "122", ",", 
+     "117", ",", "115", ",", "115", ",", "114", ",", "110", ",", "110", ",", 
+     "108", ",", "108", ",", "106", ",", "104", ",", "104", ",", "103", ",", 
+     "102", ",", "102", ",", "101", ",", "100", ",", "100", ",", "100", ",", 
+     "99", ",", "99", ",", "99", ",", "99", ",", "98", ",", "98", ",", "98", 
+     ",", "97", ",", "97", ",", "95", ",", "95", ",", "95", ",", "94", ",", 
+     "93", ",", "93", ",", "93", ",", "93", ",", "93", ",", "92", ",", "92", 
+     ",", "92", ",", "92", ",", "92", ",", "91", ",", "91", ",", "91", ",", 
+     "91", ",", "90", ",", "89", ",", "88", ",", "87", ",", "87", ",", "87", 
+     ",", "87", ",", "87", ",", "87", ",", "86", ",", "85", ",", "85", ",", 
+     "85", ",", "85", ",", "85", ",", "85", ",", "84", ",", "84", ",", "84", 
+     ",", "84", ",", "84", ",", "83", ",", "83", ",", "83", ",", "82", ",", 
+     "82", ",", "82", ",", "81", ",", "81", ",", "80", ",", "80", ",", "80", 
+     ",", "80", ",", "80", ",", "80", ",", "79", ",", "79", ",", "79", ",", 
+     "78", ",", "78", ",", "78", ",", "77", ",", "77", ",", "76", ",", "76", 
+     ",", "75", ",", "75", ",", "74", ",", "73", ",", "71", ",", "71", ",", 
+     "70", ",", "70", ",", "70", ",", "70", ",", "70", ",", "70", ",", "70", 
+     ",", "69", ",", "68", ",", "68", ",", "68", ",", "68", ",", "67", ",", 
+     "67"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"arr1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"486", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"528", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"892", ",", "397"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cp1", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"477", ",", "435"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"484", ",", "430"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"527", ",", "429"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"544", ",", "425"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"572", ",", "422"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"601", ",", "421"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"555", ",", "426"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"554", ",", "423"}], "}"}]}], "}"}]}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fl2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"478", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "429"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "434"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "418"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "424"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "437"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "420"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "431"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "418"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "433"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "435"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "439"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "415"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "443"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "436"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "438"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "428"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "423"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "422"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "442"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "414"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "420"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"490", ",", "427"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"530", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "417"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"498", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"494", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"478", ",", "427"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "430"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "414"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"474", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"492", ",", "421"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"480", ",", "427"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"476", ",", "443"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"536", ",", "414"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"488", ",", "426"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"518", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"520", ",", "443"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"518", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "418"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"496", ",", "425"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"514", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"532", ",", "440"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"514", ",", "441"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"538", ",", "415"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"val2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "158", ",", "157", ",", "154", ",", "150", ",", "150", ",", "149", ",", 
+     "148", ",", "145", ",", "144", ",", "140", ",", "139", ",", "138", ",", 
+     "136", ",", "130", ",", "129", ",", "125", ",", "124", ",", "122", ",", 
+     "117", ",", "115", ",", "115", ",", "114", ",", "110", ",", "110", ",", 
+     "108", ",", "108", ",", "106", ",", "104", ",", "104", ",", "103", ",", 
+     "102", ",", "102", ",", "101", ",", "100", ",", "100", ",", "100", ",", 
+     "99", ",", "99", ",", "99", ",", "99", ",", "98", ",", "98", ",", "98", 
+     ",", "97", ",", "97", ",", "95", ",", "95", ",", "94", ",", "93", ",", 
+     "93", ",", "93", ",", "93", ",", "92", ",", "92", ",", "92", ",", "92", 
+     ",", "91", ",", "91", ",", "91", ",", "91", ",", "90", ",", "89", ",", 
+     "88", ",", "87", ",", "87", ",", "87", ",", "87", ",", "87", ",", "87", 
+     ",", "86", ",", "85", ",", "85", ",", "85", ",", "85", ",", "84", ",", 
+     "84", ",", "84", ",", "84", ",", "83", ",", "83", ",", "83", ",", "82", 
+     ",", "82", ",", "81", ",", "81", ",", "80", ",", "80", ",", "80", ",", 
+     "79", ",", "79", ",", "78", ",", "78", ",", "78", ",", "77", ",", "76", 
+     ",", "76", ",", "75", ",", "75", ",", "74", ",", "73", ",", "71", ",", 
+     "71", ",", "70", ",", "70", ",", "70", ",", "70", ",", "70", ",", "69", 
+     ",", "68", ",", "68", ",", "68", ",", "68", ",", "67", ",", "67", ",", 
+     "66", ",", "66", ",", "66", ",", "65", ",", "65", ",", "65", ",", "65", 
+     ",", "64", ",", "63", ",", "63", ",", "63", ",", "63", ",", "63", ",", 
+     "62"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"arr2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"504", ",", "432"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"534", ",", "416"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cp2", "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"477", ",", "435"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"484", ",", "430"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"503", ",", "430"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"496", ",", "428"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"502", ",", "428"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"509", ",", "429"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"503", ",", "428"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"509", ",", "430"}], "}"}]}], "}"}]}], ";"}], "\n"}], "\n", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"fl1", ",", "fl2"}], "}"}], ",", " ", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}], "\n", 
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"fl1", ",", "arr1", ",", " ", "cp1"}], "}"}], ",", " ", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+   RowBox[{"PlotMarkers", "\[Rule]", "Automatic"}], ",", 
+   RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fl1", " ", "=", " ", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{"fl1", ",", "Last"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fl1", " ", "=", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{"fl1", ",", "First"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fl2", " ", "=", " ", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{"fl2", ",", "Last"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fl2", " ", "=", 
+   RowBox[{"SortBy", "[", 
+    RowBox[{"fl2", ",", "First"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"df01", " ", "=", " ", 
+    RowBox[{"Abs", "[", 
+     RowBox[{"fl1", "-", "fl2"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", "df01", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nd12", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"N", "[", 
+      RowBox[{"Norm", "[", 
+       RowBox[{
+        RowBox[{"fl1", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+         "-", 
+        RowBox[{
+        "fl2", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+       "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", " ", 
+       RowBox[{"Length", "[", "fl1", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"nn", " ", "=", " ", 
+    RowBox[{"Length", "[", "val1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"nn", " ", "=", "64"}], ";"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"N", "[", 
+  RowBox[{"StandardDeviation", "[", 
+   RowBox[{
+    RowBox[{"val1", "\[LeftDoubleBracket]", 
+     RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "-", 
+    RowBox[{"val2", "\[LeftDoubleBracket]", 
+     RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}]}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListPlot", "[", "nd12", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"val1", "-", " ", "val2"}], "}"}], ",", " ", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+   RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7957694393603563`*^9, 3.7957694513303566`*^9}, {
+   3.7957695080653563`*^9, 3.7957695240878563`*^9}, {3.7957695542303567`*^9, 
+   3.795769569402857*^9}, 3.7957696109853563`*^9, {3.7957698841903563`*^9, 
+   3.7957698940828567`*^9}, {3.7957699438653564`*^9, 3.7957699462353563`*^9}, 
+   3.795769996027857*^9, {3.795831516261492*^9, 3.795831551237891*^9}, {
+   3.7958317348277345`*^9, 3.7958317575811443`*^9}, 3.7958320289744997`*^9, 
+   3.7958355791138124`*^9, 3.795835686023813*^9, {3.795838485699314*^9, 
+   3.795838504191814*^9}, 3.7958385389593143`*^9, {3.796016598938615*^9, 
+   3.796016643613615*^9}, {3.796016684027382*^9, 3.7960166897071548`*^9}, {
+   3.79601674332751*^9, 3.796016749222274*^9}, {3.796016782238453*^9, 
+   3.79601685557052*^9}, {3.796016904943545*^9, 3.7960169441919746`*^9}, {
+   3.796016981796615*^9, 3.796017053671615*^9}, {3.796017128961615*^9, 
+   3.796017172194115*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[{{{}, 
+      GraphicsComplexBox[CompressedData["
+1:eJztl91pwzAUhU0m8AjuBh7BI4ROYAp9bh7TlqZ674tH0AgaQSN4BI/gEVri
+ewz6iB5CSomLQsDc+OrcvyOd6OHp5fF5V/18dufv8pk+uvNzfusS+/Ce2hXs
+Cf493juzI9ZH4Eesj8hHdg38Gv6M18B/gD0Cf4K9hz/tBvFW/JPVZ3jVKcWX
+vfbbbIf4reF5Z+vg38s/s35EvBHz8oY/uLS+6vMy/gH4HfKr4T8gfgV/xhO+
+3gtf6w/Itwfeyr8vq/eY1huRj0P8vfpj66djGk/9H1DvgHw994PhxWP6voZ/
+A5v7Q/MKGT6o3z6zX1c+0d/w5ldbJ36Bz+qPB9/kH4HXYl4HzHNAPt7Wj5jf
+DFv4DfgmvmqeDnzXfEbMNyK+Z7+w/4O7bKt/IcMP4c3gQ8jwh/zskN+MfkX0
+S/WJf7PqzfC5wTxr8DcgX55P3J/qR4SteQTMY8b+6MAPnQ+d4Q3ofw9+eewf
+8bPBedPgvBO+R34B/Q3g46T6LH6H/RKA79CvVb/An4bnE/i69hP8kN4E5Ocz
+elj0P7WL/qf4m9H/K/X+Vn0vem6/Z/T8Vr3+a32+VY+v1dff1tN708+t62PE
+fqmQb0T/I/Ac8mnRf9Wr9S3qDeSP1av9XsPfw64Rb8zwp+h/ahf9T/E3o//l
+/r+83+j/hXL/t/zL/X+xy/3//Cz3/xS/6L/5F/1P7HL/X573oufl/r88y/3f
+nhvTx398//8GgG0SDQ==
+       "], {{
+         RGBColor[0.24720000000000014`, 0.24, 0.6], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          257], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          258], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          259], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          260], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          261], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          262], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          263], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          264], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          265], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          266], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          267], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          268], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          269], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          270], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          271], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          272], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          273], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          274], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          275], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          276], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          277], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          278], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          279], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          280], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          281], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          282], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          283], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          284], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          285], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          286], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          287], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          288], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          289], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          290], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          291], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          292], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          293], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          294], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          295], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          296], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          297], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          298], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          299], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          300], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          301], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          302], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          303], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          304], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          305], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          306], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          307], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          308], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          309], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          310], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          311], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          312], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          313], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          314], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          315], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          316], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          317], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          318], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          319], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          320], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          321], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          322], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          323], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          324], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          325], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          326], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          327], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          328], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          329], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          330], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          331], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          332], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          333], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          334], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          335], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          336], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          337], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          338], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          339], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          340], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          341], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          342], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          343], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          344], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          345], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          346], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          347], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          348], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          349], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          350], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          351], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          352], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          353], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          354], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          355], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          356], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          357], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          358], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          359], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          360], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          361], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          362], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          363], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          364], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          365], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          366], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          367], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          368], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          369], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          370], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          371], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          372], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          373], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          374], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          375], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          376], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          377], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          378], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          379], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          380], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          381], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          382], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          383], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          384]}, {
+         RGBColor[0.6, 0.24, 0.4428931686004542], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          385], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          386], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          387], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          388], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          389], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          390], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          391], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          392], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          393], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          394], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          395], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          396], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          397], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          398], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          399], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          400], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          401], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          402], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          403], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          404], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          405], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          406], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          407], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          408], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          409], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          410], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          411], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          412], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          413], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          414], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          415], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          416], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          417], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          418], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          419], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          420], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          421], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          422], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          423], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          424], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          425], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          426], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          427], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          428], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          429], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          430], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          431], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          432], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          433], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          434], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          435], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          436], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          437], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          438], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          439], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          440], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          441], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          442], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          443], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          444], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          445], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          446], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          447], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          448], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          449], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          450], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          451], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          452], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          453], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          454], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          455], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          456], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          457], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          458], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          459], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          460], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          461], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          462], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          463], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          464], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          465], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          466], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          467], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          468], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          469], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          470], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          471], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          472], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          473], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          474], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          475], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          476], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          477], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          478], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          479], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          480], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          481], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          482], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          483], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          484], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          485], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          486], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          487], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          488], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          489], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          490], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          491], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          492], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          493], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          494], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          495], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          496], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          497], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          498], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          499], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          500], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          501], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          502], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          503], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          504], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          505], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          506], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          507], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          508], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          509], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          510], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          511], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          512]}, {}}], {}}, {}}, AspectRatio -> 
+    NCache[GoldenRatio^(-1), 0.6180339887498948], Axes -> True, 
+    AxesLabel -> {None, None}, AxesOrigin -> {474., 395.}, Method -> {}, 
+    PlotRange -> {All, All}, PlotRangeClipping -> True, 
+    PlotRangePadding -> {Automatic, Automatic}],TemplateBox[{
+     TagBox[
+      FrameBox[
+       StyleBox["1", StripOnInput -> False, FontSize -> Smaller]], 
+      "Placeholder"], 
+     TagBox[
+      FrameBox[
+       StyleBox["2", StripOnInput -> False, FontSize -> Smaller]], 
+      "Placeholder"]}, "PointLegend", DisplayFunction -> (StyleBox[
+      StyleBox[
+       PaneBox[
+        TagBox[
+         GridBox[{{
+            TagBox[
+             GridBox[{{
+                GraphicsBox[{{}, {
+                   Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.24720000000000014`, 0.24, 0.6]], {
+                    InsetBox[
+                    FormBox[
+                    StyleBox["\"\[FilledCircle]\"", 
+                    Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.24720000000000014`, 0.24, 0.6]], FontSize -> 
+                    8.96, Plain, StripOnInput -> False], TraditionalForm], 
+                    NCache[
+                    Scaled[{
+                    Rational[1, 2], 
+                    Rational[1, 2]}], 
+                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
+                 ImageSize -> {8.96, 8.96}, PlotRangePadding -> None, 
+                 ImagePadding -> 1, 
+                 BaselinePosition -> (Scaled[0.06401785714285718] -> 
+                  Baseline)], #}, {
+                GraphicsBox[{{}, {
+                   Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.24, 0.4428931686004542]], {
+                    InsetBox[
+                    FormBox[
+                    StyleBox["\"\[FilledSquare]\"", 
+                    Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.24, 0.4428931686004542]], FontSize -> 
+                    8.96, Plain, StripOnInput -> False], TraditionalForm], 
+                    NCache[
+                    Scaled[{
+                    Rational[1, 2], 
+                    Rational[1, 2]}], 
+                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
+                 ImageSize -> {8.96, 8.96}, PlotRangePadding -> None, 
+                 ImagePadding -> 1, 
+                 BaselinePosition -> (Scaled[0.06401785714285718] -> 
+                  Baseline)], #2}}, 
+              GridBoxAlignment -> {
+               "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+              AutoDelete -> False, 
+              GridBoxDividers -> {
+               "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+              GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}, 
+              GridBoxSpacings -> {"Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], 
+             "Grid"]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], "Grid"], 
+        Alignment -> Left, AppearanceElements -> None, 
+        ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> "ResizeToFit"], 
+       LineIndent -> 0, StripOnInput -> False], {FontFamily -> "Times"}, 
+      Background -> Automatic, StripOnInput -> False]& ), Editable -> True, 
+    InterpretationFunction :> (RowBox[{"PointLegend", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"Directive", "[", 
+               RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.24720000000000014`", ",", "0.24`", ",", "0.6`"}], 
+                 "]"}], "]"}], ",", 
+             RowBox[{"Directive", "[", 
+               RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.6`", ",", "0.24`", ",", "0.4428931686004542`"}], 
+                 "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{#, ",", #2}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}], ",", 
+             RowBox[{"LegendMarkers", "\[Rule]", "Automatic"}]}], "}"}]}], 
+       "]"}]& )]},
+  "Legended",
+  DisplayFunction->(GridBox[{{
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, GridBoxItemSize -> Automatic, 
+    BaselinePosition -> {1, 1}]& ),
+  Editable->True,
+  InterpretationFunction->(RowBox[{"Legended", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"Placed", "[", 
+         RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.796017173964115*^9}],
+
+Cell[BoxData[
+ TemplateBox[{GraphicsBox[{{{}, 
+      GraphicsComplexBox[CompressedData["
+1:eJztlrFNxTAQhg0TZASzASN4hCcqygiJmpQBxMPQ0mQEj+ARXFJmhIyQERDv
+3R/Jn146JBqniX75/N/57j/7bh6e7h6vnXP+yrnf/+lb3sLpv76ECg+vNXbA
+C+x7rEfDBfsL+Av2F8Qj3IG/gz39edhPwDP4F+AD7Ik9/G38Rzuf8bljzS+8
+5dtwhP9b40vR9sG+l/3O/hn+ZtQrGf8U6/O598v8A/gD4utgP8G/gz39iV/r
+4tf+AfH24Nv092XnHevzFsQT4f+g/Nj+Zaz9Kf8Tzjsh3sR+ML4y1usd7D0w
++0P1yjt6UL7TTr9ueqK98a3Ptk/6gp6VnwS9yb6A7xb1GlDPCfEk2z+jfiuw
++D30Jr2qnhF6V31m1LfAf2K+0P85XsbKX97Rh/hW6CHv6If6DIhvRb4K8qXz
+SX+rzrujZ496dtBvRry8n9ifykcBVj0y6rGiPwL0ofshGN+E/PfQV0L/SJ8e
+943HfSf+hPgy8puhx0XnM/8B/ZLBH5Gv7f2CfjzvJ+h1yyf0ofcmI76E96rH
+/RzNvuA+VP/99Tej3wLey9Hi2d6zj/Nf99diWPX7/jz/la97W1e+DoYH5K/N
+PzVu80/N3+afGrf5p7Zv80+N2/xT+2vzT83f5p/z94/zzw+DSstp
+       "], {{
+         RGBColor[0.24720000000000014`, 0.24, 0.6], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          145], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          146], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          147], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          148], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          149], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          150], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          151], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          152], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          153], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          154], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          155], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          156], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          157], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          158], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          159], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          160], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          161], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          162], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          163], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          164], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          165], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          166], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          167], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          168], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          169], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          170], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          171], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          172], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          173], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          174], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          175], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          176], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          177], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          178], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          179], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          180], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          181], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          182], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          183], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          184], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          185], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          186], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          187], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          188], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          189], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          190], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          191], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          192], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          193], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          194], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          195], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          196], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          197], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          198], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          199], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          200], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          201], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          202], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          203], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          204], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          205], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          206], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          207], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          208], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          209], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          210], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          211], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          212], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          213], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          214], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          215], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          216], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          217], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          218], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          219], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          220], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          221], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          222], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          223], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          224], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          225], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          226], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          227], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          228], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          229], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          230], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          231], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          232], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          233], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          234], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          235], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          236], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          237], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          238], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          239], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          240], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          241], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          242], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          243], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          244], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          245], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          246], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          247], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          248], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          249], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          250], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          251], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          252], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          253], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          254], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          255], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          256], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          257], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          258], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          259], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          260], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          261], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          262], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          263], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          264], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          265], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          266], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          267], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          268], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          269], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          270], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          271], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledCircle]\"", StripOnInput -> False, FontSize -> 8.96], 
+          272]}, {
+         RGBColor[0.6, 0.24, 0.4428931686004542], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          273], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          274], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          275], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          276], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          277], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          278], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          279], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledSquare]\"", StripOnInput -> False, FontSize -> 8.96], 
+          280]}, {
+         RGBColor[0.6, 0.5470136627990908, 0.24], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          281], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          282], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          283], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          284], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          285], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          286], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          287], 
+         InsetBox[
+          StyleBox[
+          "\"\[FilledDiamond]\"", StripOnInput -> False, FontSize -> 10.88], 
+          288]}, {}}], {}}, {}}, AspectRatio -> 
+    NCache[GoldenRatio^(-1), 0.6180339887498948], Axes -> True, 
+    AxesLabel -> {None, None}, AxesOrigin -> {0., 0.}, Method -> {}, 
+    PlotRange -> {All, All}, PlotRangeClipping -> True, 
+    PlotRangePadding -> {Automatic, Automatic}],TemplateBox[{
+     TagBox[
+      FrameBox[
+       StyleBox["1", StripOnInput -> False, FontSize -> Smaller]], 
+      "Placeholder"], 
+     TagBox[
+      FrameBox[
+       StyleBox["2", StripOnInput -> False, FontSize -> Smaller]], 
+      "Placeholder"], 
+     TagBox[
+      FrameBox[
+       StyleBox["3", StripOnInput -> False, FontSize -> Smaller]], 
+      "Placeholder"]}, "PointLegend", DisplayFunction -> (StyleBox[
+      StyleBox[
+       PaneBox[
+        TagBox[
+         GridBox[{{
+            TagBox[
+             GridBox[{{
+                GraphicsBox[{{}, {
+                   Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.24720000000000014`, 0.24, 0.6]], {
+                    InsetBox[
+                    FormBox[
+                    StyleBox["\"\[FilledCircle]\"", 
+                    Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.24720000000000014`, 0.24, 0.6]], FontSize -> 
+                    8.96, Plain, StripOnInput -> False], TraditionalForm], 
+                    NCache[
+                    Scaled[{
+                    Rational[1, 2], 
+                    Rational[1, 2]}], 
+                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
+                 ImageSize -> {8.96, 8.96}, PlotRangePadding -> None, 
+                 ImagePadding -> 1, 
+                 BaselinePosition -> (Scaled[0.06401785714285718] -> 
+                  Baseline)], #}, {
+                GraphicsBox[{{}, {
+                   Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.24, 0.4428931686004542]], {
+                    InsetBox[
+                    FormBox[
+                    StyleBox["\"\[FilledSquare]\"", 
+                    Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.24, 0.4428931686004542]], FontSize -> 
+                    8.96, Plain, StripOnInput -> False], TraditionalForm], 
+                    NCache[
+                    Scaled[{
+                    Rational[1, 2], 
+                    Rational[1, 2]}], 
+                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
+                 ImageSize -> {8.96, 8.96}, PlotRangePadding -> None, 
+                 ImagePadding -> 1, 
+                 BaselinePosition -> (Scaled[0.06401785714285718] -> 
+                  Baseline)], #2}, {
+                GraphicsBox[{{}, {
+                   Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.5470136627990908, 0.24]], {
+                    InsetBox[
+                    FormBox[
+                    StyleBox["\"\[FilledDiamond]\"", 
+                    Directive[
+                    EdgeForm[{
+                    Opacity[0.3], 
+                    GrayLevel[0]}], 
+                    RGBColor[0.6, 0.5470136627990908, 0.24]], FontSize -> 
+                    10.88, Plain, StripOnInput -> False], TraditionalForm], 
+                    NCache[
+                    Scaled[{
+                    Rational[1, 2], 
+                    Rational[1, 2]}], 
+                    Scaled[{0.5, 0.5}]]]}}}, AspectRatio -> Full, 
+                 ImageSize -> {10.88, 10.88}, PlotRangePadding -> None, 
+                 ImagePadding -> 1, 
+                 BaselinePosition -> (Scaled[0.13235294117647062`] -> 
+                  Baseline)], #3}}, 
+              GridBoxAlignment -> {
+               "Columns" -> {Center, Left}, "Rows" -> {{Baseline}}}, 
+              AutoDelete -> False, 
+              GridBoxDividers -> {
+               "Columns" -> {{False}}, "Rows" -> {{False}}}, 
+              GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}, 
+              GridBoxSpacings -> {"Columns" -> {{0.5}}, "Rows" -> {{0.8}}}], 
+             "Grid"]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          GridBoxSpacings -> {"Columns" -> {{1}}, "Rows" -> {{0}}}], "Grid"], 
+        Alignment -> Left, AppearanceElements -> None, 
+        ImageMargins -> {{5, 5}, {5, 5}}, ImageSizeAction -> "ResizeToFit"], 
+       LineIndent -> 0, StripOnInput -> False], {FontFamily -> "Times"}, 
+      Background -> Automatic, StripOnInput -> False]& ), Editable -> True, 
+    InterpretationFunction :> (RowBox[{"PointLegend", "[", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"Directive", "[", 
+               RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.24720000000000014`", ",", "0.24`", ",", "0.6`"}], 
+                 "]"}], "]"}], ",", 
+             RowBox[{"Directive", "[", 
+               RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.6`", ",", "0.24`", ",", "0.4428931686004542`"}], 
+                 "]"}], "]"}], ",", 
+             RowBox[{"Directive", "[", 
+               RowBox[{"RGBColor", "[", 
+                 RowBox[{"0.6`", ",", "0.5470136627990908`", ",", "0.24`"}], 
+                 "]"}], "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{#, ",", #2, ",", #3}], "}"}], ",", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"LegendLayout", "\[Rule]", "\"Column\""}], ",", 
+             RowBox[{"LegendMarkers", "\[Rule]", "Automatic"}]}], "}"}]}], 
+       "]"}]& )]},
+  "Legended",
+  DisplayFunction->(GridBox[{{
+      TagBox[
+       ItemBox[
+        PaneBox[
+         TagBox[#, "SkipImageSizeLevel"], Alignment -> {Center, Baseline}, 
+         BaselinePosition -> Baseline], DefaultBaseStyle -> "Labeled"], 
+       "SkipImageSizeLevel"], 
+      ItemBox[#2, DefaultBaseStyle -> "LabeledLabel"]}}, 
+    GridBoxAlignment -> {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, 
+    AutoDelete -> False, GridBoxItemSize -> Automatic, 
+    BaselinePosition -> {1, 1}]& ),
+  Editable->True,
+  InterpretationFunction->(RowBox[{"Legended", "[", 
+     RowBox[{#, ",", 
+       RowBox[{"Placed", "[", 
+         RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.796017174069115*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.24720000000000014`, 0.24, 0.6], PointBox[CompressedData["
+1:eJxTTMoPSmViYGBoAGIQPQqGJHCAUAYOqMIf7Eco3wFC6TmgyjNQmS9BgE+s
+eSpQ2ggHH6YO3b8cDjj4DiTyoUAAF59U80g1n9b2oYkT4ltA+bD8hM43g9Km
+UNoBSsvg4MP0mePga0BpERx8WHrgIJOPkX7I5BtS2Tx0PhyQySfXfbB0AosP
+AnyHMijfmDr8BBjfhTw+3Dw9NHkT4vhw/YYOAON7WoE=
+     "]]}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  Method->{},
+  PlotRange->{{0, 30.}, {0, 40.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{0.6, 0.6}, {0.8, 0.8}}]], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.796017174071615*^9}],
+
+Cell[BoxData["2.3792569598726327`"], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.796017174071615*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.24720000000000014`, 0.24, 0.6], PointBox[CompressedData["
+1:eJxd1LtrVEEUx/HjoxCJkMJCUDQRETEivmPi6h5NdpOsbkz2kWzc1WQFRatU
+rggKB0QQO20iqGhhIQj22jh/gKgYBE1AFAuxSQSFYKfimWK+F5bD5/7uuXP3
+3pnpPDtdOrdcROzv71/9f/zISnpoylVwO7wWXgdvgDvgzfAWeCu8Dd4O74B3
+wrvg3fAeeC+8D94PH4C74YNwD9wLH4Iz+vZFM/t5U/wfh73G73gEzsKa2mA5
+ihyWY8hh6UMOSz9yWHLIYckjz2v9ylJ+qS9+5wGvPo8NlkHksAwhj47zupDa
+Cun1chz9sJzQm9Z635jxeWSwFPXJr5l7l78u87zo5+M6HE5tw/pzotnf9aHN
+z59MbbCMePV1rLCNpNcHWEZTK2yj6f0CLCWMX0I/HGApY/wynj/a33eApZJa
+K36/jPfDoaIDs5lHixfjuqpq8Vv7x7kpXzcKW1Vf3nn6/fbK2A/LmFfftxS2
+Me3+/WZu+ovvgwGW8dQK23g6fwIstdQKW03PL+jDFRt9XwzIZQL9sMEBllN4
+/7DBAZZ6+nxax/hwgKWhuRtd5WbN92WFDQ4N7V19a2j9YMv7T6dW2OAAyxmt
+3n317PH12A8bHGCZ1Hf351+vycX+SZ1/Xri6cCH2wwGWKf00e+nBtXxL/wDl
+mFjk
+     "]]}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  Method->{},
+  PlotRange->{{0, 128.}, {0, 58.36308764964376}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{2.56, 2.56}, {1.1672617529928753`, 
+   1.1672617529928753`}}]], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.7960171740766153`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.24720000000000014`, 0.24, 0.6], LineBox[CompressedData["
+1:eJxd1clKQ0EQheHClUsXLly4UBEREXGeNe08RGOMSdQ4BcG1r1CP1o/kI6jc
+PhfqbwjNx6m6nTRJZfrzu/M1Ymb+9/rfq/XTsLhS5Cg8Bo/DE/AkPAXPwLPw
+HDwPL8CL8BK8DK/Aq/AavA5vwJvwFrwN78C78B68Dx/Ah3ADTtEO2xFy2I6R
+w3aCHLZT5LCdIYftHDlsF8hhuywu33uH7Qr9sF0jl9XfxPObsd5u0C+r/xb9
+sLXQ30J+p7zaXdbvuB2d2qiXy/NynZd1H51gl9Vf52XvRKdOrPc6r1ZGbg/R
+CXY4yzq/i37Yu7E+w9Yru+6vF3NHnmHrx/rUj7nDGbZHnC/rfORZ1tx+ik5y
+meMOZ9iey17mfJLLXHe5zP2M3AbRaRDrHc6y/ldeYp5gh7Os/tf4eZJc7sPh
+DNtbdIJd1v3B9o7zYYczbB/ohx3Ost7/sM5/AblPjDQ=
+      "]]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{None, None},
+  AxesOrigin->{1., 0.},
+  Method->{},
+  PlotRange->{All, All},
+  PlotRangeClipping->True,
+  PlotRangePadding->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.79601671982345*^9, 3.7960167501597366`*^9, {3.7960168453559284`*^9, 
+   3.7960168568854675`*^9}, 3.7960169454294252`*^9, {3.796017022904115*^9, 
+   3.7960170550766153`*^9}, 3.796017139119115*^9, 3.796017174079115*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"fl0", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"673", ",", "609"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "606"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "588"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "615"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"697", ",", "594"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"697", ",", "597"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"693", ",", "597"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "585"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "609"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "585"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "582"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"693", ",", "600"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "615"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "612"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"909", ",", "552"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"801", ",", "573"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"745", ",", "588"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "606"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "582"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "588"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"905", ",", "555"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"909", ",", "555"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"801", ",", "576"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "612"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"733", ",", "624"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"905", ",", "552"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"797", ",", "573"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"797", ",", "576"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"677", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"677", ",", "606"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"877", ",", "558"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"857", ",", "564"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "624"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"729", ",", "624"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"873", ",", "561"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"701", ",", "594"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"725", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"873", ",", "558"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"877", ",", "561"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"997", ",", "591"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"693", ",", "594"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"829", ",", "606"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"737", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"785", ",", "576"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"745", ",", "585"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"669", ",", "615"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"757", ",", "582"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"689", ",", "600"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"745", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"733", ",", "627"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"969", ",", "543"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"861", ",", "561"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"833", ",", "567"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"837", ",", "567"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"757", ",", "585"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1001", ",", "591"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"737", ",", "624"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"949", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"857", ",", "561"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"861", ",", "564"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"781", ",", "576"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"781", ",", "579"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"697", ",", "591"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"701", ",", "597"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"745", ",", "615"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"785", ",", "579"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"997", ",", "588"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1001", ",", "588"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"829", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"673", ",", "615"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"729", ",", "627"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"985", ",", "540"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"969", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"801", ",", "570"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"833", ",", "606"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"749", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"953", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"941", ",", "549"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"837", ",", "564"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"829", ",", "567"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"697", ",", "600"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"689", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"677", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"733", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"745", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"973", ",", "543"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"949", ",", "549"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"905", ",", "558"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"841", ",", "564"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"841", ",", "567"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"753", ",", "612"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"729", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"741", ",", "621"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"981", ",", "540"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"981", ",", "543"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"941", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"937", ",", "549"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"873", ",", "564"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"833", ",", "570"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"761", ",", "582"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"765", ",", "582"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"889", ",", "600"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"681", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"725", ",", "624"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"989", ",", "540"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"945", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"893", ",", "558"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"909", ",", "558"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"865", ",", "561"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"813", ",", "570"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"817", ",", "570"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"829", ",", "570"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"765", ",", "579"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"769", ",", "579"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"833", ",", "603"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"677", ",", "609"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"725", ",", "618"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"953", ",", "543"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"957", ",", "546"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"893", ",", "555"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"845", ",", "564"}], "}"}]}], "}"}]}], ";", "\n", 
+    RowBox[{"fl1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"672", ",", "607"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "610"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"696", ",", "595"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "586"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"748", ",", "586"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"748", ",", "616"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"696", ",", "598"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"700", ",", "595"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "583"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "616"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"692", ",", "598"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "604"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "604"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "607"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"756", ",", "586"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"748", ",", "589"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"908", ",", "553"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"692", ",", "601"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"904", ",", "553"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"748", ",", "583"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"756", ",", "583"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"800", ",", "574"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "610"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"748", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"700", ",", "592"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "613"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "616"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"904", ",", "556"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"876", ",", "559"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"732", ",", "625"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"908", ",", "556"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"796", ",", "574"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"696", ",", "592"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"692", ",", "595"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"700", ",", "598"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"800", ",", "571"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "607"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"872", ",", "559"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"860", ",", "562"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "589"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"724", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"736", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"784", ",", "577"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"800", ",", "577"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"756", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"744", ",", "586"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"996", ",", "589"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1000", ",", "589"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"996", ",", "592"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"732", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"728", ",", "625"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"880", ",", "559"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"876", ",", "562"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"780", ",", "577"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"796", ",", "577"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"688", ",", "601"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"828", ",", "604"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"828", ",", "607"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "613"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"740", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"968", ",", "544"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"972", ",", "544"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"872", ",", "562"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"836", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"832", ",", "568"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"804", ",", "571"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"744", ",", "589"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"680", ",", "604"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"728", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"736", ",", "625"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"856", ",", "562"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"836", ",", "568"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"804", ",", "574"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1000", ",", "592"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "616"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"724", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "622"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"840", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"860", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"752", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"780", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"744", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"952", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"864", ",", "562"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"832", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"856", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"832", ",", "604"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"668", ",", "613"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"756", ",", "613"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"744", ",", "616"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"672", ",", "625"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"972", ",", "541"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"984", ",", "541"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"988", ",", "541"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"956", ",", "544"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"940", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"944", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"948", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"956", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"828", ",", "568"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"840", ",", "568"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"784", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"680", ",", "601"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"832", ",", "607"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "610"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"740", ",", "619"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"980", ",", "541"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"952", ",", "544"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"968", ",", "547"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"940", ",", "550"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"760", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"764", ",", "580"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"760", ",", "583"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "601"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"888", ",", "601"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"676", ",", "625"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"732", ",", "628"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"988", ",", "538"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"936", ",", "550"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"892", ",", "556"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"844", ",", "565"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"796", ",", "571"}], "}"}]}], "}"}]}], ";", "\n", 
+    RowBox[{"fl3", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"671", ",", "608"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "587"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"695", ",", "596"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"699", ",", "596"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"699", ",", "593"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "605"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "611"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "608"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "617"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "584"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"755", ",", "587"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"755", ",", "584"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "587"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"695", ",", "599"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "614"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "605"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "617"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"691", ",", "599"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"695", ",", "593"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"755", ",", "581"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"903", ",", "554"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"907", ",", "554"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"799", ",", "575"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "617"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"799", ",", "572"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"803", ",", "572"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"859", ",", "563"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"875", ",", "560"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"879", ",", "560"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "584"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"755", ",", "614"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"803", ",", "575"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "581"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"731", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "602"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"727", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"907", ",", "551"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"999", ",", "590"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"827", ",", "605"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"723", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"879", ",", "557"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"903", ",", "557"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"907", ",", "557"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"995", ",", "590"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"691", ",", "596"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"691", ",", "602"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"679", ",", "605"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"671", ",", "614"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "614"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"739", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"735", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"971", ",", "545"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"783", ",", "578"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"699", ",", "599"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"731", ",", "626"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"971", ",", "542"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"911", ",", "554"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"835", ",", "566"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"839", ",", "566"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"795", ",", "575"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"743", ",", "587"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"679", ",", "602"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"667", ",", "611"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "617"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"739", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"875", ",", "557"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"863", ",", "563"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"831", ",", "566"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"787", ",", "575"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"787", ",", "578"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "590"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"831", ",", "605"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"667", ",", "608"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"987", ",", "539"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"951", ",", "545"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"955", ",", "545"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"967", ",", "545"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"911", ",", "551"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"859", ",", "560"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"863", ",", "560"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"875", ",", "563"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"831", ",", "569"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"675", ",", "611"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"667", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"951", ",", "548"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"783", ",", "575"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"779", ",", "578"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"995", ",", "593"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"687", ",", "602"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"827", ",", "608"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"727", ",", "626"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"735", ",", "626"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"939", ",", "548"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"943", ",", "548"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"855", ",", "563"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"835", ",", "569"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"759", ",", "581"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"827", ",", "602"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"723", ",", "617"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"727", ",", "620"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"983", ",", "542"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"987", ",", "542"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"871", ",", "560"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"843", ",", "566"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"827", ",", "569"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"839", ",", "569"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"795", ",", "572"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"759", ",", "584"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"999", ",", "587"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"999", ",", "593"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"687", ",", "599"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"723", ",", "623"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"955", ",", "548"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"891", ",", "557"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"859", ",", "566"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"815", ",", "569"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"799", ",", "578"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"763", ",", "581"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"751", ",", "590"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"783", ",", "590"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"887", ",", "599"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"747", ",", "602"}], "}"}]}], "}"}]}], ";", "\n", 
+    RowBox[{"df01", " ", "=", " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"fl0", "-", "fl1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"df12", " ", "=", " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"fl1", "-", "fl2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"df02", " ", "=", " ", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"fl0", "-", "fl2"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl0", " ", "=", " ", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl0", ",", "Last"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl0", " ", "=", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl0", ",", "First"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl1", " ", "=", " ", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl1", ",", "Last"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl1", " ", "=", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl1", ",", "First"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl2", " ", "=", " ", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl2", ",", "Last"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"fl2", " ", "=", 
+     RowBox[{"SortBy", "[", 
+      RowBox[{"fl2", ",", "First"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Abs", "[", 
+           RowBox[{"fl0", "-", "fl1"}], "]"}], ",", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"fl1", "-", "fl2"}], "]"}], ",", 
+          RowBox[{"Abs", "[", 
+           RowBox[{"fl0", "-", "fl2"}], "]"}]}], "}"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"PlotMarkers", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"df01", ",", "df12", ",", "df02"}], "}"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"PlotMarkers", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}], 
+      "\[IndentingNewLine]", "nd01"}], " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{
+          "fl0", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], "-", 
+          RowBox[{
+          "fl1", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", " ", 
+         RowBox[{"Length", "[", "fl0", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"nd12", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{
+          "fl1", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], "-", 
+          RowBox[{
+          "fl2", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", " ", 
+         RowBox[{"Length", "[", "fl0", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"nd02", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"N", "[", 
+        RowBox[{"Norm", "[", 
+         RowBox[{
+          RowBox[{
+          "fl0", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], "-", 
+          RowBox[{
+          "fl2", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         "]"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", " ", 
+         RowBox[{"Length", "[", "fl0", "]"}]}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ListLinePlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"nd01", ",", "nd12", ",", "nd02"}], "}"}], ",", " ", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+        RowBox[{"PlotLegends", "\[Rule]", "Automatic"}]}], "]"}], 
+      "\[IndentingNewLine]", "nn"}], "=", "16"}], ";", 
+    RowBox[{"(*", 
+     RowBox[{
+      RowBox[{"Length", "[", "fl0", "]"}], ";"}], "*)"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Variance", "[", 
+      RowBox[{"nd01", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"Variance", "[", 
+      RowBox[{"nd12", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"Variance", "[", 
+      RowBox[{"nd02", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"StandardDeviation", "[", 
+      RowBox[{"nd01", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"StandardDeviation", "[", 
+      RowBox[{"nd12", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"StandardDeviation", "[", 
+      RowBox[{"nd02", "\[LeftDoubleBracket]", 
+       RowBox[{"1", ";;", "nn"}], "\[RightDoubleBracket]"}], "]"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"Length", "[", "fl0", "]"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7958385880218143`*^9, 3.795838588024314*^9}, {
+   3.795838621391814*^9, 3.795838641636814*^9}, {3.795838672869314*^9, 
+   3.795838774144314*^9}, {3.795838822079314*^9, 3.795838824531814*^9}, {
+   3.795839314571069*^9, 3.7958395252248144`*^9}, {3.7958397394748144`*^9, 
+   3.7958397669173145`*^9}, {3.795839843414814*^9, 3.795839864352314*^9}, 
+   3.7958399050298142`*^9, {3.795840002524814*^9, 3.7958401505773144`*^9}, {
+   3.795840243642314*^9, 3.795840243857314*^9}, {3.7958403023498144`*^9, 
+   3.795840456164814*^9}, {3.795840487517314*^9, 3.795840508132314*^9}, {
+   3.7958405433548145`*^9, 3.7958406307873144`*^9}, {3.795840674824814*^9, 
+   3.795840812744814*^9}, {3.7958408437598143`*^9, 3.795840867829814*^9}, {
+   3.795840910919814*^9, 3.795840968797314*^9}, {3.7958410275923142`*^9, 
+   3.7958411356011477`*^9}, {3.795856296017315*^9, 3.795856302097315*^9}, 
+   3.7960166595658607`*^9}]
+},
+WindowSize->{1134, 1072},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (November 20, 2012)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 26987, 744, 1252, "Input"],
+Cell[27569, 768, 40248, 1165, 238, "Output"],
+Cell[67820, 1935, 26813, 748, 241, "Output"],
+Cell[94636, 2685, 851, 19, 247, "Output"],
+Cell[95490, 2706, 288, 4, 31, "Output"],
+Cell[95781, 2712, 1354, 28, 245, "Output"],
+Cell[97138, 2742, 1096, 23, 278, "Output"]
+}, Open  ]],
+Cell[98249, 2768, 33925, 928, 1232, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
