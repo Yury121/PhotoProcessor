@@ -1,6 +1,5 @@
 // MainFrm.cpp : implementation of the CMainFrame class
 //
-
 #include "stdafx.h"
 #include "PhotoProcessor.h"
 
@@ -11,10 +10,12 @@
 #include "cvdface.h"
 #include "DbOldDlg.h"
 #include "FacesDlg.h"
-#include "./dbflib/dbflib.h"
+#include "slite.h"
+//#include "./dbflib/dbflib.h"
 #include "ProgressDlg.h"
 #include "GistDlg.h"
 #include <math.h>
+#include "IntellCNN.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -117,7 +118,8 @@ CMainFrame::CMainFrame()
 	IsGauss = false;
 	workPath = _T("");
 	m_exifStr = _T("");
-	m_imgId = -1;
+	m_imgId = -1;			 
+	
 }
 
 CMainFrame::~CMainFrame()
@@ -167,6 +169,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 			menu->CheckMenuItem(IDC_VIEWONEONE,MF_UNCHECKED);
 	}
 
+	std::string wpath = ConvertToUTF8(m_startDir);
+	initOpenVinoModel(wpath);
 
 
 	return 0;
@@ -225,7 +229,7 @@ void CMainFrame::OnOpenimage()
 {
 	CFileDialog dlg(true);
 	dlg.m_ofn.lpstrTitle = _T("Select image");
-	dlg.m_ofn.lpstrFilter = _T("JPEG (*.JPG;*.JPEG;*.JPE;*.JFIF\0*.JPG;*.JPEG;*.JPE;*.JFIF\0TIFF (*.TIF;*.TIFF)\0*.TIF;*.TIFF\0BMP (*.BMP;*.DIB;*.RLE)\0*.BMP;*.DIB;*.RLE\0PNG (*.PNG)\0\0");
+	dlg.m_ofn.lpstrFilter = _T("JPEG (*.JPG;*.JPEG;*.JPE;*.JFIF\0*.JPG;*.JPEG;*.JPE;*.JFIF\0TIFF (*.TIF;*.TIFF)\0*.TIF;*.TIFF\0BMP (*.BMP;*.DIB;*.RLE)\0*.BMP;*.DIB;*.RLE\0PNG (*.PNG)\0*.PNG\0\0);//CR2 (*.CR2;*.CR3)\0*.CR2;*.CR3\0\0");
 //#if 0
 	SetWindowText(_T("PhotoProcessor ")+ m_path);
 	if (dlg.DoModal() != IDOK){
@@ -256,6 +260,7 @@ BOOL CMainFrame::DestroyWindow()
 		Gdiplus::GdiplusShutdown(gdiplusToken);
 		gdiplusToken = NULL;
 	}
+	CloseOpenVinoModel();
 	return CFrameWnd::DestroyWindow();
 }
 
@@ -733,7 +738,9 @@ void CMainFrame::OnToolsTestfaces()
 	if (m_wndView.mem == 0){
 //		AfxGetApp()->EndWaitCursor();
 		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		return;
 	}
+	
 
 //	AfxGetApp()->BeginWaitCursor();
 	char  data[1024]={};// = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_frontalface_alt.xml";
@@ -796,16 +803,46 @@ void CMainFrame::OnToolsTestfaces()
 	faces.clear();
 	eye.clear();
 	stmp = _T("");
+	int count = 0;
+	float fk1 = 1.f;
+#ifdef _M_X64
+	ovimgsize osz = GetInferSize();
+	if (std::get<0>(osz) > 0 && std::get<1>(osz)) {
+		CPChannel red_sq;
+		CPChannel blue_sq;
+		CPChannel green_sq;
+
+		red.ScaleVarios(std::get<0>(osz), std::get<1>(osz), red_sq);
+		blue.ScaleVarios(std::get<0>(osz), std::get<1>(osz), blue_sq);
+		green.ScaleVarios(std::get<0>(osz), std::get<1>(osz), green_sq);
+
+		//this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
+		float xprop = 1.0f * red.sz.x / std::get<0>(osz);
+		float yprop = 1.0f * red.sz.y / std::get<1>(osz);
+		int add_y = 0;
+		float kof = xprop;
+		if (red.sz.x < red.sz.y) {
+			kof = yprop;
+		}
+		else {
+			add_y = int(kof * (1.0f - yprop / xprop) * std::get<1>(osz));
+		}
+		fk1 = 1.0f * sdred.sz.x / red.sz.x;
+		count = DetectObjectsExtOV(red_sq.arr, blue_sq.arr, green_sq.arr, red_sq.sz.x* red_sq.sz.y, fk1*kof, add_y,  rect, rsz);
+	}
+#else
 	int count = DetectObjectsExt(fname, data, rect, rsz,1.1,4,40,40);
 	if (count < 0) count = 0;
 	int count1 = DetectObjectsExt(fname, data1, &rect[count], rsz,1.1,4,40,40);
 	if (count1 <0) count1 = 0;
 	rsz = count +rsz;
+#endif
 	if (count > 0){
 //	if (DetectObjects(fname, data, rect, rsz)> 0){
 		if (rsz > 0){
 			CDC * dc = m_wndView.GetDC();
 			oldPen = dc->SelectObject(&dPen);
+#ifndef _M_X64
 			for (int i =0; i< rsz; i++){
 				//		dc->MoveTo(rect[i].x, rect[i].y);
 				face.x = max(0,(rect[i].x - 5) )*blue.sz.x/k1 ;
@@ -823,6 +860,27 @@ void CMainFrame::OnToolsTestfaces()
 			if (oldPen) dc->SelectObject(oldPen);
 			m_wndView.ReleaseDC(dc);
 		}
+#else
+			
+			for (int i = 0; i < rsz; i++) {
+				//		dc->MoveTo(rect[i].x, rect[i].y);
+				face.x = max(0, int((rect[i].x/fk1 - 5)));
+				face.y = max(0, int(red.sz.y-rect[i].y /fk1)  - 5);
+				face.width = int(rect[i].width/fk1) + 10;
+				face.height = int(rect[i].height/fk1) + 10;
+				faces.push_back(face);
+				dc->MoveTo(rect[i].x, m_wndView.sz.cy- rect[i].y);
+				dc->LineTo(rect[i].x, m_wndView.sz.cy - (rect[i].y - rect[i].height));
+				dc->LineTo((rect[i].x + rect[i].width), m_wndView.sz.cy - ( rect[i].y - rect[i].height) );
+				dc->LineTo((rect[i].x + rect[i].width) , m_wndView.sz.cy - rect[i].y );
+				dc->LineTo(rect[i].x, m_wndView.sz.cy - rect[i].y);
+				//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
+			}
+			if (oldPen) dc->SelectObject(oldPen);
+			m_wndView.ReleaseDC(dc);
+	}
+
+#endif
 		std::vector<int> scale;
 		CPChannel rtest, btest, gtest;
 		for(unsigned int i=0; i<faces.size(); i++){

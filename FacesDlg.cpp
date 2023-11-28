@@ -6,7 +6,9 @@
 #include "FacesDlg.h"
 using namespace Gdiplus;
 
-#include "./dbflib/dbflib.h"
+#include "slite.h"
+
+//#include "./dbflib/dbflib.h"
 
 
 // CFacesDlg dialog

@@ -26,8 +26,39 @@ END_MESSAGE_MAP()
 
 CTestDbApp::CTestDbApp()
 {
+#if 0
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
+	//sqlite3_os_init();//
+	int res = sqlite3_open("test.db", &sl_db);
+	if (res != 0) return; //error
+	char* cerr = 0;
+	res = sqlite3_exec(sl_db, sql_imgref, 0, 0, &cerr);
+	if (res) {
+		// cout << cerr
+		sqlite3_free(cerr);
+	}
+	res = sqlite3_exec(sl_db, sql_imgset, 0, 0, &cerr);
+	if (res) {
+		// cout << cerr
+		sqlite3_free(cerr);
+	}
+	res = sqlite3_exec(sl_db, sql_indModel, 0, 0, &cerr);
+	if (res) {
+		sqlite3_free(cerr);
+	}
+	res = sqlite3_exec(sl_db, sql_faces, 0, 0, &cerr);
+	if (res) {
+		// cout << cerr
+		sqlite3_free(cerr);
+	}
+	res = sqlite3_exec(sl_db, sql_indHash, 0, 0, &cerr);
+	if (res) {
+		sqlite3_free(cerr);
+	}
+#endif
+
+
 }
 
 
@@ -90,5 +121,6 @@ BOOL CTestDbApp::InitInstance()
 
 	// Since the dialog has been closed, return FALSE so that we exit the
 	//  application, rather than start the application's message pump.
+
 	return FALSE;
 }

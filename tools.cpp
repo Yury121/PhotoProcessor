@@ -562,6 +562,7 @@ int CPChannel::Scale(int num, int num1, CPChannel& img2)
 }//end scale num/num1 
 
 
+
 int CPChannel::Scale(int nwidth){
 	int size = 0;
 	if (sz.x*sz.y){
@@ -572,6 +573,89 @@ int CPChannel::Scale(int nwidth){
 	}
 	return size;
 }
+
+int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2) {
+
+	int size = 0;
+	if (arr == nullptr)
+		return 0;
+
+	unsigned int num = 1;
+	unsigned int num1 = 1;
+	unsigned int kw = 1;
+	unsigned int kh = 1;
+	unsigned int nw = (nWidth / 4) * 4; // new width
+	unsigned int nh = nHeight; // new height
+
+	if (sz.x > sz.y) {
+		num = nw;
+		num1 = sz.x;
+	}
+	else {
+		num = nh;
+		num1 = sz.y;
+	}
+
+	unsigned int k = 0;
+	unsigned __int64 tt = 0; // avg light
+	//	unsigned int kk = max(num1 / num, num / num1);
+	int indrs, indks, indre, indke;
+	if ((nw * nh <= 0) || (sz.x * sz.y <= 0))
+		return 0;
+	if (sz.x < nw) kw = nw / sz.x;
+	else kw = sz.x / nw;
+	if (sz.y < nh) kh = nh / sz.y;
+	else kh = sz.y / nh;
+
+	if (img2.InitAs(nw, nh, this) > size) {
+		unsigned int tmii, tmji, tmia, tmja, mitr, matr, mitk, matk;
+		int tri, tkj;
+		indrs = 0;	//
+		indre = 0 * sz.y;
+		indks = 0;
+		indke = 0 * sz.x;
+
+		for (unsigned int i = 0; i < nh; i++) {
+			tmii = i * num1;
+			tmia = (i + 1) * num1;
+			k = i * nw;
+			for (unsigned int j = 0; j < nw; j++) {
+				tt = 0;
+				tmji = j * num1;
+				tmja = (j + 1) * num1;
+				indrs = (i * num1) / num;// 0;	//
+				indre = min((i + 1) * num1 / num + 2, sz.y);//sz.y;/
+				indks = (j * num1) / num;//num/num1; 
+				indke = min((j + 1) * num1 / num + 2, sz.x);
+
+				for (unsigned int r = indrs/*0*/; r < indre/*sz.y*/; r++) { // loop for row
+					mitr = max(r * num, tmii);
+					matr = min((r + 1) * num, tmia);
+					tri = matr - mitr;
+					if (tri > 0) {
+						for (unsigned int kkk = indks/*0*/; kkk < indke /* sz.x*/; kkk++) {
+							mitk = max(kkk * num, tmji);
+							matk = min((kkk + 1) * num, tmja);
+							tkj = matk - mitk;
+							if (tkj > 0)
+								tt += tri * arr[r * sz.x + kkk] * tkj;
+						}// end loop src column;
+					}
+				}// end loop src row	
+				img2.arr[k/*i*nw + j*/] = (unsigned char)(tt / num1 / num1);
+				if (img2.arr[k] > img2.lmax) img2.lmax = img2.arr[k];
+				if (img2.arr[k] < img2.lmin) img2.lmin = img2.arr[k];
+				k++;
+			}//loop for result column
+		}// loop for result row
+		size = k;
+	}//end ok
+
+	return size;
+
+}//end scale varios
+
+
 int CalcEvclid(int m_uM, int m_uN )
 {
 	bool IsReverce = false;

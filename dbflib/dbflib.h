@@ -2,7 +2,9 @@
 #ifndef __PHOTOPROC_DBFLIB_HEADER_
 #define __PHOTOPROC_DBFLIB_HEADER_
 #include "md5.h"
+#if defined _M_IX86
 #include "PhotoDB.h"
+#endif
 // The following ifdef block is the standard way of creating macros which make exporting 
 // from a DLL simpler. All files within this DLL are compiled with the DBFLIB_EXPORTS
 // symbol defined on the command line. this symbol should not be defined on any project
@@ -18,7 +20,7 @@
 // This class is exported from the dbflib.dll
 class DBFLIB_API Cdbflib {
 public:
-	Cdbflib(void);
+	Cdbflib(void) {};
 	// TODO: add your methods here.
 };
 #if 0
@@ -27,72 +29,74 @@ extern DBFLIB_API int ndbflib;
 DBFLIB_API int fndbflib(void);
 #endif
 
-typedef struct _EXIFTXTSTRUCT{
+
+
+extern CString  exifconst[];
+
+#if defined _M_IX86
+typedef struct _EXIFTXTSTRUCT {
 	/*union{ */
 #if 0
 //		struct EXIF{
-			CString FileName;
-			CString Directory;
-			CString FileCreateData;
-			CString FileType;
-			CString ImageWidth;
-			CString ImageHeight;
-			CString Make;
-			CString Model;
-			CString ExposureTime ;
-			CString FNumber  ;
-			CString ExposureProgram ;
-			CString ISO;
-			CString DateTimeOriginal;
-			CString OwnerName;
-			CString SerialNumber;
-			CString FacesDetected;
-			CString LensInfo;
-			CString Lens;
-			CString LensModel;
-			CString LensSerialNumber;
-			CString InternalSerialNumber ;
-			CString Aperture;
-			CString BlueBalance;
-			CString RedBalance;
-			CString CircleOfConfusion;
-			CString DOF;
-			CString Depth_Of_Field;
-			CString FOV;
-			CString Field_Of_View;
-			CString ShutterSpeed;
-			CString FocalLength35efl;
-			CString HyperfocalDistance;
-			CString Lens35efl;
-			CString LightValue;
-			CString Megapixels;
+	CString FileName;
+	CString Directory;
+	CString FileCreateData;
+	CString FileType;
+	CString ImageWidth;
+	CString ImageHeight;
+	CString Make;
+	CString Model;
+	CString ExposureTime;
+	CString FNumber;
+	CString ExposureProgram;
+	CString ISO;
+	CString DateTimeOriginal;
+	CString OwnerName;
+	CString SerialNumber;
+	CString FacesDetected;
+	CString LensInfo;
+	CString Lens;
+	CString LensModel;
+	CString LensSerialNumber;
+	CString InternalSerialNumber;
+	CString Aperture;
+	CString BlueBalance;
+	CString RedBalance;
+	CString CircleOfConfusion;
+	CString DOF;
+	CString Depth_Of_Field;
+	CString FOV;
+	CString Field_Of_View;
+	CString ShutterSpeed;
+	CString FocalLength35efl;
+	CString HyperfocalDistance;
+	CString Lens35efl;
+	CString LightValue;
+	CString Megapixels;
 
-/*		CString ___str[35];
-	};*/
-//
+	/*		CString ___str[35];
+		};*/
+		//
 #endif
-		CString exif[50];
-		union {
-			unsigned char chHash[16];
-			unsigned __int32 dwHash[4];
-		}Hash;
-		_EXIFTXTSTRUCT(){
-			memset(Hash.chHash, 0, sizeof(Hash));
-			for(int i = 0; i< 50; i++)
-				exif[i].Empty();
-			
-		};
-
-	} EXIFSTR, *PEXIFSTR;
-typedef struct _tagHASH{
+	CString exif[50];
 	union {
 		unsigned char chHash[16];
 		unsigned __int32 dwHash[4];
 	}Hash;
-}HASH128, *PHASH128;
+	_EXIFTXTSTRUCT() {
+		memset(Hash.chHash, 0, sizeof(Hash));
+		for (int i = 0; i < 50; i++)
+			exif[i].Empty();
 
-extern CString  exifconst[];
+	};
 
+	} EXIFSTR, * PEXIFSTR;
+typedef struct _tagHASH {
+	union {
+		unsigned char chHash[16];
+		unsigned __int32 dwHash[4];
+	}Hash;
+}HASH128, * PHASH128;
 
 DBFLIB_API int GetFileHash(LPCTSTR fpath, unsigned char hash[16]);
 DBFLIB_API int ParseExif(LPCTSTR src,int szsrc, LPCTSTR out, int szout, EXIFSTR &info);
@@ -114,8 +118,7 @@ DBFLIB_API void DeleteFaceImg(int id); //delete from database
 DBFLIB_API void DeleteDubImg(int id); //delete from database
 DBFLIB_API void DeleteImg(int id); //delete from database
 
-
-
+#endif
 
 
 

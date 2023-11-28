@@ -119,6 +119,8 @@ public:
 	void Scale(CPChannel& img2);
 	int Scale(int num, int num1, CPChannel& img2); // scale num1/num   num1> num 
 	int Scale(int nwidth);
+	int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2);
+
 	void Gauss();
 	int InitFromBitmap(int offset, Gdiplus::Bitmap * bmp);
 	int InitFromCBitmap(int offset, BITMAP & bimg1 /*CBitmap & cBmp1*/);

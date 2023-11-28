@@ -32,3 +32,16 @@ public:
 extern CPhotoProcessorApp theApp;
 extern ULONG_PTR gdiplusToken;
 extern Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+// ;$(Configuration)\dbflib.lib
+#include "slite.h"
+/*
+#if defined _M_IX86
+#ifdef DEBUG
+#pragma comment(lib, ".\\Debug\\dbflib.lib")
+#else 
+#pragma comment(lib, ".\\Release\\dbflib.lib")
+#endif // DEBUG
+#else
+#include "slite.h"
+#endif
+  */

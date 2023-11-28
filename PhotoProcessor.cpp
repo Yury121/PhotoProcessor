@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "PhotoProcessor.h"
 #include "MainFrm.h"
+#include "slite.h"
 //#include <Psapi.h>
 
 

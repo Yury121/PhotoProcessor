@@ -254,11 +254,12 @@ HCURSOR CTestDbDlg::OnQueryDragIcon()
 void CTestDbDlg::OnDestroy()
 {
 	ReleaseLocalDB();
+	m_imglist.DeleteImageList();
 	if(gdiplusToken!= NULL){
 		Gdiplus::GdiplusShutdown(gdiplusToken);
 		gdiplusToken = NULL;
 	}
-
+	
 	CDialog::OnDestroy();
 
 	// TODO: Add your message handler code here

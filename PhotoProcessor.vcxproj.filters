@@ -56,6 +56,12 @@
     <ClCompile Include="tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="slite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntellCNN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h">
@@ -95,6 +101,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vklt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="slite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntellCNN.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

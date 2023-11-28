@@ -127,11 +127,6 @@ DBFLIB_API int GetFileHash(LPCTSTR fpath, unsigned char hash[16])
 	HANDLE hFile = INVALID_HANDLE_VALUE; // handle for  file
 	DWORD dwRead = 0;
 
-//	memset(hash, 0xff, 16);
-//	Result = pHash.CreateInstance(UIID_IMd5);
-//	if (Result <= 0)	{ 
-//		return -1;
-//	}
 	MD5Init(&mdhash);
 	hFile = CreateFile(fpath,GENERIC_READ, FILE_SHARE_READ,0, OPEN_EXISTING,0,0);	 
 	// check result
@@ -220,12 +215,15 @@ DBFLIB_API int ParseExif(LPCTSTR src,int szsrc, LPCTSTR out, int szout, EXIFSTR 
 	return size;
 }
 DBFLIB_API int InitLocalDB(LPCTSTR fpath){
+	AfxDaoInit();
 	if (!m_db) m_db = new CPhotoDB();
 	return m_db->Init(fpath);
 }
 DBFLIB_API void ReleaseLocalDB(){
 	if (m_db) {
 		if (m_db->m_imgset.IsOpen()) m_db->m_imgset.Close();
+		if (m_db->m_dubset.IsOpen()) m_db->m_dubset.Close();
+		if (m_db->m_faceset.IsOpen()) m_db->m_faceset.Close();
 		delete m_db;
 		m_db = 0;
 	}
@@ -362,7 +360,7 @@ DBFLIB_API int AddFileToDb(CString & fname, CString & minname, CString &exif){
 //				id = m_db->m_imgset.m_id;
 			}//end can append
 		}
-		if (m_db->m_imgset.FindFirst(str)){
+		else{
 			id = m_db->m_imgset.m_id;
 			AddToDublicate(id,  est.exif[0],  est.exif[1], disk);
 		}
@@ -494,14 +492,14 @@ CString GetComputerInfo(CString &path){
 	CString comp = _T("");
 	CString volume = _T("");
 	CString sFS = _T("");
-	DWORD dwVol = 256;
-	DWORD dwComp = 256;
+	DWORD dwVol = 256*sizeof(TCHAR);
+	DWORD dwComp = 256*sizeof(TCHAR);
 	DWORD dwSerial = -1;
 	DWORD dwFlag = 0;
-	GetComputerName(comp.GetBuffer(256), &dwComp);
+	GetComputerName(comp.GetBuffer(dwComp), &dwComp);
 	comp.ReleaseBuffer();
 //	ret = path.Left(path.Find('/'));
-	GetVolumeInformation(path.Left(3),volume.GetBuffer(1024), 1024,&dwSerial,&dwVol,&dwFlag,sFS.GetBuffer(100),100);
+	GetVolumeInformation(path.Left(3),volume.GetBuffer(1024*sizeof(TCHAR)), 1024 * sizeof(TCHAR),&dwSerial,&dwVol,&dwFlag,sFS.GetBuffer(100),100);
 	volume.ReleaseBuffer();
 	sFS.ReleaseBuffer();
 	ret.Format(_T("%X :: %s :: %s :: %X :: %s" ),dwSerial,volume, sFS, GetDriveType(path.Left(3)),  comp); 
