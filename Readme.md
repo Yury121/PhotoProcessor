@@ -16,10 +16,6 @@ This progect was started on Visual Studio 2005 platform, so current code have so
 I'm not sure Microsoft won't kill Windows in the next 10-20 years, so I'm trying to implement the basic algorithms in standard C++. I like [Windows@](https://www.microsoft.com/en-us/windows) and [Microsoft Visual Studio@](https://visualstudio.microsoft.com) which are used in this project.
 All trademarks belong to their respective owners.
 
-To test this project, it is need download [Sqlite dynamic library](https://www.sqlite.org/2023/sqlite-dll-win-x64-3440200.zip) and [OpenVino toolkit](https://storage.openvinotoolkit.org/repositories/openvino/packages/2023.2/windows)
-
- MFC and download [Sqlite dynamic library](https://www.sqlite.org/2023/sqlite-dll-win-x64-3440200.zip) and [OpenVino toolkit](https://storage.openvinotoolkit.org/repositories/openvino/packages/2023.2/windows)
-
 To test this project you will need Visual Studio 2022 with the latest version of MCVC and ATL libraries installed, download [Sqlite Dynamic Library](https://www.sqlite.org/2023/sqlite-dll-win-x64-3440200.zip) and [OpenVino Toolkit](https://storage.openvinotoolkit.org/repositories/openvino/packages/2023.2/windows) and place the corresponding dynamic libraries in the target folder for executing the binaries.
 In addition, you need to copy the directory DLL from source folder to the target.
 The Win32 target platform is deprecated and not work full.
