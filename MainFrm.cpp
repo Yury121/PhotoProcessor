@@ -1381,13 +1381,49 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 	bbb = Bitmap::FromFile(m_path.GetBuffer());
 	if (!bbb)
 		return false;
-	UINT psize = 0;
-	unsigned short  pcount[18] = {};
-//	bbb->GetPropertySize(&psize, &pcount);
-	psize = bbb->GetPropertyItemSize(PropertyTagOrientation);
+	UINT psize = bbb->GetPropertyItemSize(PropertyTagOrientation);
+	PropertyItem* pp = nullptr;
+	if (psize > 0) {
+		pp = (PropertyItem*)malloc(psize + 16);
+		if (pp != nullptr) {
+			bbb->GetPropertyItem(PropertyTagOrientation, psize, pp);
+			uint8_t* rotp = (uint8_t*)pp->value;
+			switch (rotp[0])
+			{
+			case 2:
+				bbb->RotateFlip((Gdiplus::RotateNoneFlipX));
+				break;
+			case 3:
+				bbb->RotateFlip((Gdiplus::Rotate180FlipNone));
+				break;
+			case 4:
+				bbb->RotateFlip((Gdiplus::Rotate180FlipX));
+				break;
+			case 5:
+				bbb->RotateFlip((Gdiplus::Rotate90FlipX));
+				break;
+			case 6:
+				bbb->RotateFlip((Gdiplus::Rotate90FlipNone));
+				break;
+			case 7:
+				bbb->RotateFlip((Gdiplus::Rotate270FlipX));
+				break;
+			case 8:
+				bbb->RotateFlip((Gdiplus::Rotate270FlipNone));
+				break;
+			default:
+				break;
+			}
+			free(pp);
+		}
+	}
+//	unsigned short  pcount[18] = {};
+#if 0
 	if (psize ||(psize > 18)){
 		// Get the property item.
 		bbb->GetPropertyItem(PropertyTagOrientation, psize, (PropertyItem *) &pcount);
+				
+		PropertyItem* pp = (PropertyItem*) pcount;
 	
 		switch(pcount[8])
 		{
@@ -1416,7 +1452,7 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 				break;
 		}
 	}
-
+#endif
 	if (bbb){
 		HBITMAP hbm;
 		bbb->GetHBITMAP(/*Gdiplus::Color(0,0,0)*/ NULL, &hbm);
