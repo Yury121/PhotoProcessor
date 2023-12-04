@@ -171,6 +171,12 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 	std::string wpath = ConvertToUTF8(m_startDir);
 	initOpenVinoModel(wpath);
+	std::string sout = GetOVString();
+	if (!sout.empty()) {
+		CString ss = ConvertFromUTF8(sout);
+		AfxMessageBox(ss, MB_OK);
+		
+	}
 
 
 	return 0;
@@ -776,6 +782,7 @@ void CMainFrame::OnToolsTestfaces()
 	//CString dll = _T("d:/Worker/PhotoProcessor/DLL/cvdface.dll");
 
 	WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, path, path.GetLength(), fname, MAX_PATH ,NULL, NULL);
+
 	FRECT rect[100]={};
 	int rsz = 30;
 
@@ -797,6 +804,7 @@ void CMainFrame::OnToolsTestfaces()
 	test.DinDiap();
 	
 	SaveChannalToFile(path, test);
+
 	std::vector<FRECT> faces;
 	std::vector<FRECT> eye;
 	FRECT face;

@@ -5,5 +5,6 @@ int DetectObjectsExtOV(uint8_t* red, uint8_t* blue, uint8_t* green, int size, fl
 void initOpenVinoModel(std::string wpath);
 void CloseOpenVinoModel();
 ovimgsize GetInferSize();
+std::string GetOVString();
 
 

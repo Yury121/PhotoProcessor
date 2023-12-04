@@ -5,6 +5,7 @@
 static 	 std::shared_ptr<SLDatabaes> m_db;
 
 
+
 CString FindDiskSerialSL(CString sSerial) {
     CString sDisk = _T("");
     DWORD dwVol = 0;
@@ -29,11 +30,28 @@ int InitLocalDBSL(LPCTSTR fpath) {
     if (m_db.get() == nullptr) {
         m_db = std::make_shared<SLDatabaes>();
     }
-
-	return m_db->Open(ConvertToUTF8(fpath));
-
-//	if (!m_db) m_db = new CPhotoDB();
-//	return m_db->Init(fpath);
+    if (m_db.get() != nullptr) {
+        if (m_db->GetDb() != nullptr)
+            return m_db->Open(ConvertToUTF8(fpath));
+    }
+    else return -1;
+    CString cpath = fpath;
+    cpath += _T("/vb.db3");
+    if (::PathFileExists(cpath)) {
+        DWORD dwa = GetFileAttributes(cpath);
+        SetFileAttributes(cpath, dwa|FILE_ATTRIBUTE_HIDDEN);
+    }
+    else {
+        m_db->Open(ConvertToUTF8(fpath));
+        m_db->Close();
+        DWORD dwa = GetFileAttributes(cpath);
+        SetFileAttributes(cpath, dwa | FILE_ATTRIBUTE_HIDDEN);
+        return m_db->Open(ConvertToUTF8(fpath));
+    }
+    if (m_db->Open(ConvertToUTF8(fpath)) == SQLITE_OK) {
+        return sqlite3_exec(m_db->GetDb(), "VACUUM", 0, 0, 0);
+    }
+    return m_db->Open(ConvertToUTF8(fpath));
 }
 void ReleaseLocalDBSL() {
     if (m_db.get() != nullptr) {
@@ -515,7 +533,7 @@ inline int BindImgSet(SLRecordset<IMGSET>& img, SLEXIFSTR& info, std::string& er
     std::vector<std::string> imgFileds = { "TYPE", "MAKE", "MODEL", "EXPTIME", "FNUMBER", "EXPOSPROG", "ISO",
            "OWNER", "SERIAL", "FASEDETECT", "LENSINFO", "LENS", "LENSMODEL", "LENSSERIAL", "INTSERIAL",	 //6- 19
            "APERTURE", "BLUEBALANCE", "REDBALANCE", "COFC", "DOF", "DEPTH", "FOV","FOFVIEW", "SHSPEED", "FOCALLENS35EFL",
-         "HFDISTANCE", "LENS35", "LIGHTVALUE", "MEGAPIXELS", "EXIF" };
+         "HFDISTANCE", "LENS35", "LIGHTVALUE", "MEGAPIXELS", "DISKINFO", "EXIF" };
 
 
 
@@ -538,7 +556,7 @@ inline int BindImgSet(SLRecordset<IMGSET>& img, SLEXIFSTR& info, std::string& er
         sq_tmp += ", ?";
 
     }
-    for (int i = 7; i < 30; i++) {
+    for (int i = 7; i < 31; i++) {
         if (info.exif[6 + i].empty()) continue;
         sNum.push_back(i + 6);
         sq_imgset += imgFileds[i] + ", ";
@@ -582,7 +600,7 @@ int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
     DWORD volSerNum = 0;
     CString FileSysNameBuf = _T("");
     DWORD nFileSysFlag = 0;
-    int ret = GetVolumeInformation(NULL/*fname.GetBuffer()*/,
+    int ret = GetVolumeInformation(fname.Left(3)/*fname.GetBuffer()*/,
         volBuf.GetBuffer(256), 256, &volSerNum,
         &maxCompLen,
         &nFileSysFlag,
@@ -603,6 +621,7 @@ int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
     ParseExifSL(exif, exif.GetLength(), 0, 0, est);
 
     ConvertHashToStringSTR(est.exif[49], &est.Hash.chHash[0]);
+    
    
     SLRecordset<IMGSET> imgset(m_db->GetDb());
     std::string sql = "SELECT ID FROM IMGSET WHERE HASH = '" + est.exif[49] + "'";
@@ -631,7 +650,8 @@ int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
         }
         CloseHandle(hFile);
     }
-    est.exif[35] = ConvertToUTF8(exif);
+    est.exif[35] = ConvertToUTF8(disk);
+    est.exif[36] = ConvertToUTF8(exif);
     id = BindImgSet(imgset, est, sql);
     if (hData != nullptr) free(hData);
     return int(id);

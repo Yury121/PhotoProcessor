@@ -262,7 +262,8 @@ void CDbOldDlg::OnBnClickedOk()
 	if (str.IsEmpty()){
 		int k = m_path.ReverseFind(_T('/'));
 		if (k >= 0){
-			str.Format(_T("%s/%s"), this->workPath, m_path.Mid(k+1));
+			//str.Format(_T("%s/%s"), this->workPath, m_path.Mid(k+1));
+			str.Format(_T("%s"),  m_path.Mid(k + 1));
 		}
 	}
 	m_path = str;

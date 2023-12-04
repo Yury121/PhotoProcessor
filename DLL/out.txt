@@ -7,7 +7,7 @@ FileName                        : 10280001.JPG
 Directory                       : D:/YURA/Pictures/Moscow 2004/100_1028
 FileSize                        : 1371 kB
 FileModifyDate                  : 2004:10:28 20:43:48+03:00
-FileAccessDate                  : 2023:11:28 22:28:07+03:00
+FileAccessDate                  : 2023:12:01 10:11:48+03:00
 FileCreateDate                  : 2023:03:04 17:45:44+03:00
 FilePermissions                 : rw-rw-rw-
 ---- File ----
