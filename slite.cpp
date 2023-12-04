@@ -542,6 +542,7 @@ inline int BindImgSet(SLRecordset<IMGSET>& img, SLEXIFSTR& info, std::string& er
 
     std::string sq_tmp = ") VALUES ( '";
     sq_tmp += info.exif[12] + "', '" + info.exif[2] + "', '" + info.exif[3] + "', '" + info.exif[4] + "', ?, ?, '";
+    if (info.exif[49].empty()) { info.exif[49] = "exif not found"; }
     sq_tmp += info.exif[49] + "', ?";
     // bind: Filename, Dir, type,  
 

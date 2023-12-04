@@ -1492,13 +1492,21 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 	//	m_wndStatusBar.SetPaneText(4, _T(" 22222 x 333333 "));
 	ScaleDisplay(true);
 	GetExifToStr(m_exifStr);
+	if (m_exifStr.IsEmpty()) {
+		if (!bSilent) AfxGetApp()->EndWaitCursor();
+		AfxMessageBox(_T("Exif information is missing\r\nCheck that file \"exiftool.exe\" exist"), MB_ICONSTOP | MB_OK);
+		this->m_wndView.Invalidate();
+		return true;
+
+	}
+	
 	OnMinpict();
-	CString fpath =  this->workPath + _T("/mem.jpg");
+	CString fpath = this->workPath + _T("/mem.jpg");
 	m_imgId = AddFileToDb(this->m_path, fpath, m_exifStr);
 	DeleteFile(fpath);
 	this->m_wndView.Invalidate();
 	if (!bSilent) AfxGetApp()->EndWaitCursor();
-
+	
 	return true;
 }
 
