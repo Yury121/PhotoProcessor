@@ -10,7 +10,8 @@
 #include <ATLComTime.h>
 #include <vector>
 
-
+// Create lib
+//lib /def:sqlite3.def /out:sqlite3.lib /machine:x86 
 #if defined _M_IX86
 #pragma comment(lib, "./lib/sqlite3_w32.lib")
 #elif defined _M_X64
