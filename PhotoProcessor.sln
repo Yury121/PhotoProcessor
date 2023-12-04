@@ -5,8 +5,6 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhotoProcessor", "PhotoProcessor.vcxproj", "{EB3AD3F4-3C69-41D6-B7A8-89AA21234068}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestOpenVino", "TestOpenVino\TestOpenVino.vcxproj", "{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -23,14 +21,6 @@ Global
 		{EB3AD3F4-3C69-41D6-B7A8-89AA21234068}.Release|Win32.Build.0 = Release|Win32
 		{EB3AD3F4-3C69-41D6-B7A8-89AA21234068}.Release|x64.ActiveCfg = Release|x64
 		{EB3AD3F4-3C69-41D6-B7A8-89AA21234068}.Release|x64.Build.0 = Release|x64
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Debug|Win32.Build.0 = Debug|Win32
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Debug|x64.ActiveCfg = Debug|x64
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Debug|x64.Build.0 = Debug|x64
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Release|Win32.ActiveCfg = Release|Win32
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Release|Win32.Build.0 = Release|Win32
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Release|x64.ActiveCfg = Release|x64
-		{499F35F2-8475-48DB-85B2-7B5B79E9FD7D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

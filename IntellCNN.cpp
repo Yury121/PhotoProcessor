@@ -25,7 +25,7 @@ double timedif(timespec& start, timespec& end) {
 
 using ovector = std::tuple<float, float, float, float>;
 
-std::string ainet_name = "DLL/FP32/person-detection-0200.xml";// "face-detection-0204.xml";// ";// "Bin / 0200.xml";  face-detection-retail-0004.xml
+std::string ainet_name = "DLL/FP32/face-detection-0204.xml";//"DLL/FP32/person-detection-0200.xml";// "DLL/face-detection-0204.xml";// ";// "Bin / 0200.xml";  face-detection-retail-0004.xml
 
 
 

@@ -12,9 +12,9 @@
 
 
 #if defined _M_IX86
-#pragma comment(lib, ".\\DLL\\sqlite3_w32.lib")
+#pragma comment(lib, "./lib/sqlite3_w32.lib")
 #elif defined _M_X64
-#pragma comment(lib,".\\DLL\\sqlite3_w64.lib")
+#pragma comment(lib,"./lib/sqlite3_w64.lib")
 #endif
 typedef struct _EXIFTXTSTRUCT {
 	/*union{ */
