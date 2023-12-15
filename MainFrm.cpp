@@ -870,6 +870,8 @@ void CMainFrame::OnToolsTestfaces()
 		}
 #else
 			
+			int mx = m_wndView.m_cp.x;
+			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
 			for (int i = 0; i < rsz; i++) {
 				//		dc->MoveTo(rect[i].x, rect[i].y);
 				face.x = max(0, int((rect[i].x/fk1 - 5)));
@@ -877,11 +879,11 @@ void CMainFrame::OnToolsTestfaces()
 				face.width = int(rect[i].width/fk1) + 10;
 				face.height = int(rect[i].height/fk1) + 10;
 				faces.push_back(face);
-				dc->MoveTo(rect[i].x, m_wndView.sz.cy- rect[i].y);
-				dc->LineTo(rect[i].x, m_wndView.sz.cy - (rect[i].y - rect[i].height));
-				dc->LineTo((rect[i].x + rect[i].width), m_wndView.sz.cy - ( rect[i].y - rect[i].height) );
-				dc->LineTo((rect[i].x + rect[i].width) , m_wndView.sz.cy - rect[i].y );
-				dc->LineTo(rect[i].x, m_wndView.sz.cy - rect[i].y);
+				dc->MoveTo(rect[i].x + m_wndView.m_cp.x,  my - rect[i].y  );
+				dc->LineTo(m_wndView.m_cp.x + rect[i].x,  my - (rect[i].y - rect[i].height) );
+				dc->LineTo((m_wndView.m_cp.x + rect[i].x + rect[i].width), my - ( rect[i].y - rect[i].height));
+				dc->LineTo((m_wndView.m_cp.x + rect[i].x + rect[i].width) , my - rect[i].y );
+				dc->LineTo(m_wndView.m_cp.x + rect[i].x, my - rect[i].y );
 				//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
 			}
 			if (oldPen) dc->SelectObject(oldPen);

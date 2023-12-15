@@ -7,7 +7,7 @@
 #include <fstream>
 #include "IntellCNN.h"
 
-//https://docs.openvino.ai/2023.2/omz_demos_smart_classroom_demo_cpp.html#doxid-omz-demos-smart-classroom-demo-cpp
+////https://docs.openvino.ai/2023.2/omz_demos_smart_classroom_demo_cpp.html#doxid-omz-demos-smart-classroom-demo-cpp
 
 #ifdef _DEBUG
 #pragma comment(lib, "./lib/openvinod.lib")
@@ -39,9 +39,27 @@ public:
 			
 			model = core.read_model(mpath);
 
+			m_szout = model->get_output_size();
+			ov::PartialShape lshape;
+			int osize = 0;
+			std::string oname;
+			
+
 			compiledModel = core.compile_model(model);
 			infer_request = compiledModel.create_infer_request();
 			auto input_port = compiledModel.input();
+/*
+			auto a = compiledModel.outputs();
+			osize = a.size();
+			for (size_t i = 0; i < m_szout; i++) {
+				lshape = a[i].get_partial_shape();
+				osize = lshape.size();
+				oname = a[i].get_any_name();
+
+
+			}
+*/
+
 			m_tt = input_port.get_element_type();
 			//input_port.get_tensor().set_element_type(ov::element::u8);
 			shape = input_port.get_shape();
@@ -80,8 +98,16 @@ public:
 			timespec_get(&t_start, TIME_UTC);
 			infer_request.infer();
 			timespec_get(&t_stop, TIME_UTC);
-			ov::Tensor output_tensor = infer_request.get_output_tensor();
-			ov::Shape o_shape = output_tensor.get_shape();
+			ov::Tensor output_tensor;
+			ov::Shape o_shape;
+			if (m_szout == 1) {
+				output_tensor = infer_request.get_output_tensor();
+				o_shape = output_tensor.get_shape();
+			}
+			else {
+				output_tensor = infer_request.get_output_tensor(1);
+				o_shape = output_tensor.get_shape();
+			}
 			if (o_shape.size() == 4) {
 				auto out_data = output_tensor.data<float>();
 				for (int i = 0; i < o_shape[2]; i++) {
@@ -89,6 +115,16 @@ public:
 					if (ptr[2] >= 0.5f) {
 						out_v.push_back({ ptr[3]*shape[2], ptr[4]*shape[3], ptr[5]*shape[2],ptr[6]*shape[3]});
 					}
+
+				}
+			}
+			if (o_shape.size() == 2) {
+				auto out_data = output_tensor.data<float>();
+				for (int i = 0; i < o_shape[0]; i++) {
+					float* ptr = &out_data[5 * i];
+					//if (ptr[4] >= 0.5f) {
+						out_v.push_back({ ptr[0], ptr[1], ptr[2],ptr[3] });
+					//}
 
 				}
 
@@ -113,6 +149,7 @@ private :
 	ov::Shape shape;
 	ov::InferRequest infer_request;
 	ov::element::Type m_tt;
+	size_t m_szout = 0;
 
 };
 
