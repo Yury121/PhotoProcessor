@@ -303,6 +303,7 @@ static const char* sql_imgset = "CREATE TABLE IF NOT EXISTS  IMGSET(" \
 "HASH TEXT, DISKINFO TEXT, EXIF TEXT, MINIIMG BLOB)";
 static const char* sql_indHashMain = "CREATE INDEX IF NOT EXISTS HASHMAIN ON IMGSET(HASH)";
 static const char* sql_indModel = "CREATE INDEX IF NOT EXISTS MODEL ON IMGSET(MODEL)";
+static const char* sql_indDir = "CREATE INDEX IF NOT EXISTS HASHMAIN ON IMGSET(FDIR, FILENAME, TYPE)";
 
 
 typedef struct _tagFACESET{

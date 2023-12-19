@@ -64,7 +64,7 @@ int GetIdCountSL(int* id_list, int  maxcnt) {
     SLRecordset< IMGSET> imgset(m_db->GetDb());
     int count = 0;
     memset((uint8_t*)id_list, 0, sizeof(int) * maxcnt);
-    int res = imgset.Open("SELECT ID FROM IMGSET");// "SELECT * FROM IMGSET ORDER BY ID DESC");
+    int res = imgset.Open("SELECT ID FROM IMGSET ORDER BY FDIR, FILENAME, TYPE ");// "SELECT * FROM IMGSET ORDER BY ID DESC");
     if (res == SQLITE_OK) {
         while (imgset.Next() == SQLITE_ROW && count < maxcnt) {
             id_list[count++] = sqlite3_column_int(imgset.GetSmpt(), 0);

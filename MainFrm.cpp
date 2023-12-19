@@ -872,7 +872,11 @@ void CMainFrame::OnToolsTestfaces()
 			
 			int mx = m_wndView.m_cp.x;
 			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
-			for (int i = 0; i < rsz; i++) {
+			for (int i = 0; i < rsz; i++)  {
+				//check resualt
+				if ( rect[i].x + rect->width >= red.sz.x  ) continue;
+				if (rect[i].y + rect[i].height >= red.sz.x) continue;
+
 				//		dc->MoveTo(rect[i].x, rect[i].y);
 				face.x = max(0, int((rect[i].x - 5)));
 				face.y = max(0, int(red.sz.y-rect[i].y)  - 5);
@@ -1692,7 +1696,7 @@ void CMainFrame::OnOpenFolder()
 		return;
 	path.Replace(_T('\\'),_T('/'));
 	ReleaseLocalDB();
-	CString dbname = path + _T("/vf.db");
+	CString dbname = path + _T("/vb.db3");
 	if (CheckFileExist(dbname)){
 		workPath = path;
 		OnOpenOldImage();
