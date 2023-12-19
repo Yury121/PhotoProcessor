@@ -836,7 +836,7 @@ void CMainFrame::OnToolsTestfaces()
 			add_y = int(kof * (1.0f - yprop / xprop) * std::get<1>(osz));
 		}
 		fk1 = 1.0f * sdred.sz.x / red.sz.x;
-		count = DetectObjectsExtOV(red_sq.arr, blue_sq.arr, green_sq.arr, red_sq.sz.x* red_sq.sz.y, fk1*kof, add_y,  rect, rsz);
+		count = DetectObjectsExtOV(red_sq.arr, blue_sq.arr, green_sq.arr, red_sq.sz.x* red_sq.sz.y, kof, add_y,  rect, rsz);
 	}
 #else
 	int count = DetectObjectsExt(fname, data, rect, rsz,1.1,4,40,40);
@@ -874,16 +874,16 @@ void CMainFrame::OnToolsTestfaces()
 			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
 			for (int i = 0; i < rsz; i++) {
 				//		dc->MoveTo(rect[i].x, rect[i].y);
-				face.x = max(0, int((rect[i].x/fk1 - 5)));
-				face.y = max(0, int(red.sz.y-rect[i].y /fk1)  - 5);
-				face.width = int(rect[i].width/fk1) + 10;
-				face.height = int(rect[i].height/fk1) + 10;
+				face.x = max(0, int((rect[i].x - 5)));
+				face.y = max(0, int(red.sz.y-rect[i].y)  - 5);
+				face.width = int(rect[i].width) + 10;
+				face.height = int(rect[i].height) + 10;
 				faces.push_back(face);
-				dc->MoveTo(rect[i].x + m_wndView.m_cp.x,  my - rect[i].y  );
-				dc->LineTo(m_wndView.m_cp.x + rect[i].x,  my - (rect[i].y - rect[i].height) );
-				dc->LineTo((m_wndView.m_cp.x + rect[i].x + rect[i].width), my - ( rect[i].y - rect[i].height));
-				dc->LineTo((m_wndView.m_cp.x + rect[i].x + rect[i].width) , my - rect[i].y );
-				dc->LineTo(m_wndView.m_cp.x + rect[i].x, my - rect[i].y );
+				dc->MoveTo(int(fk1 * rect[i].x + m_wndView.m_cp.x),  int(my - fk1 * rect[i].y)  );
+				dc->LineTo(m_wndView.m_cp.x + fk1 * rect[i].x,  my - fk1 * (rect[i].y - rect[i].height) );
+				dc->LineTo(int(m_wndView.m_cp.x + fk1 * (rect[i].x + rect[i].width)), int(my - fk1 * ( rect[i].y - rect[i].height)));
+				dc->LineTo((m_wndView.m_cp.x + int(fk1 * (rect[i].x + rect[i].width))) ,int( my - fk1 * rect[i].y ));
+				dc->LineTo(m_wndView.m_cp.x + int(fk1 * rect[i].x), my - int(fk1 * rect[i].y) );
 				//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
 			}
 			if (oldPen) dc->SelectObject(oldPen);
