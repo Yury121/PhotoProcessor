@@ -737,82 +737,92 @@ void CMainFrame::OnToolsIntegrator()
 
 void CMainFrame::OnToolsTestfaces()
 {
-	CPen * oldPen = NULL;
-	CPen dPen(PS_SOLID, 2, RGB(0,255,0));
-	CPen ePen(PS_SOLID, 1, RGB(0,0,255));
-	CString stmp;
-	if (m_wndView.mem == 0){
-//		AfxGetApp()->EndWaitCursor();
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+	CPen* oldPen = NULL;
+	CPen dPen(PS_SOLID, 2, RGB(0, 255, 0));
+	CPen ePen(PS_SOLID, 1, RGB(0, 0, 255));
+	CString stmp = _T("");
+	if (m_wndView.mem == 0) {
+		//		AfxGetApp()->EndWaitCursor();
+		AfxMessageBox(_T("A image not loaded"), MB_ICONSTOP);
 		return;
 	}
-	
+	FRECT rect[100] = {};
+	int rsz = 30;
+	int count = 0;
+	float fk1 = 1.f;
+	std::vector<FRECT> faces;
+	FRECT face;
+	faces.clear();
+	CString path = workPath + _T("/test.jpg");// _T("d:/Worker/PhotoProcessor/DLL/test.jpg");
+	CString path1 = workPath + _T("/test");//_T("d:/Worker/PhotoProcessor/DLL/test");
 
-//	AfxGetApp()->BeginWaitCursor();
-	char  data[1024]={};// = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_frontalface_alt.xml";
-	char  fname[MAX_PATH] ={};// "d:/Worker/PhotoProcessor/DLL/test.jpg";
-	char data1[1024]={};
+
+
+#ifndef _M_X64
+	AfxMessageBox(_T("This version does not currently support facial recognition in Win32"), MB_ICONSTOP);
+	return;
+
+
+
+	//	AfxGetApp()->BeginWaitCursor();
+	char  data[1024] = {};// = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_frontalface_alt.xml";
+	char  fname[MAX_PATH] = {};// "d:/Worker/PhotoProcessor/DLL/test.jpg";
+	char data1[1024] = {};
 	//char * data1 = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_profileface.xml";
 	//               haarcascade_fullbody.xml
-	char dat_eye[1024]={};
+	char dat_eye[1024] = {};
 	//char * dat_eye = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_eye.xml";
 	//        haarcascade_mcs_eyepair_big.xml
 	stmp = m_startDir + _T("DLL/data/haarcascades/haarcascade_frontalface_alt.xml");
-	WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), data, 1024 ,NULL, NULL);
+	WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), data, 1024, NULL, NULL);
 	//haarcascade_frontalface_alt.xml
 	//haarcascade_frontalface_default.xml
 	//haarcascade_profileface.xml
 
 	stmp = m_startDir + _T("DLL/data/haarcascades/haarcascade_profileface.xml");
-	WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), data1, 1024 ,NULL, NULL);
+	WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), data1, 1024, NULL, NULL);
 
 	//char * data1 = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_profileface.xml";
 	//               haarcascade_fullbody.xml
 	stmp = m_startDir + _T("DLL/data/haarcascades/haarcascade_eye.xml");
-	WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), dat_eye, 1024 ,NULL, NULL);
+	WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), dat_eye, 1024, NULL, NULL);
 
 	//char * dat_eye = "d:/Worker/PhotoProcessor/DLL/data/haarcascades/haarcascade_eye.xml";
 	//        haarcascade_mcs_eyepair_big.xml
 	//   haarcascade_eye_tree_eyeglasses.xml
 	//       haarcascade_eye.xml
-	char ch[1024]={};
+	char ch[1024] = {};
 
-	CString path = workPath+ _T("/test.jpg");// _T("d:/Worker/PhotoProcessor/DLL/test.jpg");
-	CString path1 =  workPath+ _T("/test");//_T("d:/Worker/PhotoProcessor/DLL/test");
 	//CString dll = _T("d:/Worker/PhotoProcessor/DLL/cvdface.dll");
 
-	WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, path, path.GetLength(), fname, MAX_PATH ,NULL, NULL);
+	WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, path, path.GetLength(), fname, MAX_PATH, NULL, NULL);
 
-	FRECT rect[100]={};
-	int rsz = 30;
 
-//	if (m_wndView.mem == 0){
-//		AfxGetApp()->EndWaitCursor();
-//		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
-//		return;
-//	}
-	int k1=TESTVSIZE2, k2 = sdblue.sz.x;
+
+	int k1 = TESTVSIZE2, k2 = sdblue.sz.x;
 	CPChannel test;
-	if (gray.sz.x > gray.sz.y){
+	if (gray.sz.x > gray.sz.y) {
 		gray.Scale(TESTVSIZE1, gray.sz.x, test);
 		k1 = TESTVSIZE1;
 	}
-	else{
+	else {
 		gray.Scale(TESTVSIZE2, gray.sz.x, test);
 	}
 	test.Gauss();
 	test.DinDiap();
-	
+
 	SaveChannalToFile(path, test);
 
-	std::vector<FRECT> faces;
 	std::vector<FRECT> eye;
-	FRECT face;
-	faces.clear();
 	eye.clear();
 	stmp = _T("");
-	int count = 0;
-	float fk1 = 1.f;
+	count = DetectObjectsExt(fname, data, rect, rsz, 1.1, 4, 40, 40);
+	if (count < 0) count = 0;
+	int count1 = DetectObjectsExt(fname, data1, &rect[count], rsz, 1.1, 4, 40, 40);
+	if (count1 < 0) count1 = 0;
+	rsz = count + rsz;
+
+#endif // !_M_X64
 #ifdef _M_X64
 	ovimgsize osz = GetInferSize();
 	if (std::get<0>(osz) > 0 && std::get<1>(osz)) {
@@ -836,124 +846,126 @@ void CMainFrame::OnToolsTestfaces()
 			add_y = int(kof * (1.0f - yprop / xprop) * std::get<1>(osz));
 		}
 		fk1 = 1.0f * sdred.sz.x / red.sz.x;
-		count = DetectObjectsExtOV(red_sq.arr, blue_sq.arr, green_sq.arr, red_sq.sz.x* red_sq.sz.y, kof, add_y,  rect, rsz);
+		count = DetectObjectsExtOV(red_sq.arr, blue_sq.arr, green_sq.arr, red_sq.sz.x * red_sq.sz.y, kof, add_y, rect, rsz);
 	}
-#else
-	int count = DetectObjectsExt(fname, data, rect, rsz,1.1,4,40,40);
-	if (count < 0) count = 0;
-	int count1 = DetectObjectsExt(fname, data1, &rect[count], rsz,1.1,4,40,40);
-	if (count1 <0) count1 = 0;
-	rsz = count +rsz;
 #endif
-	if (count > 0){
-//	if (DetectObjects(fname, data, rect, rsz)> 0){
-		if (rsz > 0){
-			CDC * dc = m_wndView.GetDC();
+	if (count > 0) {
+		//	if (DetectObjects(fname, data, rect, rsz)> 0){
+		if (rsz > 0) {
+			CDC* dc = m_wndView.GetDC();
 			oldPen = dc->SelectObject(&dPen);
 #ifndef _M_X64
-			for (int i =0; i< rsz; i++){
+			for (int i = 0; i < rsz; i++) {
 				//		dc->MoveTo(rect[i].x, rect[i].y);
-				face.x = max(0,(rect[i].x - 5) )*blue.sz.x/k1 ;
-				face.y = max(0,(rect[i].y - 5) )*blue.sz.x/k1;
-				face.width = (rect[i].width+10)*blue.sz.x/k1;
-				face.height = (rect[i].height+10)*blue.sz.x/k1;
+				face.x = max(0, (rect[i].x - 5)) * blue.sz.x / k1;
+				face.y = max(0, (rect[i].y - 5)) * blue.sz.x / k1;
+				face.width = (rect[i].width + 10) * blue.sz.x / k1;
+				face.height = (rect[i].height + 10) * blue.sz.x / k1;
 				faces.push_back(face);
-				dc->MoveTo(rect[i].x*k2/k1, rect[i].y*k2/k1);
-				dc->LineTo(rect[i].x*k2/k1 /*a*/, (rect[i].y+rect[i].height)*k2/k1 /*b+h*/);
-				dc->LineTo((rect[i].x+rect[i].width)*k2/k1 /*a+w*/, (rect[i].y+rect[i].height)*k2/k1 /*b+h*/);
-				dc->LineTo((rect[i].x+rect[i].width)*k2/k1, rect[i].y*k2/k1);
-				dc->LineTo(rect[i].x*k2/k1, rect[i].y*k2/k1);
-//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
-			}
-			if (oldPen) dc->SelectObject(oldPen);
-			m_wndView.ReleaseDC(dc);
-		}
-#else
-			
-			int mx = m_wndView.m_cp.x;
-			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
-			for (int i = 0; i < rsz; i++)  {
-				//check resualt
-				if ( rect[i].x + rect->width >= red.sz.x  ) continue;
-				if (rect[i].y + rect[i].height >= red.sz.x) continue;
-
-				//		dc->MoveTo(rect[i].x, rect[i].y);
-				face.x = max(0, int((rect[i].x - 5)));
-				face.y = max(0, int(red.sz.y-rect[i].y)  - 5);
-				face.width = int(rect[i].width) + 10;
-				face.height = int(rect[i].height) + 10;
-				faces.push_back(face);
-				dc->MoveTo(int(fk1 * rect[i].x + m_wndView.m_cp.x),  int(my - fk1 * rect[i].y)  );
-				dc->LineTo(m_wndView.m_cp.x + fk1 * rect[i].x,  my - fk1 * (rect[i].y - rect[i].height) );
-				dc->LineTo(int(m_wndView.m_cp.x + fk1 * (rect[i].x + rect[i].width)), int(my - fk1 * ( rect[i].y - rect[i].height)));
-				dc->LineTo((m_wndView.m_cp.x + int(fk1 * (rect[i].x + rect[i].width))) ,int( my - fk1 * rect[i].y ));
-				dc->LineTo(m_wndView.m_cp.x + int(fk1 * rect[i].x), my - int(fk1 * rect[i].y) );
+				dc->MoveTo(rect[i].x * k2 / k1, rect[i].y * k2 / k1);
+				dc->LineTo(rect[i].x * k2 / k1 /*a*/, (rect[i].y + rect[i].height) * k2 / k1 /*b+h*/);
+				dc->LineTo((rect[i].x + rect[i].width) * k2 / k1 /*a+w*/, (rect[i].y + rect[i].height) * k2 / k1 /*b+h*/);
+				dc->LineTo((rect[i].x + rect[i].width) * k2 / k1, rect[i].y * k2 / k1);
+				dc->LineTo(rect[i].x * k2 / k1, rect[i].y * k2 / k1);
 				//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
 			}
 			if (oldPen) dc->SelectObject(oldPen);
 			m_wndView.ReleaseDC(dc);
-	}
+		}
+#else
+
+			int mx = m_wndView.m_cp.x;
+			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
+			for (int i = 0; i < rsz; i++) {
+				//check resualt
+				if (rect[i].x + rect->width >= red.sz.x) continue;
+				if (rect[i].y + rect[i].height >= red.sz.x) continue;
+
+				//		dc->MoveTo(rect[i].x, rect[i].y);
+				face.x = max(0, int((rect[i].x - 5)));
+				face.y = max(0, int(red.sz.y - rect[i].y) - 5);
+				face.width = int(rect[i].width) + 10;
+				face.height = int(rect[i].height) + 10;
+				faces.push_back(face);
+				dc->MoveTo(int(fk1 * rect[i].x + m_wndView.m_cp.x), int(my - fk1 * rect[i].y));
+				dc->LineTo(m_wndView.m_cp.x + fk1 * rect[i].x, my - fk1 * (rect[i].y - rect[i].height));
+				dc->LineTo(int(m_wndView.m_cp.x + fk1 * (rect[i].x + rect[i].width)), int(my - fk1 * (rect[i].y - rect[i].height)));
+				dc->LineTo((m_wndView.m_cp.x + int(fk1 * (rect[i].x + rect[i].width))), int(my - fk1 * rect[i].y));
+				dc->LineTo(m_wndView.m_cp.x + int(fk1 * rect[i].x), my - int(fk1 * rect[i].y));
+				//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
+			}
+			if (oldPen) dc->SelectObject(oldPen);
+			m_wndView.ReleaseDC(dc);
+		}
 
 #endif
 		std::vector<int> scale;
 		CPChannel rtest, btest, gtest;
-		for(unsigned int i=0; i<faces.size(); i++){
-			green.SelectRect(faces[i].x, faces[i].y, faces[i].width,faces[i].height,gtest);
+		for (unsigned int i = 0; i < faces.size(); i++) {
+			green.SelectRect(faces[i].x, faces[i].y, faces[i].width, faces[i].height, gtest);
 			gtest.DinDiap();
 			gtest.Scale(TESTEYE);
-			red.SelectRect(faces[i].x, faces[i].y, faces[i].width,faces[i].height,rtest);
+			red.SelectRect(faces[i].x, faces[i].y, faces[i].width, faces[i].height, rtest);
 			rtest.DinDiap();
 			rtest.Scale(TESTEYE);
-			blue.SelectRect(faces[i].x, faces[i].y, faces[i].width,faces[i].height,btest);
+			blue.SelectRect(faces[i].x, faces[i].y, faces[i].width, faces[i].height, btest);
 			btest.DinDiap();
 			btest.Scale(TESTEYE);
 
-			stmp.Format(_T("%s-%d.jpg"), path1, i+1);
-//			SaveChannalToFile(stmp, test/*, CMainFrame::BMP*/);
-			this->SaveToFile(stmp,btest,gtest,rtest);
+			stmp.Format(_T("%s-%d.jpg"), path1, i + 1);
+			//			SaveChannalToFile(stmp, test/*, CMainFrame::BMP*/);
+			this->SaveToFile(stmp, btest, gtest, rtest);
 			AddFaceToDb(m_imgId, stmp);
-/* //home
-			test.Sobel();
-			stmp.Format(_T("%s-%d.bmp"), path1, i+1);
-			SaveChannalToFile(stmp, test, CMainFrame::BMP);
+#ifndef _M_X64
 
-*/
-//			stmp.Replace(_T("\\"),_T("/"));
-			if (WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), ch, 1000,NULL, NULL)){
+
+
+			/* //home
+						test.Sobel();
+						stmp.Format(_T("%s-%d.bmp"), path1, i+1);
+						SaveChannalToFile(stmp, test, CMainFrame::BMP);
+
+			*/
+			//			stmp.Replace(_T("\\"),_T("/"));
+			if (WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, stmp, stmp.GetLength(), ch, 1000, NULL, NULL)) {
 				rsz = 100;
-				if (DetectObjectsExt(ch, dat_eye, rect, rsz, 1.1, 5, 20, 20)){
-					for (int k = 0; k< rsz; k++){
-						face.x = faces[i].x + rect[k].x*faces[i].width/TESTEYE;
-						face.y = faces[i].y + rect[k].y*faces[i].width/TESTEYE;
-						face.width =  rect[k].width*faces[i].width/TESTEYE;
-						face.height = rect[k].height*faces[i].width/TESTEYE;
+				if (DetectObjectsExt(ch, dat_eye, rect, rsz, 1.1, 5, 20, 20)) {
+					for (int k = 0; k < rsz; k++) {
+						face.x = faces[i].x + rect[k].x * faces[i].width / TESTEYE;
+						face.y = faces[i].y + rect[k].y * faces[i].width / TESTEYE;
+						face.width = rect[k].width * faces[i].width / TESTEYE;
+						face.height = rect[k].height * faces[i].width / TESTEYE;
 						eye.push_back(face);
 					}
 				}
-				else{
-	//				DeleteFile(stmp);
+				else {
+					//				DeleteFile(stmp);
 				}
-			}//end conversion
+			}//end conversion			   
+#endif // !_MX64
 			DeleteFile(stmp); // clea working file
 		}
+#ifndef _M_X64
 		k2 = sdblue.sz.x;
 		k1 = blue.sz.x;
-		CDC * dc = m_wndView.GetDC();
+		CDC* dc = m_wndView.GetDC();
 		oldPen = dc->SelectObject(&ePen);
-		for (unsigned int i =0; i< eye.size(); i++){
-			dc->MoveTo(eye[i].x*k2/k1, eye[i].y*k2/k1);
-			dc->LineTo(eye[i].x*k2/k1 /*a*/, (eye[i].y+eye[i].height)*k2/k1 /*b+h*/);
-			dc->LineTo((eye[i].x + eye[i].width)*k2/k1 /*a+w*/, (eye[i].y+eye[i].height)*k2/k1 /*b+h*/);
-			dc->LineTo((eye[i].x + eye[i].width)*k2/k1, eye[i].y*k2/k1);
-			dc->LineTo(eye[i].x*k2/k1, eye[i].y*k2/k1);
-//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
+		for (unsigned int i = 0; i < eye.size(); i++) {
+			dc->MoveTo(eye[i].x * k2 / k1, eye[i].y * k2 / k1);
+			dc->LineTo(eye[i].x * k2 / k1 /*a*/, (eye[i].y + eye[i].height) * k2 / k1 /*b+h*/);
+			dc->LineTo((eye[i].x + eye[i].width) * k2 / k1 /*a+w*/, (eye[i].y + eye[i].height) * k2 / k1 /*b+h*/);
+			dc->LineTo((eye[i].x + eye[i].width) * k2 / k1, eye[i].y * k2 / k1);
+			dc->LineTo(eye[i].x * k2 / k1, eye[i].y * k2 / k1);
+			//				dc->Rectangle(rect[i].x*k2/k1, rect[i].y*k2/k1, rect[i].x*k2/k1 + rect[i].width*k2/k1, rect[i].y*k2/k1 + rect[i].height*k2/k1);
 		}//end draw eye
+
 		if (oldPen) dc->SelectObject(oldPen);
 		m_wndView.ReleaseDC(dc);
 
+#endif // !_M_X64
 	}
 	DeleteFile(path);
-//	AfxGetApp()->EndWaitCursor();
+	//	AfxGetApp()->EndWaitCursor();
 
 }//end on toolstestfaces
 
