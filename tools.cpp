@@ -990,6 +990,30 @@ bool CheckFileExist(CString fname, DWORD dwAttrib){
 	dwAccess = GetLastError();
 	return false;
 }
+int CPChannel::Rotate(float angle, CPChannel& img2)
+{
+	float ca = cos(angle);
+	float sa = sin(angle);
+	int x0 = 0, y0 = 0;
+	int nx, ny, nw = 0, nh = 0;
+	int t1 = int(sz.y * sa + 0.5f), t2 = int(sz.x * ca + 0.5f), t3 = int(sz.x * ca + sz.y * sa + 0.5f);
+	nx = min(min(t1, t2), min(0, t3));
+	nw = max(max(t1, t2, ), t3) - nx;
+	t1 = int(sz.y * ca + 0.5), t2 = int(0.5f - sz.x * sa), t3 = int(0.5f - sz.x * sa + sz.y * ca + 0.5);
+	ny = min(min(t1, t2), min(0, t3));
+	nh = max(max(t1, t2, ), t3) - ny;
+	t1 = img2.InitAs(nw, nh, this);
+	if (t1 > 0) {
+		for (int y = 0; y < sz.y; y++) {
+			for (int x = 0; x < sz.x; x++) {
+				x0 = int(x * ca + y * sa + 0.5f);
+				y0 = int(0.5f - x * sa + y * ca);
+				img2.arr[y0 * nw + x0] = arr[y * sz.x + x];
+			}
+		}
+	}
+	return t1;
+}
 
 CString GetDirectory(HWND hWnd, CString sPrompt)
 {

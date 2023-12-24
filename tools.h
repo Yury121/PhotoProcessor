@@ -120,6 +120,8 @@ public:
 	int Scale(int num, int num1, CPChannel& img2); // scale num1/num   num1> num 
 	int Scale(int nwidth);
 	int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2);
+	inline int Rotate(float angle, CPChannel& img2);
+	inline int RotateDegree(int deg, CPChannel& img2) { return Rotate(3.1415926535897932384626433832795f * deg, img2); };
 
 	void Gauss();
 	int InitFromBitmap(int offset, Gdiplus::Bitmap * bmp);
