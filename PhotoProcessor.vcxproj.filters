@@ -62,6 +62,9 @@
     <ClCompile Include="IntellCNN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="COptionsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChildView.h">
@@ -113,6 +116,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IntellCNN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="COptionsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="umodels.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

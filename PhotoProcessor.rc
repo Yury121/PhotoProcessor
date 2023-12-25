@@ -210,6 +210,28 @@ BEGIN
     PUSHBUTTON      "Delete",IDC_DELIMG,265,170,50,16
 END
 
+IDD_DIALOG3 DIALOGEX 0, 0, 309, 183
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,161,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,161,50,14
+    EDITTEXT        IDC_EDIT1,15,18,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON1,91,32,52,12
+    GROUPBOX        "Face recognasing network",IDC_STATIC,7,7,295,42
+    EDITTEXT        IDC_EDIT2,15,59,205,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON2,227,59,52,12
+    GROUPBOX        "Face recognasing network",IDC_STATIC,7,48,295,31
+    EDITTEXT        IDC_EDIT3,15,95,205,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON3,227,95,52,12
+    GROUPBOX        "Face recognasing network",IDC_STATIC,7,84,295,31
+    EDITTEXT        IDC_EDIT4,15,128,205,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON4,227,128,52,12
+    GROUPBOX        "Face recognasing network",IDC_STATIC,7,117,295,31
+    EDITTEXT        IDC_EDIT5,192,17,101,27,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -234,8 +256,27 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 203
     END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
 END
 #endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG3 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
 
 
 #ifdef APSTUDIO_INVOKED
@@ -362,6 +403,7 @@ BEGIN
         MENUITEM "histogram",                   ID_GISTDLG,MFT_STRING,MFS_ENABLED
         MENUITEM MFT_SEPARATOR
         MENUITEM "Restore Original path",       ID_TOOLS_RESTOREORIGINALPATH,MFT_STRING,MFS_ENABLED
+        MENUITEM "Options",                     32827,MFT_STRING,MFS_ENABLED
     END
     MENUITEM "Exif",                        ID_EXIF,MFT_STRING,MFS_ENABLED
     POPUP "Scan folder",                    65535,MFT_STRING,MFS_ENABLED
@@ -561,6 +603,11 @@ BEGIN
     ID_DIR_SCAN             "Scan folder for images and save information into selected folder"
     ID_VIEW_SHOWALLFACES    "Show all founds faces"
     ID_SCAN_TO_OLD          "Scan folder and save information into current database"
+END
+
+STRINGTABLE
+BEGIN
+    ID_OPTIONS              "Set global options"
 END
 
 #endif    // Russian (Russia) resources

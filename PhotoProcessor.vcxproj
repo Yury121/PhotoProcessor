@@ -211,6 +211,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="COptionsDlg.cpp" />
     <ClCompile Include="DbOldDlg.cpp" />
     <ClCompile Include="ExifDlg.cpp" />
     <ClCompile Include="FacesDlg.cpp" />
@@ -236,6 +237,7 @@
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="common_build.h" />
+    <ClInclude Include="COptionsDlg.h" />
     <ClInclude Include="DbOldDlg.h" />
     <ClInclude Include="ExifDlg.h" />
     <ClInclude Include="FacesDlg.h" />
@@ -328,6 +330,7 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="tools.h" />
+    <ClInclude Include="umodels.h" />
     <ClInclude Include="vklt.h" />
   </ItemGroup>
   <ItemGroup>

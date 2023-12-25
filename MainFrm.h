@@ -125,6 +125,7 @@ public:
 	afx_msg void OnGraddxGauss();
 	afx_msg void OnGraddyGauss();
 	void GradientFilter(__int32 * filter, bool IsGauss = false);
+	afx_msg void OnOptions();
 };
 
 

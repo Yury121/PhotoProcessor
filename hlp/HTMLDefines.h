@@ -51,6 +51,7 @@
 #define HID_FILTERGRADY                         0x18038
 #define HID_GRADDX_GAUSS                        0x18039
 #define HID_GRADDY_GAUSS                        0x1803A
+#define HID_OPTIONS                             0x1803B
  
 // Prompts (IDP_*) 
 #define HIDP_OLE_INIT_FAILED                    0x30064
@@ -69,6 +70,7 @@
 #define HIDD_FACESDLG                           0x20084
 #define HIDD_GISTOGRAMM                         0x20085
 #define HIDD_DIALOG2                            0x20086
+#define HIDD_DIALOG3                            0x20087
  
 // Frame Controls (IDW_*) 
 // This is a part of the Microsoft Foundation Classes C++ library.

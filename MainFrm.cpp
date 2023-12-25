@@ -16,6 +16,7 @@
 #include "GistDlg.h"
 #include <math.h>
 #include "IntellCNN.h"
+#include "COptionsDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -82,6 +83,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_FILTERGRADY, &CMainFrame::OnFiltergrady)
 	ON_COMMAND(ID_GRADDX_GAUSS, &CMainFrame::OnGraddxGauss)
 	ON_COMMAND(ID_GRADDY_GAUSS, &CMainFrame::OnGraddyGauss)
+	ON_COMMAND(ID_OPTIONS, &CMainFrame::OnOptions)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -879,7 +881,7 @@ void CMainFrame::OnToolsTestfaces()
 			for (int i = 0; i < rsz; i++) {
 				//check resualt
 				if (rect[i].x + rect->width >= red.sz.x) continue;
-				if (rect[i].y + rect[i].height >= red.sz.x) continue;
+				//if (rect[i].y - rect[i].height >= red.sz.y) continue;
 
 				//		dc->MoveTo(rect[i].x, rect[i].y);
 				face.x = max(0, int((rect[i].x - 5)));
@@ -2091,4 +2093,11 @@ void CMainFrame::GradientFilter(__int32 * filter, bool IsGauss)
 	m_wndView.blue1.GradientCreate(filter,IsGauss);
 	UpdateBitmap();
 	AfxGetApp()->EndWaitCursor();
+}
+
+
+void CMainFrame::OnOptions()
+{
+	COptionsDlg dlg;
+	dlg.DoModal();
 }
