@@ -27,4 +27,7 @@ public:
 	CButton m_bSelFaceCNN;
 	afx_msg void OnBnClickedButton1();
 	CString m_info1;
+//	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+	virtual BOOL OnInitDialog();
+	CNNINFOSTRUCT minfo1;
 };

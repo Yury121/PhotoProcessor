@@ -22,10 +22,15 @@ public:
 //			Model = core.read_model(path);
 			//int cnt =  Model->get_output_size();
 			auto outN = cmodel.outputs();
+			std::string sn = *cmodel.input().get_names().begin();
+			sn.reserve(1024);
+			
 			//for (int i = 0; i < cnt; i++) {
 			for (int i = 0; i < outN.size(); i++) {
 				CnnShape oshape;
 				ov::element::Type_t el = outN[i].get_element_type();// Model->get_output_element_type(i);
+				sn = *outN[i].get_names().begin();
+				outNames.push_back(sn);
 				std::get<0>(oshape) = int(el);
 				std::get<1>(oshape).clear();
 				//ov::Shape pshape = Model->get_output_partial_shape(i).get_shape();
@@ -37,8 +42,14 @@ public:
 			}
 			//ov::CompiledModel cmodel = core.compile_model(path);
 			auto inN = cmodel.inputs();
+			
 			for (int i = 0; i < inN.size(); i++) {
 				CnnShape oshape;
+				sn = *inN[i].get_names().begin();
+
+				//
+				
+				inNames.push_back(sn);
 				ov::element::Type_t el = inN[i].get_element_type();
 				std::get<0>(oshape) = int(el);
 				std::get<1>(oshape).clear();
@@ -83,6 +94,10 @@ public:
 		}
 		return info;
 	};
+	inline std::vector<std::string> GetInputNames() { return inNames; };
+	inline std::vector<std::string> GetOutputNames() { return outNames; };
+	std::vector<CnnShape> GetInputShape() { return inShape; };
+	std::vector<CnnShape> GetOutputShape() { return outShape; };
 
 
 	std::string ov_err = "";
@@ -92,6 +107,9 @@ private:
 	std::shared_ptr<ov::Model> Model;
 	std::vector<CnnShape> inShape;
 	std::vector<CnnShape> outShape;
+	std::vector<std::string> inNames;
+	std::vector<std::string> outNames;
+
 
 
 };

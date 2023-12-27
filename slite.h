@@ -8,7 +8,7 @@
 #include <afxwin.h>  
 //#include <atlstr.h>
 #include <ATLComTime.h>
-#include <vector>
+#include "cvdface.h"
 
 // Create lib
 //lib /def:sqlite3.def /out:sqlite3.lib /machine:x86 
@@ -315,7 +315,8 @@ typedef struct _tagFACESET{
 
 static const char* sql_faces = "CREATE TABLE IF NOT EXISTS  FACESET(" \
 " ID INTEGER PRIMARY KEY AUTOINCREMENT, IDMAIN INTEGER, " \
-"HASH TEXT, IMAGE BLOB)";
+"HASH TEXT, X INTEGER, Y INTEGER, WIDTH INTEGER, HEIGHT INTEGER, NORM REAL,"\
+"AGE REAL, MALE REAL, FEMALE REAL, IMAGE BLOB, COSIN BLOB)";
 static const char* sql_indHash = "CREATE INDEX IF NOT EXISTS IDMAIN ON FACESET(IDMAIN, HASH)";
 
 template <typename T>
@@ -425,11 +426,30 @@ public:
 //#ifdef _M_IX86
 		sqlite3_mprintf("%s", zPathBuf);
 		sqlite3_win32_set_directory8(SQLITE_WIN32_TEMP_DIRECTORY_TYPE, zPathBuf);
-
-//#else 
 //		sqlite3_temp_directory = sqlite3_mprintf("%s", zPathBuf);
+		std::string tstr = path + "/vb.db3";
+		int res = sqlite3_open(tstr.c_str(), &m_db);
+		if (res != 0) return res; //error
+		return res;
+	};
+	inline int Init(std::string path) {
+		if (m_db != nullptr) Close();
+		CString zPath;
+		//LPCWSTR zPath[MAX_PATH + 1] = {}
+		GetTempPath(MAX_PATH, zPath.GetBuffer(MAX_PATH + 1));
+		zPath.ReleaseBuffer();
+		//LPCWSTR zPath = Windows::Storage::ApplicationData::Current->TemporaryFolder->Path->Data();
+		char zPathBuf[MAX_PATH + 1];
+		memset(zPathBuf, 0, sizeof(zPathBuf));
+		WideCharToMultiByte(CP_UTF8, 0, zPath, -1, zPathBuf, sizeof(zPathBuf), NULL, NULL);
+		//#ifdef _M_IX86
+		sqlite3_mprintf("%s", zPathBuf);
+		sqlite3_win32_set_directory8(SQLITE_WIN32_TEMP_DIRECTORY_TYPE, zPathBuf);
 
-//#endif // _M_X32_
+		//#else 
+		//		sqlite3_temp_directory = sqlite3_mprintf("%s", zPathBuf);
+
+		//#endif // _M_X32_
 
 		std::string tstr = path + "/vb.db3";
 
@@ -470,6 +490,24 @@ public:
 		}
 		return res;
 	};
+	inline bool CheckColumnExist(std::string cname) {
+		//check exist column
+		if (m_db == nullptr) return false;
+		bool IsNewFaces = false;
+		sqlite3_stmt* stmp = nullptr;
+		int res = sqlite3_prepare_v2(m_db, "PRAGMA table_info(FACESET)", -1, &stmp, 0);
+		if (res == SQLITE_OK) {
+			while (sqlite3_step(stmp) == SQLITE_ROW) {
+				std::string name = (char*)sqlite3_column_text(stmp, 1);
+				if (name.compare(cname) == 0) {
+					IsNewFaces = true;
+					break;
+				}
+			}
+		}
+		sqlite3_finalize(stmp);
+		return IsNewFaces;
+	}
 	bool AddToDublicate(int id, std::string& fname, std::string& dir, std::string& info) {
 		return false;
 	};
@@ -481,14 +519,10 @@ public:
 		return "";
 	}
 
-	
-
-
 private:
 	std::string dbPath;
 	SLImageRef m_imgref;
 	sqlite3* m_db = nullptr;
-
 };
 
 
@@ -506,7 +540,7 @@ int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get l
 int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with idMain
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path);
 int GetIdCountSL(int* id_list, int  maxcnt);
-int AddFaceToDbSL(int idMain, CString& path);
+int AddFaceToDbSL(int idMain, CString& path, FRECT &rect);
 int GetDubIdSL(int idMain, int* idBuf, int szBuf);
 CString GetDubPathSL(int idDub, CString& diskinfo); // get dublicate path and disk information
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain

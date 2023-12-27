@@ -27,6 +27,74 @@ std::string GetModelInformation(std::string path)
 	return info;
 }
 
+void FillModelInformation(std::string path, CNNINFOSTRUCT& minfo)
+{
+	minfo.Clear();
+	COVModel model(path);
+	if (model.ov_err.empty()) {
+		minfo.inNames = model.GetInputNames();
+		minfo.outNames = model.GetOutputNames();
+		std::vector<CnnShape> shapes = model.GetInputShape();
+		for (auto&& ii : shapes) {
+			minfo.inShapes.push_back(std::get<1>(ii));
+			minfo.inTypes.push_back(std::get<0>(ii));
+		}
+		shapes = model.GetOutputShape();
+		for (auto&& ii : shapes) {
+			minfo.outShapes.push_back(std::get<1>(ii));
+			minfo.outTypes.push_back(std::get<0>(ii));
+		}
+		minfo.Type = minfo.GetTypeCNN();
+	}
+}
+
+std::string sModelParameters(CNNINFOSTRUCT& minfo)
+{
+	std::string sinfo = "";
+	switch (minfo.Type) {
+	case 1:
+		sinfo = "Face recognition model\r\n";
+		break;
+	case 2:
+		sinfo = "Age detection model\r\n";
+		break;
+	case 3:
+		sinfo = "Model for determining facial parameters\r\n";
+		break;
+	case 4:
+		sinfo = "Object(person) recognition model\r\n";
+		break;
+	case 5:
+		sinfo = "Model for determining object(person) parameters\r\n";
+		break;
+	default:
+		sinfo = "Undefined model\r\n";
+		break;
+	}
+	sinfo += "Input nodes = " + std::to_string(minfo.inShapes.size()) + "\r\n  Node:\r\n";
+	for (int i = 0; i < minfo.inShapes.size(); i++) {
+		sinfo += "\t" + minfo.inNames[i] + ";  Type: ";
+		sinfo += (minfo.inTypes[i] == int(ov::element::Type_t::f32)) ? " float; shape: { " :
+			(minfo.inTypes[i] == int(ov::element::Type_t::u8)) ? "uint_8; shape: { " : " not suported; shape: { ";
+		for (auto&& cc : minfo.inShapes[i]) {
+			sinfo += std::to_string(cc) + " ";
+		}
+		sinfo += "};\r\n";
+	}
+	sinfo += "Output nodes = " + std::to_string(minfo.outShapes.size());
+	sinfo += "\r\n Nodes:\r\n";
+	for (int i = 0; i < minfo.outShapes.size(); i++) {
+		sinfo += "\t" + minfo.outNames[i] + ";  Type: ";
+		sinfo += (minfo.outTypes[i] == int(ov::element::Type_t::f32)) ? " float; shape: { " :
+			(minfo.outTypes[i] == int(ov::element::Type_t::u8)) ? "uint_8; shape: { " :
+			(minfo.outTypes[i] == int(ov::element::Type_t::i32)) ? "int; shape: { " : " not suported; shape: { ";
+		for (auto&& cc : minfo.outShapes[i]) {
+			sinfo += std::to_string(cc) + " ";
+		}
+		sinfo += "};\r\n";
+	}
+	return sinfo;
+}
 
 
 

@@ -37,6 +37,7 @@ void COptionsDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(COptionsDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &COptionsDlg::OnBnClickedButton1)
+//	ON_WM_ACTIVATE()
 END_MESSAGE_MAP()
 
 
@@ -51,11 +52,26 @@ void COptionsDlg::OnBnClickedButton1()
 	if (dlg.DoModal() == IDOK) {
 		std::string mpath = ConvertToUTF8(dlg.GetPathName());
 		AfxGetApp()->BeginWaitCursor();
-		std::string info = GetModelInformation(mpath);
-		AfxGetApp()->EndWaitCursor();
+	//	std::string info = GetModelInformation(mpath);
 		this->m_faceXML = dlg.GetPathName();
-		m_info1 = ConvertFromUTF8(info);
+	//	m_info1 = ConvertFromUTF8(info);
+		FillModelInformation(mpath, minfo1);
+		m_info1.Format(_T("Type: %i"), minfo1.Type);
+		AfxGetApp()->EndWaitCursor();
 		UpdateData(false);
 	}
 
+}
+
+
+
+
+BOOL COptionsDlg::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+
+	// TODO:  Add extra initialization here
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// EXCEPTION: OCX Property Pages should return FALSE
 }

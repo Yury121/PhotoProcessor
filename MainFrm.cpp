@@ -917,7 +917,7 @@ void CMainFrame::OnToolsTestfaces()
 			stmp.Format(_T("%s-%d.jpg"), path1, i + 1);
 			//			SaveChannalToFile(stmp, test/*, CMainFrame::BMP*/);
 			this->SaveToFile(stmp, btest, gtest, rtest);
-			AddFaceToDb(m_imgId, stmp);
+			AddFaceToDb(m_imgId, stmp, faces[i]);
 #ifndef _M_X64
 
 
@@ -2099,5 +2099,10 @@ void CMainFrame::GradientFilter(__int32 * filter, bool IsGauss)
 void CMainFrame::OnOptions()
 {
 	COptionsDlg dlg;
-	dlg.DoModal();
+	if (dlg.DoModal() == IDOK) {
+		CString msg = dlg.m_faceXML;
+		msg += "\r\n\r\n";
+		msg += ConvertFromUTF8(sModelParameters(dlg.minfo1));
+		AfxMessageBox(msg, MB_ICONINFORMATION);
+	}
 }

@@ -2,6 +2,7 @@
 #include "slite.h"
 #include "md5.hpp"
 
+
 static 	 std::shared_ptr<SLDatabaes> m_db;
 
 
@@ -42,13 +43,39 @@ int InitLocalDBSL(LPCTSTR fpath) {
         SetFileAttributes(cpath, dwa|FILE_ATTRIBUTE_HIDDEN);
     }
     else {
-        m_db->Open(ConvertToUTF8(fpath));
+        m_db->Init(ConvertToUTF8(fpath));
         m_db->Close();
         DWORD dwa = GetFileAttributes(cpath);
         SetFileAttributes(cpath, dwa | FILE_ATTRIBUTE_HIDDEN);
         return m_db->Open(ConvertToUTF8(fpath));
     }
-    if (m_db->Open(ConvertToUTF8(fpath)) == SQLITE_OK) {
+    if (m_db->Init(ConvertToUTF8(fpath)) == SQLITE_OK) {
+        if (!m_db->CheckColumnExist("COSIN")) {
+            char* cerr = nullptr;
+            int res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN X INTEGER", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN Y INTEGER", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN WIDTH INTEGER", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN HEIGHT INTEGER", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN NORM REAL", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN COSIN BLOB", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+
+        }
+        if (!m_db->CheckColumnExist("AGE")) {
+            char* cerr = nullptr;
+            int res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN AGE REAL", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN MALE REAL", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+            res = sqlite3_exec(m_db->GetDb(), "ALTER TABLE FACESET ADD COLUMN FEMALE REAL", 0, 0, &cerr);
+            if (res) sqlite3_free(cerr);
+
+        }
         return sqlite3_exec(m_db->GetDb(), "VACUUM", 0, 0, 0);
     }
     return m_db->Open(ConvertToUTF8(fpath));
@@ -658,7 +685,7 @@ int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
     return int(id);
 }
 
-int AddFaceToDbSL(int idMain, CString& path) {
+int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
    int id = 0;
    std::string  sHash = "";
    std::string sql = "SELECT ID FROM FACESET WHERE IDMAIN='" +std::to_string(idMain) += "' AND HASH = '";
@@ -687,10 +714,14 @@ int AddFaceToDbSL(int idMain, CString& path) {
        }
        CloseHandle(hFile);
    }
-   sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE) VALUES (?,?,?)";
+   sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT) VALUES (?,?,?, ?,?,?,?)";
    if (fset.Open(sql) == SQLITE_OK) {
        id += sqlite3_bind_int(fset.GetSmpt(), 1, idMain);
        id += sqlite3_bind_text(fset.GetSmpt(), 2, sHash.c_str(), sHash.length(), 0);
+       id += sqlite3_bind_int(fset.GetSmpt(), 4, rect.x);
+       id += sqlite3_bind_int(fset.GetSmpt(), 5, rect.y);
+       id += sqlite3_bind_int(fset.GetSmpt(), 6, rect.width);
+       id += sqlite3_bind_int(fset.GetSmpt(), 7, rect.height);
        if (hData != nullptr) {
            id += sqlite3_bind_blob(fset.GetSmpt(), 3, hData, sz, SQLITE_TRANSIENT);
        }
@@ -703,9 +734,11 @@ int AddFaceToDbSL(int idMain, CString& path) {
    }
    fset.Close();
    if (hData != nullptr) free(hData);
-
     return id;
 }
+//int UpdateFacePosition(int id, int x, int y, int width, int height) {
+    
+//}
 
 void DeleteFaceImgSL(int id)
 {
