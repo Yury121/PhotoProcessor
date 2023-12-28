@@ -97,6 +97,66 @@ BEGIN
     EDITTEXT        IDC_EDIT118,253,129,74,12,ES_AUTOHSCROLL | ES_READONLY
 END
 
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 82
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About PhotoProcessor"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,20
+    LTEXT           "PhotoProcessor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    CONTROL         "Copyright (C) Yury Vilanski 2018.\r\n\r\nThis software is based in part\r\non the work of the Independent JPEG Group",IDC_STATIC,
+                    "Static",SS_LEFTNOWORDWRAP | WS_GROUP,40,25,150,37
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_TESTDB_DIALOG DIALOGEX 0, 0, 320, 210
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "TestDb"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Open",IDOK,263,111,50,16
+    PUSHBUTTON      "Cancel",IDCANCEL,263,130,50,16
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,306,101,WS_EX_LEFTSCROLLBAR
+    EDITTEXT        1002,7,111,250,92,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+    EDITTEXT        IDC_EDIT1,264,191,49,12,ES_AUTOHSCROLL | ES_READONLY,WS_EX_RIGHT
+    PUSHBUTTON      "Delete",IDC_DELIMG,265,170,50,16
+END
+
+IDD_DIALOG3 DIALOGEX 0, 0, 321, 249
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,227,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,264,227,50,14
+    EDITTEXT        IDC_EDIT1,36,18,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select...",IDC_BUTTON1,211,18,43,12
+    GROUPBOX        "Face recognasing network",IDC_STATIC,7,7,307,32
+    EDITTEXT        IDC_EDIT2,36,47,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON2,210,47,43,12
+    GROUPBOX        "Face Identification Network",IDC_STATIC,7,36,307,32
+    EDITTEXT        IDC_EDIT3,36,77,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON3,211,77,43,12
+    GROUPBOX        "Age and Gender Determination Network",IDC_STATIC,7,66,307,32
+    EDITTEXT        IDC_EDIT4,36,107,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON4,211,107,43,12
+    GROUPBOX        "Person recognasing network",IDC_STATIC,7,96,307,32
+    EDITTEXT        IDC_EDIT5,262,17,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDVERT | SS_REALSIZEIMAGE,11,14,20,20,WS_EX_ACCEPTFILES
+    ICON            IDI_ICON3,IDC_STATIC,7,45,21,20
+    ICON            IDI_ICON4,IDC_STATIC,7,138,21,20
+    ICON            IDI_ICON5,IDC_STATIC,7,104,21,20
+    ICON            IDI_ICON6,IDC_STATIC,7,75,21,20
+    EDITTEXT        IDC_EDIT6,36,139,171,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",IDC_BUTTON5,211,139,43,12
+    GROUPBOX        "Person reidentification network",IDC_STATIC,7,129,307,32
+    EDITTEXT        IDC_EDIT7,262,47,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT8,263,76,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT9,264,108,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT10,264,139,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    ICON            IDI_ICON2,IDC_STATIC,7,14,21,20
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -137,6 +197,30 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 167
     END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_TESTDB_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+
+    IDD_DIALOG3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 314
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 242
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -150,6 +234,8 @@ END
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\PhotoProcessor.ico"
 
+IDI_ICON2               ICON                    "Find-Favourites.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -159,6 +245,39 @@ IDR_MAINFRAME           ICON                    "res\\PhotoProcessor.ico"
 IDD_DIALOG2 AFX_DIALOG_LAYOUT
 BEGIN
     0
+END
+
+IDD_DIALOG3 AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 100, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
 END
 
 #endif    // Neutral resources
@@ -182,101 +301,18 @@ IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Dialog
+// Icon
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 235, 82
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About PhotoProcessor"
-FONT 8, "MS Shell Dlg", 0, 0, 0x1
-BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,20
-    LTEXT           "PhotoProcessor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
-    CONTROL         "Copyright (C) Yury Vilanski 2018.\r\n\r\nThis software is based in part\r\non the work of the Independent JPEG Group",IDC_STATIC,
-                    "Static",SS_LEFTNOWORDWRAP | WS_GROUP,40,25,150,37
-    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
-END
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON3               ICON                    "Line-Graph-Search.ico"
 
-IDD_TESTDB_DIALOG DIALOGEX 0, 0, 320, 210
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION
-CAPTION "TestDb"
-FONT 8, "MS Shell Dlg", 0, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "Open",IDOK,263,111,50,16
-    PUSHBUTTON      "Cancel",IDCANCEL,263,130,50,16
-    CONTROL         "",IDC_LIST2,"SysListView32",LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,306,101,WS_EX_LEFTSCROLLBAR
-    EDITTEXT        1002,7,111,250,92,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
-    EDITTEXT        IDC_EDIT1,264,191,49,12,ES_AUTOHSCROLL | ES_READONLY,WS_EX_RIGHT
-    PUSHBUTTON      "Delete",IDC_DELIMG,265,170,50,16
-END
+IDI_ICON4               ICON                    "Clock-Favourites.ico"
 
-IDD_DIALOG3 DIALOGEX 0, 0, 309, 183
-STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Options"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,198,161,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,252,161,50,14
-    EDITTEXT        IDC_EDIT1,15,18,171,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Select",IDC_BUTTON1,194,18,38,12
-    GROUPBOX        "Face recognasing network",IDC_STATIC,7,7,295,42
-    EDITTEXT        IDC_EDIT2,15,59,205,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Select",IDC_BUTTON2,227,59,52,12
-    GROUPBOX        "Face recognasing network",IDC_STATIC,7,48,295,31
-    EDITTEXT        IDC_EDIT3,15,95,205,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Select",IDC_BUTTON3,227,95,52,12
-    GROUPBOX        "Face recognasing network",IDC_STATIC,7,84,295,31
-    EDITTEXT        IDC_EDIT4,15,128,205,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Select",IDC_BUTTON4,227,128,52,12
-    GROUPBOX        "Face recognasing network",IDC_STATIC,7,117,295,31
-    EDITTEXT        IDC_EDIT5,252,17,41,12,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
-END
+IDI_ICON5               ICON                    "Group-Create.ico"
 
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// DESIGNINFO
-//
-
-#ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
-BEGIN
-    IDD_ABOUTBOX, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 228
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 75
-    END
-
-    IDD_TESTDB_DIALOG, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 313
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 203
-    END
-
-    IDD_DIALOG3, DIALOG
-    BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 302
-        TOPMARGIN, 7
-        BOTTOMMARGIN, 176
-    END
-END
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// AFX_DIALOG_LAYOUT
-//
-
-IDD_DIALOG3 AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
+IDI_ICON6               ICON                    "Person-Female-Create.ico"
 
 
 #ifdef APSTUDIO_INVOKED

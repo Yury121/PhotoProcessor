@@ -19,6 +19,11 @@
 #define IDD_GISTOGRAMM                  133
 #define IDD_DIALOG2                     134
 #define IDD_DIALOG3                     135
+#define IDI_ICON2                       142
+#define IDI_ICON3                       145
+#define IDI_ICON4                       146
+#define IDI_ICON5                       147
+#define IDI_ICON6                       148
 #define IDC_EDIT1                       1000
 #define IDC_LIST2                       1001
 #define IDC_EDIT2                       1001
@@ -31,6 +36,7 @@
 #define IDC_EDIT4                       1003
 #define IDC_EDIT114                     1004
 #define IDC_DELIMG                      1004
+#define IDC_EDIT6                       1004
 #define IDC_EDIT115                     1005
 #define IDC_BUTTON1                     1005
 #define IDC_EDIT116                     1006
@@ -40,6 +46,11 @@
 #define IDC_EDIT118                     1008
 #define IDC_BUTTON4                     1008
 #define IDC_EDIT5                       1009
+#define IDC_BUTTON5                     1010
+#define IDC_EDIT7                       1011
+#define IDC_EDIT8                       1012
+#define IDC_EDIT9                       1013
+#define IDC_EDIT10                      1014
 #define IDC_STATICW1                    1030
 #define IDC_OPENIMAGE                   32771
 #define ID_DINDIAP                      32772
@@ -102,7 +113,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        149
 #define _APS_NEXT_COMMAND_VALUE         32828
 #define _APS_NEXT_CONTROL_VALUE         1010
 #define _APS_NEXT_SYMED_VALUE           101

@@ -30,4 +30,37 @@ public:
 //	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
 	virtual BOOL OnInitDialog();
 	CNNINFOSTRUCT minfo1;
+	CNNINFOSTRUCT minfoFaceId;
+	CNNINFOSTRUCT minfoAge;
+	CNNINFOSTRUCT minfoPerson;
+	CNNINFOSTRUCT minfoPersonId;
+	CString m_faceCalcXml;
+	CString ageXML;
+	CString personXML;
+	CString personIdXML;
+	afx_msg void OnBnFaceId();
+	afx_msg void OnBnAgeCalc();
+	afx_msg void OnBnPerson();
+	afx_msg void OnBnPersonId();
+	CString m_infoFID;
+	CString m_infoAge;
+	CString m_infoPerson;
+	CString m_infoPersonID;
+	afx_msg void OnBnClickedOk();
+	inline void SelectNetwork(CString& opath, CString& info, CNNINFOSTRUCT & cnninfo) {
+		CFileDialog dlg(true);
+		dlg.m_ofn.lpstrTitle = _T("Select CNN network");
+		dlg.m_ofn.lpstrFilter = _T("XML (*.XML;*.xml;)\0*.xml;*.XML\0\0");
+		if (dlg.DoModal() == IDOK) {
+			std::string mpath = ConvertToUTF8(dlg.GetPathName());
+			AfxGetApp()->BeginWaitCursor();
+			//	std::string info = GetModelInformation(mpath);
+			opath = dlg.GetPathName();
+			//	m_info1 = ConvertFromUTF8(info);
+			FillModelInformation(mpath, cnninfo);
+			info.Format(_T("Type: %i"), cnninfo.Type);
+			AfxGetApp()->EndWaitCursor();
+			UpdateData(false);
+		}
+	}
 };

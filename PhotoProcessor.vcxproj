@@ -334,11 +334,22 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\
     <ClInclude Include="vklt.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Calendar-32x32.png" />
+    <Image Include="Clock-Favourites.ico" />
+    <Image Include="Find-Favourites.ico" />
+    <Image Include="Group-Create.ico" />
     <Image Include="hlp\Images\Bullet.gif" />
+    <Image Include="Line-Graph-Search.ico" />
+    <Image Include="Person-32x32.png" />
+    <Image Include="Person-Female-32x32.png" />
+    <Image Include="Person-Female-Create.ico" />
+    <Image Include="Person-Male-32x32.png" />
     <Image Include="res\bitmap1.bmp" />
     <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\icon3.ico" />
     <Image Include="res\PhotoProcessor.ico" />
     <Image Include="res\Toolbar.bmp" />
+    <Image Include="Search-32x32.png" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PhotoProcessor.rc" />

@@ -141,6 +141,39 @@
     <Image Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Calendar-32x32.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Person-32x32.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Person-Female-32x32.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Person-Male-32x32.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Search-32x32.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Find-Favourites.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Line-Graph-Search.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Clock-Favourites.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Group-Create.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Person-Female-Create.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PhotoProcessor.rc">

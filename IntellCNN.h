@@ -20,8 +20,8 @@ typedef struct _CNNINFOSTRUCT {
 	enum CNN_TYPE {
 	  UNDEFINED,
 	  FACE_DETECTION,	 // image
-	  AGE_DETECTION,
 	  FACE_PARAMETERS,		// data
+	  AGE_DETECTION,
 	  CLASS_SELECTION,		// input
 	  CLASS_PARAMETERS
 	};
@@ -36,14 +36,18 @@ typedef struct _CNNINFOSTRUCT {
 		Type = CNN_TYPE::UNDEFINED;
 		if (inShapes.size() != 1) return Type;
 		if (inShapes[0].size() == 4) {
-			if (inNames[0] == "image") { Type = CNN_TYPE::FACE_DETECTION; }
+			if (inNames[0] == "image") {
+				Type = CNN_TYPE::FACE_DETECTION; 
+			}
 			if (inNames[0] == "input") { Type = CNN_TYPE::CLASS_SELECTION; }
 			if (outShapes.size() == 1) {
 				if (outNames[0] == "descriptor"){
 					Type = CNN_TYPE::CLASS_PARAMETERS; return Type;
 				} 
 			}
-			if (GetShapeSize(outShapes[0]) == 256) Type = CNN_TYPE::FACE_PARAMETERS;
+			if (GetShapeSize(outShapes[0]) == 256) {
+				Type = (inShapes[0][2]==inShapes[0][3]) ? CNN_TYPE::FACE_PARAMETERS : CNN_TYPE::CLASS_PARAMETERS;
+			}
 			if (outShapes.size() == 2) {
 				if (GetShapeSize(outShapes[0]) == 2 && GetShapeSize(outShapes[1]) == 1)
 					Type = CNN_TYPE::AGE_DETECTION;
