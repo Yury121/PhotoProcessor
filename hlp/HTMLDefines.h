@@ -52,6 +52,7 @@
 #define HID_GRADDX_GAUSS                        0x18039
 #define HID_GRADDY_GAUSS                        0x1803A
 #define HID_OPTIONS                             0x1803B
+#define HID_RESOLUTION                          0x1803C
  
 // Prompts (IDP_*) 
 #define HIDP_OLE_INIT_FAILED                    0x30064

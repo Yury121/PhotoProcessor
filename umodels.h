@@ -17,7 +17,8 @@ public:
 	COVModel() {};
 	COVModel(std::string path) {
 		try {
-			ov::CompiledModel cmodel = core.compile_model(path);
+			//ov::CompiledModel 
+			cmodel = core.compile_model(path);
 
 //			Model = core.read_model(path);
 			//int cnt =  Model->get_output_size();
@@ -60,10 +61,11 @@ public:
 		}
 		catch (ov::Exception& wcp) {
 			ov_err = "\nException "; 	ov_err += (char*)wcp.what();
+			delete &cmodel;
 			Model.reset();
 		}
 	};
-	~COVModel() { Model.reset(); };
+	~COVModel() { Model.reset();  };
 	inline int GetInputSize() { return inShape.size(); };
 	inline std::string GetInputInfo() {
 		std::string info = "Input nodes = " + std::to_string(inShape.size());
@@ -79,6 +81,17 @@ public:
 		}
 		return info;
 	};
+	inline void GetInputSizes(std::vector<ovimgsize>& vsizes) {
+		ovimgsize 	iovsize{ 0,0 };
+		vsizes.clear();
+		for (auto && a : inShape) {
+			if (std::get<1>(a).size() == 4){
+				std::get<0>(iovsize) = std::get<1>(a)[2];
+				std::get<0>(iovsize) = std::get<1>(a)[3];
+				vsizes.push_back(iovsize);
+			}
+		}
+	}
 	inline std::string GetOutputInfo() {
 		std::string info = "Output nodes = " + std::to_string(outShape.size());
 		info += "\r\n Node : ";
@@ -98,12 +111,42 @@ public:
 	inline std::vector<std::string> GetOutputNames() { return outNames; };
 	std::vector<CnnShape> GetInputShape() { return inShape; };
 	std::vector<CnnShape> GetOutputShape() { return outShape; };
+	template< typename T>
+	inline bool RunInfer(T* data1, T* data2 = 0) {
+		try {
+
+			auto infer_request = cmodel.create_infer_request();
+
+			infer_request.infer();
+			if (inShape.size() == 1) {
+				ov::Tensor input_tensor(std::get<0>(inShape[0]), std::get<1>(inShape[0]), (T*)data1);
+				infer_request.set_input_tensor(input_tensor);
+			}
+			else {
+				if (data2 == nullptr) return false;
+				if (inShape.size() != 2) return false;
+				std::vector<Tensor>& tensors;
+				ov::Tensor input_tensor(std::get<0>(inShape[0]), std::get<1>(inShape[0]), (T*)data1);
+				ov::Tensor input_tensor1(std::get<0>(inShape[1]), std::get<1>(inShape[1]), (T*)data2);
+				tensors.push_back(input_tensor);
+				tensors.push_back(input_tensor2);
+				infer_request.set_input_tensors(tensors)
+			}
+
+		}
+		catch (ov::Exception& ovex) {
+			std::cerr << ovex.what() << std::endl;
+			return false;
+		}
+		return true;
+	}
 
 
 	std::string ov_err = "";
 
 private:
 	ov::Core core;
+	ov::CompiledModel cmodel;
 	std::shared_ptr<ov::Model> Model;
 	std::vector<CnnShape> inShape;
 	std::vector<CnnShape> outShape;

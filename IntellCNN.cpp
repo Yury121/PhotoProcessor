@@ -192,3 +192,8 @@ int DetectObjectsExtOV(uint8_t* red, uint8_t* blue, uint8_t* green, int size, fl
 
 	return count;
 }
+
+int IncreaseResalution(std::vector<uint8_t*>& vImage, std::vector<uint8_t*> vOutput)
+{
+	return 0;
+}

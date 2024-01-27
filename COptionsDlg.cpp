@@ -119,14 +119,28 @@ void COptionsDlg::OnBnClickedOk()
 	std::vector<int> focusID = { IDC_EDIT1, IDC_EDIT2, IDC_EDIT3,IDC_EDIT4, IDC_EDIT6 };
 	for (int i = 0; i < str.size(); i++) {
 		if (!str[i].IsEmpty()) {
+			msg += _T("Path: ");
+			msg += str[i];
+			msg += _T("\r\n");
+			msg += ConvertFromUTF8(sModelParameters(*cnn[i]));
+			msg += _T("\r\n ----- *** -----\r\n");
+#if 0
+
+
+
+
 			if (cnn[i]->Type != (i+1)) {
 				msg = _T("This network cannot be used for facial recognition!\r\n");
 				AfxMessageBox(msg, MB_ICONHAND);
 //				GetDlgItem(focusID[i])->SetFocus();
 //				return;
 			}
+#endif
 		}
 
 	}
-	CDialog::OnOK();
+	if (AfxMessageBox(msg, MB_ICONINFORMATION | MB_OKCANCEL) == IDOK) {
+		CDialog::OnOK();
+	}
+	return;
 }

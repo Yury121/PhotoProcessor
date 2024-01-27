@@ -84,6 +84,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_GRADDX_GAUSS, &CMainFrame::OnGraddxGauss)
 	ON_COMMAND(ID_GRADDY_GAUSS, &CMainFrame::OnGraddyGauss)
 	ON_COMMAND(ID_OPTIONS, &CMainFrame::OnOptions)
+	ON_COMMAND(ID_RESOLUTION, &CMainFrame::OnResolution)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -535,9 +536,6 @@ void CMainFrame::OriginalRestore(){
 //	m_wndView.red1 = sdred;
 //	m_wndView.green1 = sdgreen;
 //	m_wndView.blue1 = sdblue;
-
-
-
 }
 
 void CMainFrame::Gamma(unsigned char * GAMMA){
@@ -698,7 +696,7 @@ void CMainFrame::SetDisplayChannal(int color){
 void CMainFrame::OnFileSavescreen()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	Bitmap  * bbmp = Bitmap::FromBITMAPINFO(&m_wndView.tbi, m_wndView.mem);
@@ -745,7 +743,7 @@ void CMainFrame::OnToolsTestfaces()
 	CString stmp = _T("");
 	if (m_wndView.mem == 0) {
 		//		AfxGetApp()->EndWaitCursor();
-		AfxMessageBox(_T("A image not loaded"), MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"), MB_ICONSTOP);
 		return;
 	}
 	FRECT rect[100] = {};
@@ -836,7 +834,7 @@ void CMainFrame::OnToolsTestfaces()
 		blue.ScaleVarios(std::get<0>(osz), std::get<1>(osz), blue_sq);
 		green.ScaleVarios(std::get<0>(osz), std::get<1>(osz), green_sq);
 
-		//this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
+		this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
 		float xprop = 1.0f * red.sz.x / std::get<0>(osz);
 		float yprop = 1.0f * red.sz.y / std::get<1>(osz);
 		int add_y = 0;
@@ -1299,7 +1297,7 @@ void CMainFrame::GetExifToStr(CString &str)
 void CMainFrame::OnSaveSqrt()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	CPChannel red3;
@@ -1569,7 +1567,7 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 void CMainFrame::OnShowFaces()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	CFacesDlg dlg(m_imgId,this);
@@ -1688,7 +1686,7 @@ void CMainFrame::OnViewShowallfaces()
 {
 #if 0
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 #endif
@@ -1740,7 +1738,7 @@ void CMainFrame::OnScanToOld()
 void CMainFrame::OnGistdlg()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 
@@ -1761,7 +1759,7 @@ void CMainFrame::OnGistdlg()
 void CMainFrame::OnConturmax()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	OriginalRestore();
@@ -1803,7 +1801,7 @@ void CMainFrame::OnConturmax()
 void CMainFrame::OnConturequ()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	OriginalRestore();
@@ -1879,7 +1877,7 @@ void CMainFrame::OnConturmin()
 void CMainFrame::OnConturleval()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	OriginalRestore();
@@ -1948,7 +1946,7 @@ void CMainFrame::OnToolsRestoreoriginalpath()
 void CMainFrame::OnSelgoodpoint()
 {
 	if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 	CString str= _T("");
@@ -2080,7 +2078,7 @@ void CMainFrame::OnGraddyGauss()
 void CMainFrame::GradientFilter(__int32 * filter, bool IsGauss)
 {
 		if (m_wndView.mem == 0){
-		AfxMessageBox(_T("A image not loaded"),MB_ICONSTOP);
+		AfxMessageBox(_T("Image not loaded"),MB_ICONSTOP);
 		return;
 	}
 
@@ -2105,4 +2103,57 @@ void CMainFrame::OnOptions()
 		msg += ConvertFromUTF8(sModelParameters(dlg.minfo1));
 		AfxMessageBox(msg, MB_ICONINFORMATION);
 	}
+}
+
+
+void CMainFrame::OnResolution()
+{
+	if (m_wndView.mem == 0) {
+		AfxMessageBox(_T("Image not loaded"), MB_ICONSTOP);
+		return;
+	}
+	int msize = max(red.sz.x, red.sz.y);
+	if ( msize >= 1920) {
+		AfxMessageBox(_T("No need to increase the resolution for this image"), MB_ICONSTOP);
+		return;
+  	}
+	bool bRotate = red.sz.x > red.sz.y ? false : true;
+	CPChannel red_sq, red_sq1;
+	CPChannel blue_sq, blue_sq1;
+	CPChannel green_sq, green_sq1;
+	float FM_PI = float(1.5707963267948966192313216916398);
+	CString path = workPath + _T("/test1.bmp");// _T("d:/Worker/PhotoProcessor/DLL/test.jpg");
+	CString path1 = workPath + _T("/test");//_T("d:/Worker/PhotoProcessor/DLL/test");
+	if (bRotate) {
+		CPChannel tmp;
+		red.Rotate(FM_PI, tmp);
+		tmp.ScaleVarios(1920, 1080, red_sq1);
+		tmp.ScaleVarios(640, 360, red_sq);
+		blue.Rotate(FM_PI, tmp);
+		tmp.ScaleVarios(1920, 1080, blue_sq1);
+		tmp.ScaleVarios(640, 360, blue_sq);
+		green.Rotate(FM_PI, tmp);
+		tmp.ScaleVarios(1920, 1080, green_sq1);
+		tmp.ScaleVarios(640, 360, green_sq);
+		SaveToFile(path, blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
+		
+
+	}
+	else {
+		red.ScaleVarios(1920, 1080, red_sq1);
+		red.ScaleVarios(640, 360, red_sq);
+		blue.ScaleVarios(1920, 1080, blue_sq1);
+		blue.ScaleVarios(640, 360, blue_sq);
+		green.ScaleVarios(1920, 1080, green_sq1);
+		green.ScaleVarios(640, 360, green_sq);
+		SaveToFile(path, blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
+
+	}
+
+	
+
+
+
+	
+
 }

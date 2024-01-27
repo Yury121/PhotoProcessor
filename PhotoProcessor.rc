@@ -435,6 +435,7 @@ BEGIN
         MENUITEM "Integrator",                  ID_TOOLS_INTEGRATOR,MFT_STRING,MFS_ENABLED
         MENUITEM MFT_SEPARATOR
         MENUITEM "Test Faces",                  ID_TOOLS_TESTFACES,MFT_STRING,MFS_ENABLED
+        MENUITEM "Increase resolution",         32828,MFT_STRING,MFS_ENABLED
         MENUITEM MFT_SEPARATOR
         MENUITEM "histogram",                   ID_GISTDLG,MFT_STRING,MFS_ENABLED
         MENUITEM MFT_SEPARATOR

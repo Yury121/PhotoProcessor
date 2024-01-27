@@ -582,8 +582,8 @@ int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2) {
 
 	unsigned int num = 1;
 	unsigned int num1 = 1;
-	unsigned int kw = 1;
-	unsigned int kh = 1;
+	//unsigned int kw = 1;
+	//unsigned int kh = 1;
 	unsigned int nw = (nWidth / 4) * 4; // new width
 	unsigned int nh = nHeight; // new height
 
@@ -595,6 +595,16 @@ int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2) {
 		num = nh;
 		num1 = sz.y;
 	}
+	num = (sz.x > sz.y) ? nw : nh;
+	num1 = (sz.x > sz.y) ? sz.x : sz.y;
+	if (sz.x * nh  != sz.y * nw) {
+		if (nw != nh )
+			num1 = (nh*sz.x > nw*sz.y) ? num1 * nh *sz.x / nw/sz.y : num1 *nw*sz.y / nh/sz.x;
+		//num = (nh > nw) ? num * nh / nw : num * nw / nh;
+		//kw = (sz.x < nw) ? kw = nw / sz.x : kw = sz.x / nw;
+		//kh =(sz.y < nh) ? kh = nh / sz.y : sz.y / nh;
+
+	}
 
 	unsigned int k = 0;
 	unsigned __int64 tt = 0; // avg light
@@ -602,10 +612,6 @@ int CPChannel::ScaleVarios(int nWidth, int nHeight, CPChannel& img2) {
 	int indrs, indks, indre, indke;
 	if ((nw * nh <= 0) || (sz.x * sz.y <= 0))
 		return 0;
-	if (sz.x < nw) kw = nw / sz.x;
-	else kw = sz.x / nw;
-	if (sz.y < nh) kh = nh / sz.y;
-	else kh = sz.y / nh;
 
 	if (img2.InitAs(nw, nh, this) > size) {
 		unsigned int tmii, tmji, tmia, tmja, mitr, matr, mitk, matk;
@@ -1008,6 +1014,8 @@ int CPChannel::Rotate(float angle, CPChannel& img2)
 			for (int x = 0; x < sz.x; x++) {
 				x0 = int(x * ca + y * sa + 0.5f);
 				y0 = int(0.5f - x * sa + y * ca);
+				y0 = (y0 < 0) ? nh + y0 : y0;
+				x0 = (x0 < 0) ? nw + x0 : x0;
 				img2.arr[y0 * nw + x0] = arr[y * sz.x + x];
 			}
 		}

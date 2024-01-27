@@ -71,5 +71,7 @@ std::string GetModelInformation(std::string path);
 void FillModelInformation(std::string path, CNNINFOSTRUCT& minfo);
 std::string sModelParameters(CNNINFOSTRUCT & minfo);
 
+int IncreaseResalution(std::vector<uint8_t*>& vImage, std::vector<uint8_t*> vOutput);
+
 
 
