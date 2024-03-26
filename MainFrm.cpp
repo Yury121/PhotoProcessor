@@ -1214,6 +1214,76 @@ bool CMainFrame::SaveToFile(CString fpath,CPChannel& svblue, CPChannel& svgreen,
 
 	return ret;
 }
+
+IStream* CMainFrame::SaveToStream(CPChannel& svblue, CPChannel& svgreen, CPChannel& svred, SaveImageFormat imform)
+{
+	BITMAPINFO tbi;
+	memset(&tbi, 0, sizeof(BITMAPINFOHEADER));
+
+	int width = min(svblue.sz.x, min(svgreen.sz.x, svred.sz.x));
+	int height = min(svblue.sz.y, min(svgreen.sz.y, svred.sz.y));
+	int size = width * height * 3;
+	if (size <= 0) return nullptr;
+
+	IStream* istr = SHCreateMemStream(NULL, NULL);
+	// create header
+	if (istr != nullptr) {
+
+		tbi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+		tbi.bmiHeader.biBitCount = 24;
+		tbi.bmiHeader.biClrImportant = 0;
+		tbi.bmiHeader.biClrUsed = 0;
+		tbi.bmiHeader.biPlanes = 1;
+		tbi.bmiHeader.biCompression = BI_RGB;
+		tbi.bmiHeader.biXPelsPerMeter = 0;
+		tbi.bmiHeader.biYPelsPerMeter = 0;
+		tbi.bmiHeader.biWidth = width;
+		tbi.bmiHeader.biHeight = height;
+		tbi.bmiHeader.biSizeImage = size;
+		unsigned char* mem = (unsigned char*)malloc(size);
+		if (!mem) {
+			istr->Release();
+			return nullptr;
+		}
+		memset(mem, 0xff, size);
+		int ind = 0;
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				ind = i * width + j;
+				mem[ind * 3] = svblue.arr[ind];
+				mem[ind * 3 + 1] = svgreen.arr[ind];
+				mem[ind * 3 + 2] = svred.arr[ind];
+			};
+		};
+		Bitmap* bbmp = Bitmap::FromBITMAPINFO(&tbi, mem);
+		CImage img;
+		HBITMAP  hb;
+		bbmp->GetHBITMAP(0, &hb);
+		img.Attach(hb);
+		switch (imform) {
+		case CMainFrame::BMP:
+			img.Save(istr, ImageFormatBMP);
+			break;
+		case CMainFrame::PNG:
+			img.Save(istr, ImageFormatPNG);
+			break;
+		case CMainFrame::TIFF:
+			img.Save(istr, ImageFormatTIFF);
+			break;
+		case CMainFrame::EMF:
+			img.Save(istr, ImageFormatEMF);
+			break;
+		default:
+			img.Save(istr, ImageFormatJPEG);
+			break;
+		}//end switch
+		img.Destroy();
+		if (mem) free(mem);
+	}
+	return istr;
+	// istr->Release() free memory
+}
+
 // Read exif to string
 void CMainFrame::GetExifToStr(CString &str)
 {

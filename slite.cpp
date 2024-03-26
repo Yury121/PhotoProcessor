@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "slite.h"
 #include "md5.hpp"
+#include <shlwapi.h>
+#include <objidl.h>
 
 
 static 	 std::shared_ptr<SLDatabaes> m_db;
@@ -474,6 +476,30 @@ int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16])
     //pHash.Release(); // fre hash interface
 
     return szSize;
+}
+
+int GetFileHashSL(IStream* iBuf,  unsigned char hash[16])
+{
+    MD5_CTX mdhash;
+
+    unsigned char Buf[4096] = {};
+    int szSize = 0;
+    // variable for sizeof Hash
+    //STATSTG iSize;
+    //iBuf->Stat(&iSize, STATFLAG_NONAME);
+    DWORD dwRead = 0;
+    MD5Init(&mdhash);
+    LARGE_INTEGER lr{ 0,0 };
+    if (iBuf->Seek( lr, STREAM_SEEK_SET, NULL) == S_OK){
+        do {
+            iBuf->Read(Buf, sizeof(Buf), &dwRead);
+            szSize += dwRead;
+            MD5Update(&mdhash, Buf, dwRead);
+        } while (dwRead > 0);
+    }
+    MD5Final(hash, &mdhash);
+    return szSize;
+
     return 0;
 }
 
@@ -614,7 +640,7 @@ inline int BindImgSet(SLRecordset<IMGSET>& img, SLEXIFSTR& info, std::string& er
 
     return id;
 }
-
+//SHCreateMemStream function
 
 int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
 {
@@ -736,6 +762,60 @@ int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
    if (hData != nullptr) free(hData);
     return id;
 }
+int AddFaceToDbSL(int idMain, IStream* path, FRECT& rect)
+{
+    int id = 0;
+    std::string  sHash = "";
+    std::string sql = "SELECT ID FROM FACESET WHERE IDMAIN='" + std::to_string(idMain) += "' AND HASH = '";
+    unsigned char hash[16] = {};
+ //   STATSTG iSize;
+ //   path->Stat(&iSize, STATFLAG_NONAME);
+    uint32_t sz = GetFileHashSL(path,  hash);
+    unsigned char* hData = nullptr;
+    if (sz < 100)  return -1;
+    ConvertHashToStringSTR(sHash, hash);
+    sql += sHash + "'";
+    SLRecordset<FACESET> fset(m_db->GetDb());
+    if (fset.Open(sql) == SQLITE_OK) {
+        if (fset.Next() == SQLITE_ROW) {
+            if (id != sqlite3_data_count(fset.GetSmpt())) {
+                fset.Close();
+                return 0;
+            }
+        }
+    }
+    fset.Close();
+    hData = (unsigned char*)malloc(sz);
+    if (hData) {
+        LARGE_INTEGER lr{ 0,0 };
+      //  lr.QuadPart = 0;
+        path->Seek(lr, SEEK_SET,NULL);
+        ULONG size = 0;
+        path->Read(hData, sz, &size);
+    }
+    sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT) VALUES (?,?,?, ?,?,?,?)";
+    if (fset.Open(sql) == SQLITE_OK) {
+        id += sqlite3_bind_int(fset.GetSmpt(), 1, idMain);
+        id += sqlite3_bind_text(fset.GetSmpt(), 2, sHash.c_str(), sHash.length(), 0);
+        id += sqlite3_bind_int(fset.GetSmpt(), 4, rect.x);
+        id += sqlite3_bind_int(fset.GetSmpt(), 5, rect.y);
+        id += sqlite3_bind_int(fset.GetSmpt(), 6, rect.width);
+        id += sqlite3_bind_int(fset.GetSmpt(), 7, rect.height);
+        if (hData != nullptr) {
+            id += sqlite3_bind_blob(fset.GetSmpt(), 3, hData, sz, SQLITE_TRANSIENT);
+        }
+        else {
+            id += sqlite3_bind_null(fset.GetSmpt(), 3);
+        }
+        if (id == 0) {
+            sqlite3_step(fset.GetSmpt());
+        }
+    }
+    fset.Close();
+    if (hData != nullptr) free(hData);
+    return id;
+}
+
 //int UpdateFacePosition(int id, int x, int y, int width, int height) {
     
 //}

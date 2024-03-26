@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "PhotoProcessor.h"
 #include "DbOldDlg.h"
+
+
 using namespace Gdiplus;
 
 #include "slite.h"

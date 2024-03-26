@@ -45,3 +45,4 @@ extern Gdiplus::GdiplusStartupInput gdiplusStartupInput;
 #include "slite.h"
 #endif
   */
+#include <shlwapi.h>

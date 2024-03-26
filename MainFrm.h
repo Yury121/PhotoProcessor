@@ -7,6 +7,7 @@
 #include "ChildView.h"
 #include "cvdface.h"
 #include "ExifDlg.h"
+#include <shlwapi.h>
 //#include "DbOldDlg.h"
 class CMainFrame : public CFrameWnd
 {
@@ -39,6 +40,7 @@ public:
 	int DetectObjectsExt( char * fname, char * data, FRECT * rect, int & rsz, double scale = 1.1,
 						int minNeigboars = 3, int minw =30, int minh = 30);
 	bool SaveToFile(CString fpath,CPChannel & svblue, CPChannel & green,CPChannel & red, SaveImageFormat imform = JPEG);
+	IStream * 	SaveToStream(CPChannel& svblue, CPChannel& green, CPChannel& red, SaveImageFormat imform = JPEG);
 // Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);

@@ -530,6 +530,7 @@ int InitLocalDBSL(LPCTSTR fpath);
 void ReleaseLocalDBSL();
 int GetIdCountSL(int* id_list, int  maxcnt);
 int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
+int GetFileHashSL(IStream* iBuf,  unsigned char hash[16]);
 int ParseExifSL(LPCTSTR src, int szsrc, LPCTSTR out, int szout, SLEXIFSTR& info);
 int AddFileToDbSL(CString& fname, CString& minname, CString& exif);
 CString GetAlternatePathSL(int id_img, CString idPath = _T(""));
@@ -541,6 +542,7 @@ int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with id
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path);
 int GetIdCountSL(int* id_list, int  maxcnt);
 int AddFaceToDbSL(int idMain, CString& path, FRECT &rect);
+int AddFaceToDbSL(int idMain, IStream * path, FRECT& rect);
 int GetDubIdSL(int idMain, int* idBuf, int szBuf);
 CString GetDubPathSL(int idDub, CString& diskinfo); // get dublicate path and disk information
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain
