@@ -533,6 +533,7 @@ int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
 int GetFileHashSL(IStream* iBuf,  unsigned char hash[16]);
 int ParseExifSL(LPCTSTR src, int szsrc, LPCTSTR out, int szout, SLEXIFSTR& info);
 int AddFileToDbSL(CString& fname, CString& minname, CString& exif);
+int AddFileToDbSL(CString& fname, IStream * imname, CString& exif);
 CString GetAlternatePathSL(int id_img, CString idPath = _T(""));
 void DeleteFaceImgSL(int id); //delete from database
 void DeleteDubImgSL(int id); //delete from database
@@ -547,6 +548,7 @@ int GetDubIdSL(int idMain, int* idBuf, int szBuf);
 CString GetDubPathSL(int idDub, CString& diskinfo); // get dublicate path and disk information
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain
 int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with idMain
+IStream* GetFaseIdImageSL(int id); // Set stream with id Image'
 int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
 void ConvertHashToStringSL(CString& out, unsigned char buf[16]);
 bool AddToDublicateSL(int id, std::string& fname, std::string& dir, CString& info);

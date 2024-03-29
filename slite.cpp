@@ -5,6 +5,10 @@
 #include <objidl.h>
 
 
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
 static 	 std::shared_ptr<SLDatabaes> m_db;
 
 
@@ -316,6 +320,26 @@ int GetFaceIdImageSL(int id, CString& minimage)
     fset.Close();
     return sz;
 }
+IStream* GetFaseIdImageSL(int id)
+{ // Create Isttream user must relese it after end work
+  //  int sz = 0;
+    SLRecordset<FACESET> fset(m_db->GetDb());
+    std::string sql = "SELECT IMAGE FROM FACESET WHERE ID = '" + std::to_string(id) + "'";
+    if (fset.Open(sql) == SQLITE_OK) {
+        if (fset.Next() == SQLITE_ROW) {
+            uint8_t* ptr = (uint8_t*)sqlite3_column_blob(fset.GetSmpt(), 0);
+            DWORD blob_bytes = sqlite3_column_bytes(fset.GetSmpt(), 0);
+            if (ptr) {
+                IStream* is = SHCreateMemStream(NULL, NULL);
+                if (is != NULL) {
+                    is->Write(ptr, blob_bytes, &blob_bytes);
+                }
+            }
+        }
+    }
+
+    return nullptr;
+}
 
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path)
 {
@@ -496,6 +520,7 @@ int GetFileHashSL(IStream* iBuf,  unsigned char hash[16])
             szSize += dwRead;
             MD5Update(&mdhash, Buf, dwRead);
         } while (dwRead > 0);
+        iBuf->Seek(lr, STREAM_SEEK_SET, NULL) == S_OK;
     }
     MD5Final(hash, &mdhash);
     return szSize;
@@ -710,6 +735,74 @@ int AddFileToDbSL(CString& fname, CString& minname, CString& exif)
     if (hData != nullptr) free(hData);
     return int(id);
 }
+
+int AddFileToDbSL(CString& fname, IStream* imname, CString& exif)
+{
+    if (m_db.get() == nullptr) return 0;
+    if (imname == NULL) return 0;
+    int64_t id = -2;
+    CString volBuf = GetComputerInfoSL(fname); //_T("");	
+    CString disk = _T("");
+    DWORD serNum = 0;
+    DWORD fileSysFlag = 0;
+    DWORD maxCompLen = 0;
+    DWORD volSerNum = 0;
+    CString FileSysNameBuf = _T("");
+    DWORD nFileSysFlag = 0;
+    int ret = GetVolumeInformation(fname.Left(3)/*fname.GetBuffer()*/,
+        volBuf.GetBuffer(256), 256, &volSerNum,
+        &maxCompLen,
+        &nFileSysFlag,
+        FileSysNameBuf.GetBuffer(1024), 1024);
+    if (ret == 0) ret = GetLastError();
+    fname.ReleaseBuffer();
+    FileSysNameBuf.ReleaseBuffer();
+    volBuf.ReleaseBuffer();
+    disk.Format(_T("%X :: %s :: %s"), volSerNum, volBuf, FileSysNameBuf);
+
+
+    COleDateTime dt1, dt2;
+    SLEXIFSTR est; // bufer to save data
+    CString str;
+    unsigned char* hData = nullptr;
+    int stSize = exif.GetLength() * sizeof(TCHAR);
+    GetFileHash(imname, est.Hash.chHash);
+    ParseExifSL(exif, exif.GetLength(), 0, 0, est);
+    ConvertHashToStringSTR(est.exif[49], &est.Hash.chHash[0]);
+    SLRecordset<IMGSET> imgset(m_db->GetDb());
+    std::string sql = "SELECT ID FROM IMGSET WHERE HASH = '" + est.exif[49] + "'";
+    if (imgset.Open(sql) != SQLITE_OK) {
+        imgset.Close();
+        return id;
+    }
+    if (imgset.Next() == SQLITE_ROW) {
+        id = sqlite3_column_int64(imgset.GetSmpt(), 0);
+    }
+    imgset.Close();
+    if (id > 0) {
+        AddToDublicateSL(id, est.exif[0], est.exif[1], disk);
+        return id;
+    }
+    STATSTG iSize;
+    imname->Stat(&iSize, STATFLAG_NONAME);
+    DWORD size = iSize.cbSize.LowPart; // check
+    hData = (uint8_t*)malloc(size);
+    est.m_ptr = hData;
+    LARGE_INTEGER lr{ 0,0 };
+    if (imname->Seek(lr, STREAM_SEEK_SET, NULL) == S_OK) {
+        if (hData) {
+            imname->Read(hData, size, &size);
+        }
+        est.m_ptrLength = (hData == nullptr) ? 0 : size;
+        est.exif[35] = ConvertToUTF8(disk);
+        est.exif[36] = ConvertToUTF8(exif);
+        id = BindImgSet(imgset, est, sql);                  
+    }
+    if (hData != nullptr) free(hData);
+    return int(id);
+   
+}
+
 
 int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
    int id = 0;

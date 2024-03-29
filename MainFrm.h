@@ -80,6 +80,7 @@ public:
 protected:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 public:
+	IStream* SaveMiniPict();
 	afx_msg void OnGamma3();
 	afx_msg void OnGamma4();
 	afx_msg void OnGamma5();

@@ -1148,8 +1148,29 @@ void CMainFrame::OnMinpict() //save image to file .jpg size 128
 	green.Scale(128,sz, mingreen);
 	CString fpath =  this->workPath + _T("/mem.jpg");
 	SaveToFile(fpath, minblue,mingreen, minred);
+//	IStream * stream = SaveToStream(minblue, mingreen, minred);
+//	stream->Release();
+}
+IStream* CMainFrame::SaveMiniPict()
+{//  return IStream * You must free it calls ->Release();
+	if (!m_wndView.mem) return nullptr;
+	CPChannel minred;
+	CPChannel minblue;
+	CPChannel mingreen;
+	if (red.sz.x <= 0) return nullptr;
+	int sz = max(red.sz.x, red.sz.y);
+	int nw = red.sz.x * 128 / sz;
+	if (((nw >> 2) << 2) != nw) {
+		nw = (nw >> 2) << 2;
+		sz = 128 * red.sz.x / nw;
+	}
 
-
+	red.Scale(128, sz, minred);
+	blue.Scale(128, sz, minblue);
+	green.Scale(128, sz, mingreen);
+	IStream * stream = SaveToStream(minblue, mingreen, minred);
+	//	stream->Release();
+	return stream;
 }
 
 bool CMainFrame::SaveToFile(CString fpath,CPChannel& svblue, CPChannel& svgreen,CPChannel& svred, SaveImageFormat imform ){
@@ -1624,10 +1645,16 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 
 	}
 	
-	OnMinpict();
-	CString fpath = this->workPath + _T("/mem.jpg");
-	m_imgId = AddFileToDb(this->m_path, fpath, m_exifStr);
-	DeleteFile(fpath);
+	IStream* istr = SaveMiniPict();
+	if (istr == NULL) {
+		CString fpath = this->workPath + _T("/mem.jpg");
+		m_imgId = AddFileToDb(this->m_path, fpath, m_exifStr);
+		DeleteFile(fpath);
+	}
+	else {
+		m_imgId = AddFileToDb(this->m_path, istr, m_exifStr);
+		istr->Release();
+	}
 	this->m_wndView.Invalidate();
 	if (!bSilent) AfxGetApp()->EndWaitCursor();
 	
