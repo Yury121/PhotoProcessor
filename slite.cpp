@@ -333,6 +333,8 @@ IStream* GetFaseIdImageSL(int id)
                 IStream* is = SHCreateMemStream(NULL, NULL);
                 if (is != NULL) {
                     is->Write(ptr, blob_bytes, &blob_bytes);
+                    LARGE_INTEGER lr{ 0,0 };
+                    is->Seek(lr, STREAM_SEEK_SET, NULL);
                 }
             }
         }
@@ -388,6 +390,62 @@ int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString
     }
     imgset.Close();
     return 0;
+}
+
+IStream* GetIdInfoSL(int id, CString& fname, CString& exif, CString& path)
+{
+    int count = 0;
+    fname = _T(""); exif = _T(""); path = _T("");
+    SLRecordset<IMGSET>  imgset(m_db->GetDb());
+    IStream* is = nullptr;
+    std::string sql = "SELECT FILENAME, FDIR, DTORIGIN, DTFCREATE, MINIIMG, EXIF FROM IMGSET WHERE ID = '" + std::to_string(id) + "'";
+    if (imgset.Open(sql) == SQLITE_OK) {
+        if (imgset.Next() == SQLITE_ROW) {
+            imgset.m_set.m_filename = (char*)sqlite3_column_text(imgset.GetSmpt(), 0);
+            imgset.m_set.m_dir = (char*)sqlite3_column_text(imgset.GetSmpt(), 1);
+            imgset.m_set.m_dtOrigin = sqlite3_column_int64(imgset.GetSmpt(), 2);
+            imgset.m_set.m_fcDate = sqlite3_column_int64(imgset.GetSmpt(), 3);
+            imgset.m_set.m_exif = (char*)sqlite3_column_text(imgset.GetSmpt(), 5);
+            uint8_t* ptr = (uint8_t*)sqlite3_column_blob(imgset.GetSmpt(), 4);
+            DWORD blob_bytes = sqlite3_column_bytes(imgset.GetSmpt(), 4);
+            if (ptr) {
+                is = SHCreateMemStream(NULL, NULL);
+                if (is != NULL) {
+                    is->Write(ptr, blob_bytes, &blob_bytes);
+                     LARGE_INTEGER lr{ 0,0 };
+                     is->Seek(lr, STREAM_SEEK_SET, NULL);
+
+//                HANDLE hFile = ::CreateFile(minname.GetBuffer(), GENERIC_READ | GENERIC_WRITE, 0, 0, CREATE_ALWAYS, 0, 0);
+//              minname.ReleaseBuffer();
+//                if (hFile != INVALID_HANDLE_VALUE) {
+//                    WriteFile(hFile, ptr, blob_bytes, (DWORD*)&blob_bytes, 0);
+ //                   CloseHandle(hFile);
+                }
+            }
+            if (imgset.m_set.m_exif.empty()) {
+                SYS_SLTIME ss;
+                ss.systime = imgset.m_set.m_fcDate;
+                imgset.m_set.m_exif = "Path	    : " + imgset.m_set.m_dir + "/" + imgset.m_set.m_filename + "\r\n";
+                imgset.m_set.m_exif += "Created : " + std::to_string(ss.sltime.Day) + "/" + std::to_string(ss.sltime.Mounth);
+                imgset.m_set.m_exif += "/" + std::to_string(ss.sltime.Year) + " " + std::to_string(ss.sltime.Hour);
+                imgset.m_set.m_exif += ":" + std::to_string(ss.sltime.Minute) + ":" + std::to_string(ss.sltime.Second) + "\r\n";
+            }
+            std::string spath = "";
+            if (!imgset.m_set.m_dir.empty()) {
+                if (*imgset.m_set.m_dir.rbegin() == '/') {
+                    spath = imgset.m_set.m_dir + imgset.m_set.m_filename;
+                }
+                else {
+                    spath = imgset.m_set.m_dir + "/" + imgset.m_set.m_filename;
+                }
+            }
+            path = ConvertFromUTF8(spath);
+            exif = ConvertFromUTF8(imgset.m_set.m_exif);
+            fname = ConvertFromUTF8(imgset.m_set.m_filename);
+        }
+    }
+    imgset.Close();
+    return is;
 }
 
 int ParseExifSL(LPCTSTR src, int szsrc, LPCTSTR out, int szout, SLEXIFSTR& info)

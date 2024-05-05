@@ -541,6 +541,7 @@ void DeleteImgSL(int id); //delete from database
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain
 int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with idMain
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path);
+IStream * GetIdInfoSL(int id, CString& fname, CString& exif, CString& path);
 int GetIdCountSL(int* id_list, int  maxcnt);
 int AddFaceToDbSL(int idMain, CString& path, FRECT &rect);
 int AddFaceToDbSL(int idMain, IStream * path, FRECT& rect);

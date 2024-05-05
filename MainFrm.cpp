@@ -1436,6 +1436,7 @@ void CMainFrame::OnOpenOldImage()
 bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 {
 	unsigned char hashbuf[16]={};
+	SetWindowText(_T("PhotoProcessor "));
 	m_path = sName;
 	CString str;
 	CString sHash;

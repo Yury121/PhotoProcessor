@@ -98,7 +98,8 @@ BOOL CDbOldDlg::OnInitDialog()
 		tmp_img.Format(_T("%s/mem%d.JPG"), workPath, Ids[i]);
 		tmp_name = _T("");
 		tmp_exif =_T("");
-		GetIdInfo(Ids[i],tmp_name, tmp_img, tmp_exif, tmp);
+		IStream* is = GetIdInfo(Ids[i],tmp_name, tmp_exif, tmp);
+		// GetIdInfo(Ids[i],tmp_name, tmp_img, tmp_exif, tmp);
 		v_id.push_back(Ids[i]);
 		v_fname.push_back(tmp_name);
 		dx = tmp_exif.Find( _T("System") );
@@ -109,8 +110,12 @@ BOOL CDbOldDlg::OnInitDialog()
 
 		v_exif.push_back(tmp_exif);
 		v_path.push_back(tmp);
-		bbb = Bitmap::FromFile(tmp_img.GetBuffer());
-		tmp_img.ReleaseBuffer();
+		if (is != nullptr) {
+			bbb = Bitmap::FromStream(is);
+			is->Release();
+		}
+		//bbb = Bitmap::FromFile(tmp_img.GetBuffer());
+//		tmp_img.ReleaseBuffer();
 		if (bbb){
 			HBITMAP hbm;
 			bbb->GetHBITMAP(/*Gdiplus::Color(0,0,0)*/ NULL, &hbm);
