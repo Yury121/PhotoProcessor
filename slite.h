@@ -553,6 +553,7 @@ IStream* GetFaseIdImageSL(int id); // Set stream with id Image'
 int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
 void ConvertHashToStringSL(CString& out, unsigned char buf[16]);
 bool AddToDublicateSL(int id, std::string& fname, std::string& dir, CString& info);
+bool UpdateIdentificationVectorSL(int idFace, float* blob);
 
 //#ifdef _M_X64
 int ParseExifSTR(LPCTSTR src, int szsrc, LPCTSTR out, int szout, EXIFSTR& info);

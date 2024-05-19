@@ -1021,3 +1021,27 @@ void DeleteImgSL(int id)
     }
 
 }
+bool UpdateIdentificationVectorSL(int idFace, float* blob)
+{  //The blob must point to 256 floating point numbers.
+    double Norm = 0.;
+    //this code can be optimised
+    for (int i = 0; i < 256; i++) { 
+        Norm += blob[i] * blob[1];
+    }
+    SLRecordset<FACESET> fset(m_db->GetDb());
+    std::string sql = "UPDATE FACESET (NORM, COSIN) VALUES (?,?) WHERE ID='" + std::to_string(idFace) += "'";
+    int id = 0;
+    if (fset.Open(sql) == SQLITE_OK) {
+        id += sqlite3_bind_double(fset.GetSmpt(), 1, Norm);
+        id += sqlite3_bind_blob(fset.GetSmpt(), 2, blob, 256 * sizeof(float), SQLITE_TRANSIENT);
+        if (id == 0) {
+            sqlite3_step(fset.GetSmpt());
+        }
+        if (id == 0) {
+            sqlite3_step(fset.GetSmpt());
+        }
+    }
+    fset.Close();
+
+    return (id != 0);
+}
