@@ -549,6 +549,7 @@ int GetDubIdSL(int idMain, int* idBuf, int szBuf);
 CString GetDubPathSL(int idDub, CString& diskinfo); // get dublicate path and disk information
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain
 int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with idMain
+IStream * GetFaceIdImageSL(int id); // get list id to faces with idMain
 IStream* GetFaseIdImageSL(int id); // Set stream with id Image'
 int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
 void ConvertHashToStringSL(CString& out, unsigned char buf[16]);

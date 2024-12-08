@@ -320,6 +320,30 @@ int GetFaceIdImageSL(int id, CString& minimage)
     fset.Close();
     return sz;
 }
+IStream* GetFaceIdImageSL(int id) { // get list id to faces with idMain
+    int sz = 0;
+    IStream* is = nullptr;
+    SLRecordset<FACESET> fset(m_db->GetDb());
+    std::string sql = "SELECT IMAGE FROM FACESET WHERE ID = '" + std::to_string(id) + "'";
+    if (fset.Open(sql) == SQLITE_OK) {
+        if (fset.Next() == SQLITE_ROW) {
+            uint8_t* ptr = (uint8_t*)sqlite3_column_blob(fset.GetSmpt(), 0);
+            DWORD blob_bytes = sqlite3_column_bytes(fset.GetSmpt(), 0);
+            if (ptr) {
+                is = SHCreateMemStream(NULL, NULL);
+                if (is != NULL) {
+                    is->Write(ptr, blob_bytes, &blob_bytes);
+                    LARGE_INTEGER lr{ 0,0 };
+                    is->Seek(lr, STREAM_SEEK_SET, NULL);
+                }
+            }
+        }
+    }
+    fset.Close();
+    return is;
+
+}
+#if 0
 IStream* GetFaseIdImageSL(int id)
 { // Create Isttream user must relese it after end work
   //  int sz = 0;
@@ -342,6 +366,7 @@ IStream* GetFaseIdImageSL(int id)
 
     return nullptr;
 }
+#endif
 
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path)
 {
@@ -824,7 +849,8 @@ int AddFileToDbSL(CString& fname, IStream* imname, CString& exif)
     CString str;
     unsigned char* hData = nullptr;
     int stSize = exif.GetLength() * sizeof(TCHAR);
-    GetFileHash(imname, est.Hash.chHash);
+    //GetFileHash(imname, est.Hash.chHash);
+    GetFileHash(fname, est.Hash.chHash);  // need change function to remove 2 reading
     ParseExifSL(exif, exif.GetLength(), 0, 0, est);
     ConvertHashToStringSTR(est.exif[49], &est.Hash.chHash[0]);
     SLRecordset<IMGSET> imgset(m_db->GetDb());

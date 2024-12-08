@@ -834,7 +834,7 @@ void CMainFrame::OnToolsTestfaces()
 		blue.ScaleVarios(std::get<0>(osz), std::get<1>(osz), blue_sq);
 		green.ScaleVarios(std::get<0>(osz), std::get<1>(osz), green_sq);
 
-		this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
+		//this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
 		float xprop = 1.0f * red.sz.x / std::get<0>(osz);
 		float yprop = 1.0f * red.sz.y / std::get<1>(osz);
 		int add_y = 0;
@@ -1477,15 +1477,17 @@ bool CMainFrame::OpenFromFile(CString sName, bool bSilent)
 		free(hmem);
 	}
 	if (!bSilent) AfxGetApp()->BeginWaitCursor();
+#if 0 //ifdef _DEBUG
 	int sz11 = GetFileHash(sName, hashbuf);
 	if (sz11 < 100){
 		return false;
 	}
 	m_imgId = -1;
 	ConvertHashToString(sHash, hashbuf);
-
+#endif
 //	AfxGetApp()->BeginWaitCursor();
 	Bitmap * bbb=0;
+
 	m_path.ReleaseBuffer();
 
 	bbb = Bitmap::FromFile(m_path.GetBuffer());

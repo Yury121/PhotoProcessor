@@ -153,8 +153,11 @@ int CFacesDlg::AddToImageList(int imgId){
 		sid.iRef = v_enum.size();
 //		v_id.push_back(idBuf[i]);
 		v_id.push_back(sid);
-		if (GetFaceIdImage(idBuf[i], tmp_img) > 100){
-			bbb = Bitmap::FromFile(tmp_img.GetBuffer());
+		IStream* istr = GetFaceIdImage(idBuf[i]);// NULL;
+//		if (GetFaceIdImage(idBuf[i], tmp_img) > 100){
+		if (istr != nullptr) {
+//			bbb = Bitmap::FromFile(tmp_img.GetBuffer());
+			bbb = Bitmap::FromStream(istr);
 			tmp_img.ReleaseBuffer();
 			if (bbb){
 				HBITMAP hbm;
@@ -182,7 +185,8 @@ int CFacesDlg::AddToImageList(int imgId){
 				m_imglist.Add(&bmpNull, RGB(255, 255, 255));
 			}
 			cnt++;
-			DeleteFile(tmp_img);
+	//		DeleteFile(tmp_img);
+			istr->Release();
 		}//end  for process face
 	}//end loop for images
 	faces.count = cnt;
