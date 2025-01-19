@@ -98,7 +98,7 @@ void CProgressDlg::NextStep(CString fname){
 	m_file.Format(_T("scan (%d of %d): %s"), m_szCur, m_szAll, fname);
 	UpdateData(false);
 	ShowWindow(SW_SHOW);
-	this->CenterWindow();
+//	this->CenterWindow();
 	this->UpdateWindow();
 
 }

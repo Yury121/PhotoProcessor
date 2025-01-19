@@ -157,13 +157,17 @@ private:
 
 };
 
+ static const std::string FDNAME = "DLL/FP32/face-detection-0204.xml";
+ static const std::string sIDFName = "DLL/FP32/face-reidentification-retail-0095.xml";
+
 class COpenVinoModel {
 public:
-	std::string ainet_name = "DLL/FP32/face-detection-0204.xml";//"DLL/FP32/person-detection-0200.xml";// "DLL/face-detection-0204.xml";// ";// "Bin / 0200.xml";  face-detection-retail-0004.xml
+	std::string ainet_name;// = "DLL/FP32/face-detection-0204.xml";//"DLL/FP32/person-detection-0200.xml";// "DLL/face-detection-0204.xml";// ";// "Bin / 0200.xml";  face-detection-retail-0004.xml
 
 	COpenVinoModel() {};
-	COpenVinoModel(std::string path) {
+	COpenVinoModel(std::string path, int ID = 0) {
 		try {
+			ainet_name = (ID == 1) ? sIDFName : FDNAME;
 			std::string mpath = path + ainet_name;
 
 			model = core.read_model(mpath);
@@ -211,6 +215,33 @@ public:
 		return { 0,0 };
 	};
 	inline ov::Shape GetInputShape() { return shape; };
+
+	inline int RanInfer1(uint8_t * data, float * out) {
+		
+		if (model.get() == nullptr) {
+			ov_err = "model_not set";
+			return 0;
+		}
+		ov_err = "";
+		timespec t_start, t_stop;
+		try {
+			ov::Tensor input_tensor(ov::element::Type_t::u8, shape,( uint8_t *) data);
+			infer_request.set_input_tensor(input_tensor);
+			timespec_get(&t_start, TIME_UTC);
+			infer_request.infer();
+			timespec_get(&t_stop, TIME_UTC);
+			ov::Tensor output_tensor;
+			auto out_data = output_tensor.data<float>();
+			memcpy(out, out_data, 256);
+			return 256;
+		}
+		catch (ov::Exception& wcp) {
+			ov_err = "\nException "; 	ov_err += (char*)wcp.what();
+			
+		}
+		return 	   0;
+	};
+	////////////////////////
 	template <typename T>
 	inline std::vector<ovector> RunInfer(T* data) {
 		std::vector<ovector> out_v;

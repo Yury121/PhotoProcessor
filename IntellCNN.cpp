@@ -99,6 +99,7 @@ std::string sModelParameters(CNNINFOSTRUCT& minfo)
 
 
 static COpenVinoModel* m_ov = nullptr;
+static COpenVinoModel* m_ovid = nullptr;
 
 
 void initOpenVinoModel(std::string wpath)
@@ -108,6 +109,10 @@ void initOpenVinoModel(std::string wpath)
 		if (m_ov->GetModel() != nullptr) return;
 	}
 	m_ov = new COpenVinoModel(path_to_model);
+	if (m_ovid) {
+		if (m_ovid->GetModel() != nullptr) return;
+	}
+	m_ovid = new COpenVinoModel(wpath, 1);
 }
 
 void CloseOpenVinoModel()
@@ -130,6 +135,27 @@ std::string GetOVString() {
 	return sout;
 }
 
+int CalcIDArray(uint8_t* red, uint8_t* blue, uint8_t* green, float* kof)
+{				  // not work not complete
+	int ret = 0;
+	if (m_ovid) {
+		ov::Shape shape = m_ovid->GetInputShape();
+		int size = 128 * 128;
+		int sz = shape[2] * shape[3];
+		uint8_t * data = (uint8_t *) malloc(sz * 3);
+		if (data) {
+			for (int i = 128 - 1; i >= 0; i--) {
+				memcpy(data + i * shape[2], blue + sz - (i + 1) * shape[2], shape[2]);
+				memcpy(data + sz + i * shape[2], green + sz - (i + 1) * shape[2], shape[2]);
+				memcpy(data + 2 * size + i * shape[2], red + sz - (i + 1) * shape[2], shape[2]);
+			}
+			ret = m_ovid->RanInfer1(data, kof);
+			free(data);
+			
+		}
+	}
+	return ret;
+}
 
 int DetectObjectsExtOV(uint8_t* red, uint8_t* blue, uint8_t* green, int size, float kof, int add_y, FRECT* rect, int& rsz)
 {

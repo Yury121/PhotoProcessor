@@ -26,6 +26,7 @@ const unsigned char GAMMA_BIG[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 #define TESTVSIZE1 1200
 #define TESTVSIZE2 800
 #define TESTEYE		256
+#define TESTID		128
 
 
 typedef struct _GISTOGRAMM{

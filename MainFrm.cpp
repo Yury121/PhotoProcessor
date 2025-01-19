@@ -915,6 +915,13 @@ void CMainFrame::OnToolsTestfaces()
 			stmp.Format(_T("%s-%d.jpg"), path1, i + 1);
 			//			SaveChannalToFile(stmp, test/*, CMainFrame::BMP*/);
 			this->SaveToFile(stmp, btest, gtest, rtest);
+			// try add re-idification		 !not complite
+			gtest.Scale(TESTID);
+			btest.Scale(TESTID);
+			rtest.Scale(TESTID);
+			float fCof[256];
+			memset(fCof, 0, sizeof(fCof));
+			CalcIDArray(rtest.arr, btest.arr, gtest.arr, fCof);
 			AddFaceToDb(m_imgId, stmp, faces[i]);
 #ifndef _M_X64
 
