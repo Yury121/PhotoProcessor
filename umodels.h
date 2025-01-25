@@ -216,7 +216,7 @@ public:
 	};
 	inline ov::Shape GetInputShape() { return shape; };
 
-	inline int RanInfer1(uint8_t * data, float * out) {
+	inline int RanInfer1(float * data, float * out) {
 		
 		if (model.get() == nullptr) {
 			ov_err = "model_not set";
@@ -225,14 +225,15 @@ public:
 		ov_err = "";
 		timespec t_start, t_stop;
 		try {
-			ov::Tensor input_tensor(ov::element::Type_t::u8, shape,( uint8_t *) data);
+			ov::Tensor input_tensor(ov::element::Type_t::f32, shape,( float *) data);
 			infer_request.set_input_tensor(input_tensor);
 			timespec_get(&t_start, TIME_UTC);
 			infer_request.infer();
 			timespec_get(&t_stop, TIME_UTC);
-			ov::Tensor output_tensor;
+			ov::Tensor output_tensor = infer_request.get_output_tensor();
 			auto out_data = output_tensor.data<float>();
-			memcpy(out, out_data, 256);
+			ov::Shape o_shape = output_tensor.get_shape();
+			memcpy((uint8_t *)out, (uint8_t*)out_data, 256*sizeof(float));
 			return 256;
 		}
 		catch (ov::Exception& wcp) {
