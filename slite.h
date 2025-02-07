@@ -56,7 +56,13 @@ union SYS_SLTIME {
 	int64_t systime;
 	SLTIME sltime;
 };
-
+typedef struct _tagBLOBPARAM {
+	float* cosin = nullptr;
+	double age = 0;
+	double norm = 0.f;
+	double male = 0.f;
+	double female = 0.f;
+}BLOBPARAM;
 
 inline int64_t ConvertFromMSTime(COleDateTime& dt) {
 	//int64_t time = 0L;
@@ -543,8 +549,8 @@ int GetFaceIdImageSL(int id, CString& minimage); // get list id to faces with id
 int GetIdInfoSL(int id, CString& fname, CString& minname, CString& exif, CString& path);
 IStream * GetIdInfoSL(int id, CString& fname, CString& exif, CString& path);
 int GetIdCountSL(int* id_list, int  maxcnt);
-int AddFaceToDbSL(int idMain, CString& path, FRECT &rect);
-int AddFaceToDbSL(int idMain, IStream * path, FRECT& rect);
+int AddFaceToDbSL(int idMain, CString& path, FRECT &rect, BLOBPARAM* bp = nullptr);
+int AddFaceToDbSL(int idMain, IStream * path, FRECT& rect, BLOBPARAM * bp = nullptr);
 int GetDubIdSL(int idMain, int* idBuf, int szBuf);
 CString GetDubPathSL(int idDub, CString& diskinfo); // get dublicate path and disk information
 int GetFaceIdInfoSL(int idMain, int* idBuf, int szBuf, CString& fname); // get list id to faces with idMain

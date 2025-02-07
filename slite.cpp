@@ -888,7 +888,7 @@ int AddFileToDbSL(CString& fname, IStream* imname, CString& exif)
 }
 
 
-int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
+int AddFaceToDbSL(int idMain, CString& path, FRECT& rect, BLOBPARAM* bp) {
    int id = 0;
    std::string  sHash = "";
    std::string sql = "SELECT ID FROM FACESET WHERE IDMAIN='" +std::to_string(idMain) += "' AND HASH = '";
@@ -917,7 +917,7 @@ int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
        }
        CloseHandle(hFile);
    }
-   sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT) VALUES (?,?,?, ?,?,?,?)";
+   sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT, AGE, NORM, MALE, FEMALE, COSIN) VALUES (?,?,?, ?,?,?,?,?,?,?,?,?)";
    if (fset.Open(sql) == SQLITE_OK) {
        id += sqlite3_bind_int(fset.GetSmpt(), 1, idMain);
        id += sqlite3_bind_text(fset.GetSmpt(), 2, sHash.c_str(), sHash.length(), 0);
@@ -934,12 +934,31 @@ int AddFaceToDbSL(int idMain, CString& path, FRECT& rect) {
        if (id == 0) {
            sqlite3_step(fset.GetSmpt());
        }
+       if (bp != nullptr) {
+           id += sqlite3_bind_double(fset.GetSmpt(), 8, bp->age);
+           id += sqlite3_bind_double(fset.GetSmpt(), 9, bp->norm);
+           id += sqlite3_bind_double(fset.GetSmpt(), 10, bp->male);
+           id += sqlite3_bind_double(fset.GetSmpt(), 11, bp->female);
+           if (bp->cosin != nullptr) {
+               id += sqlite3_bind_blob(fset.GetSmpt(), 12, bp->cosin, 1024 * sizeof(float), SQLITE_TRANSIENT);
+           }
+           else {
+               id += sqlite3_bind_null(fset.GetSmpt(), 12);
+           }
+       }
+       else {
+           id += sqlite3_bind_double(fset.GetSmpt(), 8, 0.);
+           id += sqlite3_bind_double(fset.GetSmpt(), 9, 0.);
+           id += sqlite3_bind_double(fset.GetSmpt(), 10, 0.);
+           id += sqlite3_bind_double(fset.GetSmpt(), 11, 0.);
+           id += sqlite3_bind_null(fset.GetSmpt(), 12);
+       }
    }
    fset.Close();
    if (hData != nullptr) free(hData);
     return id;
 }
-int AddFaceToDbSL(int idMain, IStream* path, FRECT& rect)
+int AddFaceToDbSL(int idMain, IStream* path, FRECT& rect, BLOBPARAM* bp)
 {
     int id = 0;
     std::string  sHash = "";
@@ -970,7 +989,7 @@ int AddFaceToDbSL(int idMain, IStream* path, FRECT& rect)
         ULONG size = 0;
         path->Read(hData, sz, &size);
     }
-    sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT) VALUES (?,?,?, ?,?,?,?)";
+    sql = "INSERT INTO FACESET (IDMAIN, HASH, IMAGE, X, Y, WIDTH, HEIGHT, AGE, NORM, MALE, FEMALE, COSIN) VALUES (?,?,?, ?,?,?,?,?,?,?,?,?)";
     if (fset.Open(sql) == SQLITE_OK) {
         id += sqlite3_bind_int(fset.GetSmpt(), 1, idMain);
         id += sqlite3_bind_text(fset.GetSmpt(), 2, sHash.c_str(), sHash.length(), 0);
@@ -986,6 +1005,25 @@ int AddFaceToDbSL(int idMain, IStream* path, FRECT& rect)
         }
         if (id == 0) {
             sqlite3_step(fset.GetSmpt());
+        }
+        if (bp != nullptr) {
+            id += sqlite3_bind_double(fset.GetSmpt(), 8, bp->age);
+            id += sqlite3_bind_double(fset.GetSmpt(), 9, bp->norm);
+            id += sqlite3_bind_double(fset.GetSmpt(), 10, bp->male);
+            id += sqlite3_bind_double(fset.GetSmpt(), 11, bp->female);
+            if (bp->cosin != nullptr) {
+                id += sqlite3_bind_blob(fset.GetSmpt(), 12, bp->cosin, 1024 * sizeof(float), SQLITE_TRANSIENT);
+            }
+            else {
+                id += sqlite3_bind_null(fset.GetSmpt(), 12);
+            }
+        }
+        else {
+            id += sqlite3_bind_double(fset.GetSmpt(), 8, 0.);
+            id += sqlite3_bind_double(fset.GetSmpt(), 9, 0.);
+            id += sqlite3_bind_double(fset.GetSmpt(), 10, 0.);
+            id += sqlite3_bind_double(fset.GetSmpt(), 11, 0.);
+            id += sqlite3_bind_null(fset.GetSmpt(), 12);
         }
     }
     fset.Close();
