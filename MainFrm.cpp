@@ -901,7 +901,9 @@ void CMainFrame::OnToolsTestfaces()
 #endif
 		std::vector<int> scale;
 		CPChannel rtest, btest, gtest;
+		BLOBPARAM bp;
 		for (unsigned int i = 0; i < faces.size(); i++) {
+			bp.Clear();
 			green.SelectRect(faces[i].x, faces[i].y, faces[i].width, faces[i].height, gtest);
 			gtest.DinDiap();
 			gtest.Scale(TESTEYE);
@@ -921,8 +923,14 @@ void CMainFrame::OnToolsTestfaces()
 			rtest.Scale(TESTID);
 			float fCof[256];
 			memset(fCof, 0, sizeof(fCof));
+			// this code must be optimised
 			CalcIDArray(rtest.arr, btest.arr, gtest.arr, fCof);
-			AddFaceToDb(m_imgId, stmp, faces[i]);
+			for (int kk = 0; kk < 256; kk++) {
+				bp.norm += fCof[kk] * fCof[kk];
+			}
+			bp.cosin = fCof;
+
+			AddFaceToDb(m_imgId, stmp, faces[i], &bp);
 #ifndef _M_X64
 
 

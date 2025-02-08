@@ -62,6 +62,10 @@ typedef struct _tagBLOBPARAM {
 	double norm = 0.f;
 	double male = 0.f;
 	double female = 0.f;
+	void Clear(void) {
+		cosin = nullptr;
+		age = male = female = norm = 0.;
+	};
 }BLOBPARAM;
 
 inline int64_t ConvertFromMSTime(COleDateTime& dt) {
