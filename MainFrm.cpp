@@ -928,6 +928,7 @@ void CMainFrame::OnToolsTestfaces()
 			for (int kk = 0; kk < 256; kk++) {
 				bp.norm += fCof[kk] * fCof[kk];
 			}
+			bp.norm = sqrt(bp.norm);
 			bp.cosin = fCof;
 
 			AddFaceToDb(m_imgId, stmp, faces[i], &bp);
