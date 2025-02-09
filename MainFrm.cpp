@@ -878,8 +878,10 @@ void CMainFrame::OnToolsTestfaces()
 			int my = (m_wndView.m_cp.y == 0) ? m_wndView.sz.cy : m_wndView.m_size.y - m_wndView.m_cp.y;
 			for (int i = 0; i < rsz; i++) {
 				//check resualt
+				if (rect[i].x < 0 || rect[i].y < 0) continue;
+				if (rect[i].width >= red.sz.x || rect[i].height >= red.sz.y) continue;
 				if (rect[i].x + rect->width >= red.sz.x) continue;
-				//if (rect[i].y - rect[i].height >= red.sz.y) continue;
+				if (rect[i].y + rect[i].height >= red.sz.y) continue;
 
 				//		dc->MoveTo(rect[i].x, rect[i].y);
 				face.x = max(0, int((rect[i].x - 5)));
