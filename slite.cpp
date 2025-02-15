@@ -657,6 +657,60 @@ CString GetComputerInfoSL(CString& path) {
     return ret;
  }
 
+int GetFacesFromDB(CFaceArray& vFaces)
+{
+    int cnt = 0;
+    std::string sql = "SELECT ID, IDMAIN, X, Y, WIDTH, HEIGHT, NORM, AGE, MALE, FEMALE, IMAGE, COSIN FROM FACESET ORDER BY IDMAIN";
+    SLRecordset<FACESET> fset(m_db->GetDb());
+    CFace ff;
+    float male, female;
+    int  imgsize = 65536;
+    uint8_t* image = (uint8_t*) malloc(imgsize);
+    if (fset.Open(sql) == SQLITE_OK) {
+        while (fset.Next() == SQLITE_ROW) {
+            ff.m_id = sqlite3_column_int(fset.GetSmpt(), 0);
+            ff.m_idMain = sqlite3_column_int(fset.GetSmpt(), 1);
+            ff.m_X = sqlite3_column_int(fset.GetSmpt(), 2);
+            ff.m_Y = sqlite3_column_int(fset.GetSmpt(), 3);
+            ff.m_Width = sqlite3_column_int(fset.GetSmpt(), 4);
+            ff.m_Height = sqlite3_column_int(fset.GetSmpt(), 5);
+            ff.m_norm = float(sqlite3_column_double(fset.GetSmpt(), 6));
+            ff.m_age = float(sqlite3_column_double(fset.GetSmpt(), 7));
+            male = float(sqlite3_column_double(fset.GetSmpt(), 8));
+            female = float(sqlite3_column_double(fset.GetSmpt(), 9));
+            ff.m_male = (male < female) ? -female : male;
+            uint8_t* ptr = (uint8_t*)sqlite3_column_blob(fset.GetSmpt(), 10);
+            DWORD blob_bytes = sqlite3_column_bytes(fset.GetSmpt(), 10);
+            if (ptr) {
+                memcpy((uint8_t*)ff.m_kof, ptr, 1024);
+            }
+            ptr = (uint8_t*)sqlite3_column_blob(fset.GetSmpt(), 11);
+            blob_bytes = sqlite3_column_bytes(fset.GetSmpt(), 11);
+            ff.m_szimg = 0;
+            ff.m_image = nullptr;
+            if (ptr) {
+                if (blob_bytes > imgsize) {
+                    free(image);
+                    image == nullptr;
+                    imgsize = ((blob_bytes + 7) / 8) * 8;
+                    image = (uint8_t *)malloc(imgsize);
+
+                }
+                if (image) {
+                    memcpy(image, ptr, blob_bytes);
+                    ff.m_szimg = blob_bytes;
+                    ff.m_image = image;
+                }
+            }
+            vFaces.Insert(ff);
+
+        }
+    }
+    if (image) free(image);
+
+    return 0;
+}
+
 bool AddToDublicateSL(int id, std::string& fname, std::string& dir, CString& info)
 {
     SLRecordset<IMGREF> rset(m_db->GetDb());

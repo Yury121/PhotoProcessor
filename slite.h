@@ -535,6 +535,65 @@ private:
 	sqlite3* m_db = nullptr;
 };
 
+class CFace {
+public:
+	CFace() {};
+	~CFace() {
+		if (m_image != nullptr) free(m_image);
+		m_vIsIt.clear();
+	};
+	int m_id =-1;
+	int m_idMain= -1;
+	int m_X = 0;
+	int m_Y = 0;
+	int m_Width = 0;
+	int m_Height = 0;
+	float m_age = 0.f;
+	float m_male = 0.f;
+	float m_norm;
+	float m_kof[256];
+	int m_szimg = 0;
+	uint8_t * m_image = nullptr;
+	std::vector < std::pair<int, int> > m_vIsIt;
+	CFace& operator = (const CFace& el) {
+		m_id = el.m_id;
+		m_idMain = el.m_idMain;
+		m_X = el.m_X;
+		m_Y = el.m_Y;
+		m_Width = el.m_Width;
+		m_Height = el.m_Height;
+		m_norm = el.m_norm;
+		m_age = el.m_age;
+		m_male = el.m_male;
+		std::copy(el.m_kof, el.m_kof + 256, m_kof);
+		if (el.m_szimg > 0) {
+			if (m_image != nullptr && m_szimg < el.m_szimg) {
+				free(m_image);
+				m_image = nullptr;
+			}
+			m_szimg = el.m_szimg;
+			if (m_image == nullptr) m_image = (uint8_t*)malloc(m_szimg);
+			if (m_image != nullptr) memcpy(m_image, el.m_image, m_szimg);
+			else m_szimg = 0;
+
+		}
+		m_vIsIt.clear();
+		for (size_t i = 0; i < el.m_vIsIt.size(); i++) m_vIsIt.push_back(el.m_vIsIt[i]);
+	};
+};
+
+class CFaceArray {
+public:
+	CFaceArray() {};
+	~CFaceArray() {};
+	std::vector<CFace> m_vFaces;
+	inline void Insert(CFace & face) {
+		CFace newface;
+		newface = face;
+		m_vFaces.push_back(newface);
+	};
+};
+
 
 int InitLocalDBSL(LPCTSTR fpath);
 void ReleaseLocalDBSL();
@@ -565,6 +624,8 @@ int GetFileHashSL(LPCTSTR fpath, unsigned char hash[16]);
 void ConvertHashToStringSL(CString& out, unsigned char buf[16]);
 bool AddToDublicateSL(int id, std::string& fname, std::string& dir, CString& info);
 bool UpdateIdentificationVectorSL(int idFace, float* blob);
+
+int GetFacesFromDB(CFaceArray & vFaces);
 
 //#ifdef _M_X64
 int ParseExifSTR(LPCTSTR src, int szsrc, LPCTSTR out, int szout, EXIFSTR& info);
