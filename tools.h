@@ -6,6 +6,7 @@
 
 //#include "./jpeglib/jpeglib.h"
 #include "vklt.h"
+#include <immintrin.h>
 
 typedef unsigned char uint8;
 #if 0
@@ -27,6 +28,22 @@ const unsigned char GAMMA_BIG[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 #define TESTVSIZE2 800
 #define TESTEYE		256
 #define TESTID		128
+
+static inline float mul(float* a, float* b) {
+	float pole[32] = {};
+	__m512 mc = _mm512_loadu_ps(pole);
+	mc = _mm512_xor_ps(mc, mc);
+	for (int i = 0; i < 8; i++) {
+		__m512 ma = _mm512_loadu_ps(a + i * 32);
+		__m512 mb = _mm512_loadu_ps(b + i * 32);
+		mc = _mm512_fmadd_ps(ma, mb, mc);
+	}
+	_mm512_storeu_ps(pole, mc);
+	for (int i = 1; i < 32; i++) {
+		pole[0] += pole[i];
+	}
+	return (pole[0]);
+}
 
 
 typedef struct _GISTOGRAMM{

@@ -927,9 +927,12 @@ void CMainFrame::OnToolsTestfaces()
 			memset(fCof, 0, sizeof(fCof));
 			// this code must be optimised
 			CalcIDArray(rtest.arr, btest.arr, gtest.arr, fCof);
+//			bp.norm = mul(fCof, fCof); // next must select for different options
+
 			for (int kk = 0; kk < 256; kk++) {
 				bp.norm += fCof[kk] * fCof[kk];
 			}
+
 			bp.norm = sqrt(bp.norm);
 			bp.cosin = fCof;
 
@@ -1056,95 +1059,6 @@ void CMainFrame::OnExif()
 		dlg.DoModal();
 		return;
 	}
-#if 0
-	AfxGetApp()->BeginWaitCursor();
-//	CString m_path = 
-	CString ename = m_startDir+_T("DLL/exiftool.exe");// _T("d:\\Worker\\PhotoProcessor\\DLL\\exiftool.exe"); //  -a -u -g1 
-	CString einf = m_startDir + _T("DLL/out.txt");//	_T("d:\\Worker\\PhotoProcessor\\DLL\\out.txt");
-	//LPWSTR cmdln[MAX_PATH*2] ={};
-	STARTUPINFO si;
-    PROCESS_INFORMATION pi;
-
-
-    ZeroMemory( &si, sizeof(si) );
-    si.cb = sizeof(si);
-	si.dwFlags = STARTF_USESHOWWINDOW;
-	si.wShowWindow = SW_HIDE;
-    ZeroMemory( &pi, sizeof(pi) );
-	CString cmd;// = ename + m_path;
-//	cmd.Format(_T("%sDLL/test.bat \"%s\""), m_startDir,  m_path,  einf);
-	cmd.Format(_T("d:\\Worker\\PhotoProcessor\\DLL\\test.bat \"%s\""),  m_path, einf);
-	//cmd.Format(_T("exiftool.exe -a -u -g1 \"%s\""),  m_path);
-	
-//	cmd.Format(_T("%s \"%s\" > \"%s\""), ename, m_path, einf);
-//	if (WideCharToMultiByte(CP_ACP,WC_NO_BEST_FIT_CHARS, cmd, cmd.GetLength(), chcmd, 1000,NULL, NULL)){
-//	cmd = _T("../DLL/exiftool.exe");
-	cbWrite = cmd.GetLength();
-	LPWSTR cmdptr = cmd.GetBuffer(cbWrite + 1000);
-
-	//HANDLE hFile = ::CreateFile(einf, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_WRITE|FILE_SHARE_READ, 0, CREATE_ALWAYS,0,0);
-	//if (hFile != INVALID_HANDLE_VALUE){
-	//	si.hStdOutput = hFile;
-	//	si.dwFlags = STARTF_USESTDHANDLES|STARTF_USESHOWWINDOW;
-	//	if (!WriteFile(hFile, cmdptr, cbWrite, &cbWrite,0)){
-	//		cmd.Format(_T("Write failed (%d)."), GetLastError() );
-	//	}
-	
-	if( !CreateProcess( NULL,
-        cmdptr,//_TEXT("../DLL/exiftool.exe"), // Command line. 
-        NULL,             // Process handle not inheritable. 
-        NULL,             // Thread handle not inheritable. 
-        FALSE,            // Set handle inheritance to FALSE. 
-        0,                // No creation flags. 
-        NULL,             // Use parent's environment block. 
-        _T("d:\\Worker\\PhotoProcessor\\DLL"),             // Use parent's starting directory. 
-        &si,              // Pointer to STARTUPINFO structure.
-        &pi )             // Pointer to PROCESS_INFORMATION structure.
-    ) 
-
-    {
-		cmd.ReleaseBuffer();
-		AfxGetApp()->EndWaitCursor();
-		cmd.Format(_T("CreateProcess failed (%d)."), GetLastError() );
-        AfxMessageBox( cmd, MB_ICONSTOP);
-        return;
-    }
-
-    // Wait until child process exits.
-    WaitForSingleObject( pi.hProcess, INFINITE );
-    // Close process and thread handles. 
-    CloseHandle( pi.hProcess );
-    CloseHandle( pi.hThread );
-	cmd.ReleaseBuffer();
-	HANDLE hFile = ::CreateFile(einf, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING,0,0);
-	if (hFile != INVALID_HANDLE_VALUE){
-		char * buf= 0;
-		LPWSTR wbuf = 0;
-		cbWrite = GetFileSize(hFile,0);
-		buf = (char *) malloc(cbWrite +100 + cbWrite*sizeof(WCHAR)+100);
-		wbuf = (WCHAR *) &buf[((cbWrite+107)/8)*8];
-		if (buf){
-			memset(buf,0, cbWrite +100 + cbWrite*sizeof(WCHAR)+100);
-			ReadFile(hFile, buf, cbWrite, &cbWrite,0);
-			MultiByteToWideChar(CP_ACP,MB_PRECOMPOSED, buf, cbWrite, wbuf, cbWrite);
-			ParseExif(wbuf, cbWrite, dlg.m_msg.GetBuffer(cbWrite), cbWrite, exifinfo);
-			dlg.m_msg.ReleaseBuffer();
-
-
-
-//			dlg.m_msg = wbuf;
-//			ParseExif(wbuf, dlg.m_msg.GetLength(), 0, 100);
-			free(buf);
-		}
-		AfxGetApp()->EndWaitCursor();
-		CloseHandle(hFile);
-//		DeleteFile(einf);
-		dlg.DoModal();
-	}
-	else{
-		AfxGetApp()->EndWaitCursor();
-	}
-#endif
 }
 
 void CMainFrame::OnMinpict() //save image to file .jpg size 128

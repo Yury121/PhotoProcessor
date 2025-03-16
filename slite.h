@@ -579,6 +579,7 @@ public:
 		}
 		m_vIsIt.clear();
 		for (size_t i = 0; i < el.m_vIsIt.size(); i++) m_vIsIt.push_back(el.m_vIsIt[i]);
+		return *this;
 	};
 };
 
