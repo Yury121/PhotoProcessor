@@ -441,6 +441,7 @@ BEGIN
         MENUITEM MFT_SEPARATOR
         MENUITEM "Restore Original path",       ID_TOOLS_RESTOREORIGINALPATH,MFT_STRING,MFS_ENABLED
         MENUITEM "Options",                     32827,MFT_STRING,MFS_ENABLED
+        MENUITEM "Update persons",              ID_TOOLS_UPDATEPERSONS,MFT_STRING,MFS_ENABLED
     END
     MENUITEM "Exif",                        ID_EXIF,MFT_STRING,MFS_ENABLED
     POPUP "Scan folder",                    65535,MFT_STRING,MFS_ENABLED
@@ -645,6 +646,7 @@ END
 STRINGTABLE
 BEGIN
     ID_OPTIONS              "Set global options"
+    ID_TOOLS_UPDATEPERSONS  "Update persons database"
 END
 
 #endif    // Russian (Russia) resources

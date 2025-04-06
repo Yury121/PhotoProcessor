@@ -6,6 +6,7 @@
 #include "sqlite3.h"
 #include <Windows.h>
 #include <afxwin.h>  
+#include <vector>
 //#include <atlstr.h>
 #include <ATLComTime.h>
 #include "cvdface.h"
@@ -302,6 +303,16 @@ typedef struct _tagIMGSET {
 	
 }IMGSET;
 
+typedef struct _tagVARSET {
+	float m_float = 0.f;
+	int32_t m_i32 = 0;
+	int64_t m_long = 0;
+	double m_float64 = 0;
+	void* m_ptr = nullptr;
+	std::string m_txt = "";
+	std::string m_name = "";
+}VARSET;
+
 
 static const char* sql_imgset = "CREATE TABLE IF NOT EXISTS  IMGSET(" \
 " ID INTEGER PRIMARY KEY AUTOINCREMENT, DTORIGIN INTEGER, DTFCREATE INTEGER, WIDTH INTEGER, HEIGHT INTEGER, " \
@@ -328,6 +339,12 @@ static const char* sql_faces = "CREATE TABLE IF NOT EXISTS  FACESET(" \
 "HASH TEXT, X INTEGER, Y INTEGER, WIDTH INTEGER, HEIGHT INTEGER, NORM REAL,"\
 "AGE REAL, MALE REAL, FEMALE REAL, IMAGE BLOB, COSIN BLOB)";
 static const char* sql_indHash = "CREATE INDEX IF NOT EXISTS IDMAIN ON FACESET(IDMAIN, HASH)";
+static const char* sql_person = "CREATE TABLE IF NOT EXISTS PERSON ("\
+" ID INTEGER PRIMARY KEY AUTOINCREMENT, B_YEAR INTEGER, B_MOUNS INTEGER, B_DAY INTEGER, NAME TEXT, ABOUT TEXT,"\
+"NORM REAL, KOF BLOB)";
+static const char* sql_personImg = "CREATE TABLE IF NOT EXISTS  PERSONIMG (IDPERSON INTEGER, IDFACE INTEGER)";
+static const char* sql_indPerson = "CREATE INDEX IF NOT EXISTS INDPERSON ON PERSONIMG(IDPERSON)";
+
 
 template <typename T>
 class SLRecordset {
@@ -498,6 +515,22 @@ public:
 			sqlite3_free(cerr);
 			return Close();
 		}
+		res = sqlite3_exec(m_db, sql_person, 0, 0, &cerr);
+		if (res) {
+			sqlite3_free(cerr);
+			return Close();
+		}
+		res = sqlite3_exec(m_db, sql_personImg, 0, 0, &cerr);
+		if (res) {
+			sqlite3_free(cerr);
+			return Close();
+		}
+		res = sqlite3_exec(m_db, sql_indPerson, 0, 0, &cerr);
+		if (res) {
+			sqlite3_free(cerr);
+			return Close();
+		}
+
 		return res;
 	};
 	inline bool CheckColumnExist(std::string cname) {
@@ -539,8 +572,8 @@ class CFace {
 public:
 	CFace() {};
 	~CFace() {
-		if (m_image != nullptr) free(m_image);
-		m_vIsIt.clear();
+//		if (m_image != nullptr) free(m_image);
+//		m_vIsIt.clear();
 	};
 	int m_id =-1;
 	int m_idMain= -1;
@@ -551,9 +584,9 @@ public:
 	float m_age = 0.f;
 	float m_male = 0.f;
 	float m_norm;
-	float m_kof[256];
-	int m_szimg = 0;
-	uint8_t * m_image = nullptr;
+	float m_kof[256] = {};
+//	int m_szimg = 0;
+//	uint8_t * m_image = nullptr;
 	std::vector < std::pair<int, int> > m_vIsIt;
 	CFace& operator = (const CFace& el) {
 		m_id = el.m_id;
@@ -566,6 +599,7 @@ public:
 		m_age = el.m_age;
 		m_male = el.m_male;
 		std::copy(el.m_kof, el.m_kof + 256, m_kof);
+#if 0
 		if (el.m_szimg > 0) {
 			if (m_image != nullptr && m_szimg < el.m_szimg) {
 				free(m_image);
@@ -575,10 +609,10 @@ public:
 			if (m_image == nullptr) m_image = (uint8_t*)malloc(m_szimg);
 			if (m_image != nullptr) memcpy(m_image, el.m_image, m_szimg);
 			else m_szimg = 0;
-
 		}
 		m_vIsIt.clear();
 		for (size_t i = 0; i < el.m_vIsIt.size(); i++) m_vIsIt.push_back(el.m_vIsIt[i]);
+#endif
 		return *this;
 	};
 };
@@ -593,7 +627,42 @@ public:
 		newface = face;
 		m_vFaces.push_back(newface);
 	};
+	inline void RemoveAt(size_t i) {
+		if (i >= m_vFaces.size()) return;
+		m_vFaces.erase(m_vFaces.begin() + i);
+	}
 };
+
+//struct for persons
+typedef struct _tagPersonRec {
+	int id = -1;
+	float kof[256] = {};
+	float norm = 0.f;
+	std::vector<int> idFaces;
+	virtual int Find(int idV) {
+		int k = int(idFaces.size());
+		for (int i = 0; i < k; i++) {
+			if (idV == idFaces[i]) return i; 
+//			if (idV == idFaces[size_t(k - 1)])  return k - 1;
+			if (idV == idFaces[(i + k) / 2]) return (i+ k) / 2;
+			if (idV > idFaces[(i+k) / 2]) i = (i + k)/2;
+			else { 
+				k /= 2;  
+			}
+		}
+		return -1;
+	};
+	_tagPersonRec operator = (const _tagPersonRec& pers) {
+		id = pers.id;
+		norm = pers.norm;
+		for (auto&& pp : pers.idFaces) {
+			idFaces.push_back(pp);
+		}
+		std::copy(pers.kof, pers.kof + 256, kof);
+		return *this;
+	}
+
+}PERSONREC;
 
 
 int InitLocalDBSL(LPCTSTR fpath);
@@ -627,6 +696,7 @@ bool AddToDublicateSL(int id, std::string& fname, std::string& dir, CString& inf
 bool UpdateIdentificationVectorSL(int idFace, float* blob);
 
 int GetFacesFromDB(CFaceArray & vFaces);
+void GetPersonsIdSL(std::vector<PERSONREC>& persons);
 
 //#ifdef _M_X64
 int ParseExifSTR(LPCTSTR src, int szsrc, LPCTSTR out, int szout, EXIFSTR& info);

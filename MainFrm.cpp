@@ -7,6 +7,7 @@
 #include <Gdiplus.h>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "cvdface.h"
 #include "DbOldDlg.h"
 #include "FacesDlg.h"
@@ -85,6 +86,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_GRADDY_GAUSS, &CMainFrame::OnGraddyGauss)
 	ON_COMMAND(ID_OPTIONS, &CMainFrame::OnOptions)
 	ON_COMMAND(ID_RESOLUTION, &CMainFrame::OnResolution)
+	ON_COMMAND(ID_TOOLS_UPDATEPERSONS, &CMainFrame::OnUpdatepersons)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -2168,8 +2170,6 @@ void CMainFrame::OnResolution()
 		tmp.ScaleVarios(1920, 1080, green_sq1);
 		tmp.ScaleVarios(640, 360, green_sq);
 		SaveToFile(path, blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
-		
-
 	}
 	else {
 		red.ScaleVarios(1920, 1080, red_sq1);
@@ -2182,10 +2182,70 @@ void CMainFrame::OnResolution()
 
 	}
 
+
+}
+
+void CMainFrame::OnUpdatepersons()
+{
+	// TODO: Fill current person db
+	std::vector<PERSONREC> persons;
+	std::vector<PERSONREC> updpersons;
+	CFaceArray  vFaces; // faces id
+	InitLocalDB(workPath);
+	GetPersonsIdSL(persons);
+	GetFacesFromDB(vFaces);
+	int sz = vFaces.m_vFaces.size();
 	
+	// Check and update persons vector
+	for (int i = 0; i < vFaces.m_vFaces.size(); i++) {
+		int curI = i;
+		for (auto&& pers : persons) {
+			if (pers.Find(vFaces.m_vFaces[i].m_id) >= 0) {
+				// remove record from array
+				vFaces.RemoveAt(i--);
+				break;
+			}
+			// check that face must be added to list
+			float cosinp = CalcScalar(vFaces.m_vFaces[i].m_kof, pers.kof) / (pers.norm * vFaces.m_vFaces[i].m_norm);
+			if (cosinp > 0.7) {
+				PERSONREC pp;
+				for (int k = 0; k < 256; k++) {
+					pers.kof[k] = pers.kof[k] * pers.idFaces.size() + vFaces.m_vFaces[i].m_kof[k];
+				}
+				pers.norm = sqrt(CalcScalar(pers.kof, pers.kof));
+				pers.idFaces.push_back(vFaces.m_vFaces[i].m_id);
+				std::sort(pers.idFaces.begin(), pers.idFaces.end());
+				vFaces.RemoveAt(i--);
+				pp = pers;
+				int s = 0;
+				while (s < updpersons.size()) {
+					if (updpersons[s].id == pp.id) {
+						updpersons.erase(updpersons.begin() + s);
+						break;
+					}
+					s++;
+				}
+				updpersons.push_back(pp);
+				break;
+			}
+		}//end check and update person
+		if (curI == i) {
+			// add new persons record
+			PERSONREC pp;
+			pp.id = -1 - int(updpersons.size());
+			pp.norm = vFaces.m_vFaces[i].m_norm;
+			std::copy(vFaces.m_vFaces[i].m_kof, vFaces.m_vFaces[i].m_kof + 256, pp.kof);
+			pp.idFaces.push_back(vFaces.m_vFaces[i].m_id);
+			updpersons.push_back(pp);
+			persons.push_back(pp);
+			vFaces.RemoveAt(i--);
+		}
+	}
+	sz = updpersons.size();
+	std::sort(updpersons.begin(), updpersons.end(), [&](const PERSONREC& a, const PERSONREC& b) {return a.id < b.id; });
+	sz = updpersons.size();
 
-
-
-	
+	// fill Persons from DB
+	//selelect 	 
 
 }

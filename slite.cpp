@@ -660,12 +660,12 @@ CString GetComputerInfoSL(CString& path) {
 int GetFacesFromDB(CFaceArray& vFaces)
 {
     int cnt = 0;
-    std::string sql = "SELECT ID, IDMAIN, X, Y, WIDTH, HEIGHT, NORM, AGE, MALE, FEMALE, IMAGE, COSIN FROM FACESET ORDER BY IDMAIN";
+    std::string sql = "SELECT ID, IDMAIN, X, Y, WIDTH, HEIGHT, NORM, AGE, MALE, FEMALE, COSIN FROM FACESET WHERE COSIN NOTNULL ORDER BY ID";
     SLRecordset<FACESET> fset(m_db->GetDb());
     CFace ff;
     float male, female;
-    int  imgsize = 65536;
-    uint8_t* image = (uint8_t*) malloc(imgsize);
+    //int  imgsize = 65536;
+   // uint8_t* image = (uint8_t*) malloc(imgsize);
     if (fset.Open(sql) == SQLITE_OK) {
         while (fset.Next() == SQLITE_ROW) {
             ff.m_id = sqlite3_column_int(fset.GetSmpt(), 0);
@@ -684,6 +684,7 @@ int GetFacesFromDB(CFaceArray& vFaces)
             if (ptr) {
                 memcpy((uint8_t*)ff.m_kof, ptr, 1024);
             }
+#if 0
             ptr = (uint8_t*)sqlite3_column_blob(fset.GetSmpt(), 11);
             blob_bytes = sqlite3_column_bytes(fset.GetSmpt(), 11);
             ff.m_szimg = 0;
@@ -702,11 +703,12 @@ int GetFacesFromDB(CFaceArray& vFaces)
                     ff.m_image = image;
                 }
             }
+#endif
             vFaces.Insert(ff);
 
         }
     }
-    if (image) free(image);
+   // if (image) free(image);
 
     return 0;
 }
@@ -1232,4 +1234,40 @@ bool UpdateIdentificationVectorSL(int idFace, float* blob)
     fset.Close();
 
     return (id != 0);
+}
+// GetPersons from database    select persons id from
+void  GetPersonsIdSL(std::vector<PERSONREC>& persons)
+{
+    persons.clear();          
+    if(m_db.get() == nullptr) return;
+    std::string sql = "SELECT ID, NORM, KOF FROM PERSON ORDER BY ID";
+    SLRecordset<VARSET> set(m_db->GetDb());
+    SLRecordset<VARSET> pset(m_db->GetDb());
+    
+    if (set.Open(sql) == SQLITE_OK) {
+        while (set.Next() == SQLITE_ROW) {
+            PERSONREC pers;
+            pers.idFaces.reserve(100);
+            pers.id = sqlite3_column_int(set.GetSmpt(), 0);
+            pers.norm = sqlite3_column_double(set.GetSmpt(), 1);
+            uint8_t* ptr = (uint8_t*)sqlite3_column_blob(set.GetSmpt(), 3);
+            uint32_t blob_bytes = sqlite3_column_bytes(set.GetSmpt(), 3);
+            if (blob_bytes == sizeof(pers.kof) ){
+                memcpy((uint8_t *) pers.kof, ptr, blob_bytes);
+            }
+            else {
+                pers.norm = 0.f;
+            }
+            pers.idFaces.clear();
+            sql = "SELECT IDFACE FROM PERSONIMG WHERE PERSON = '" + std::to_string(pers.id) + "' OPDER BY PERSONIMG";
+            if (pset.Open(sql) == SQLITE_OK) {
+                while (pset.Next() == SQLITE_ROW) {
+                    pers.idFaces.push_back(sqlite3_column_int(pset.GetSmpt(), 0));
+                }
+                pset.Close();
+            }
+            persons.push_back(pers);
+        }
+        set.Close();
+    }
 }

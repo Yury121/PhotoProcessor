@@ -130,6 +130,7 @@ public:
 	void GradientFilter(__int32 * filter, bool IsGauss = false);
 	afx_msg void OnOptions();
 	afx_msg void OnResolution();
+	afx_msg void OnUpdatepersons();
 };
 
 

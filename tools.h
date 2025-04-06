@@ -29,6 +29,14 @@ const unsigned char GAMMA_BIG[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 #define TESTEYE		256
 #define TESTID		128
 
+static inline float CalcScalar(float * a, float *b){
+	float scalar = 0.f;
+	for (int i = 0; i < 256; i++) {
+		scalar += a[i] * b[i];
+	}
+	return scalar;
+}
+
 static inline float mul(float* a, float* b) {
 	float pole[32] = {};
 	__m512 mc = _mm512_loadu_ps(pole);
