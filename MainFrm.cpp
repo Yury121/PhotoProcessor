@@ -2207,10 +2207,11 @@ void CMainFrame::OnUpdatepersons()
 			}
 			// check that face must be added to list
 			float cosinp = CalcScalar(vFaces.m_vFaces[i].m_kof, pers.kof) / (pers.norm * vFaces.m_vFaces[i].m_norm);
-			if (cosinp > 0.7) {
+			if (cosinp > 0.7f || cosinp < -0.7f) {
 				PERSONREC pp;
 				for (int k = 0; k < 256; k++) {
-					pers.kof[k] = pers.kof[k] * pers.idFaces.size() + vFaces.m_vFaces[i].m_kof[k];
+					pers.kof[k] = pers.kof[k] * pers.idFaces.size();
+					pers.kof[k] += (cosinp > 0.7f) ? vFaces.m_vFaces[i].m_kof[k] : -vFaces.m_vFaces[i].m_kof[k];
 				}
 				pers.norm = sqrt(CalcScalar(pers.kof, pers.kof));
 				pers.idFaces.push_back(vFaces.m_vFaces[i].m_id);
