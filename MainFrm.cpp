@@ -931,11 +931,14 @@ void CMainFrame::OnToolsTestfaces()
 			CalcIDArray(rtest.arr, btest.arr, gtest.arr, fCof);
 //			bp.norm = mul(fCof, fCof); // next must select for different options
 
-			for (int kk = 0; kk < 256; kk++) {
-				bp.norm += fCof[kk] * fCof[kk];
-			}
+			//for (int kk = 0; kk < 256; kk++) {			bp.norm += fCof[kk] * fCof[kk];		}
 
-			bp.norm = sqrt(bp.norm);
+			float fNorm = sqrt(CalcScalar(fCof, fCof));
+			// make the same norm
+			if (fNorm > 0.f)
+				for (int kk = 0; kk < 256; kk++) fCof[kk] /= fNorm;
+
+			bp.norm = 1.;// sqrt(CalcScalar(fCof, fCof)); //sqrt(bp.norm);
 			bp.cosin = fCof;
 
 			AddFaceToDb(m_imgId, stmp, faces[i], &bp);
