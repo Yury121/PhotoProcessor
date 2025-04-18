@@ -1,0 +1,1 @@
+﻿Имеется таблица sqlite следующей структуры : CREATE TABLE FACESET( ID INTEGER PRIMARY KEY AUTOINCREMENT, IDMAIN INTEGER, NORM REAL, COSIN BLOB). Поле COSIN представляет собой массив из 256 значений типа FLOAT32. Требуется написать код на Python, котроый выбирает все COSIN и помещает их в numpy массив.
