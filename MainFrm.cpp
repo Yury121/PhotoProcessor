@@ -835,6 +835,7 @@ void CMainFrame::OnToolsTestfaces()
 		red.ScaleVarios(std::get<0>(osz), std::get<1>(osz), red_sq);
 		blue.ScaleVarios(std::get<0>(osz), std::get<1>(osz), blue_sq);
 		green.ScaleVarios(std::get<0>(osz), std::get<1>(osz), green_sq);
+		
 
 		//this->SaveToFile(_T("test1.BMP"), blue_sq, green_sq, red_sq, SaveImageFormat::BMP);
 		float xprop = 1.0f * red.sz.x / std::get<0>(osz);

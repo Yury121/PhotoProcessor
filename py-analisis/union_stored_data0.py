@@ -43,33 +43,36 @@ def AddToRow(test, item): # test list of rows item is pair item[0] - exist, item
         if item[0] in test[p] :
             test[p].append(item[1])
             test[p].sort()
-            print(item, ' was added to row ', p, 'test[p]=', test[p])
+            #print(item, ' was added to row ', p, 'test[p]=', test[p])
             break
 # ------------------------------------------------------------
 
 img = ReadTextList('./images/imgnames.txt')
 adj = np.load('./images/adjacent.npy')
 mt = np.load('./images/compare.npy')
+stored = np.load('./images/list.npy')
 print('img size = ', len(img), '; adj size = ', len(adj))
 
 test = [] #list eqvivalence objects
 uniq = np.zeros((len(img)),dtype=bool) #bitwise map
 
-
 s = 0 # count pair
 count = 0 # count rows
 same =[]
+ind = 0
 for pp in adj :
     item = [int(pp[0]),int(pp[1])]
-    print(item)
+    #print(' -----  procesed ind ', ind,' item = ', pp, '---------')
+    ind = ind +1
     ladd = []
     if (uniq[item[0]] == True) & (uniq[item[1]] == True) :
-        print('!!! step ', s+1, '; items exists: ', item)
+        #print('!!! step ', s+1, '; items exists: ', item)
         kk = 0
         ii = -1
         jj = -1
+        # we need check to this items in the same existing class
         for i in range(len(test)):
-            if kk == 2 :
+            if kk == 2 : 
                 break
             if item[0] in test[i]:
                 #print(item[0], ' in test[', i, '] = ', test[i])
@@ -79,29 +82,32 @@ for pp in adj :
                 #print(item[1], ' in test[', i, '] = ', test[i])
                 kk = kk + 1
                 jj = i
-        if ii != jj :
+        if ii != jj : #items from different classes
             tmp = [ii, jj]
-            if jj < ii :
+            if jj < ii : # must to rotate indexes 
                 tmp = [jj, ii]
             if  tmp not in same :
-                same.append(tmp)
-                print(tmp, ' must to concatinate; object size =', len(test))
-#        break
+                same.append(tmp) #arrays must be concatinated
+                print(tmp, ' must to concatinate; object size =', len(test), ' tuple ->', tmp)
+#        break #debug
 
     if uniq[item[0]] == False : #test new item
         if uniq[item[1]] == True :
-            #item 0 must be added in some row from test
-            ladd = [item[1], item[0]]
-            AddToRow(test, ladd)
+          #item 0 must be added in some row from test
+          #print('false, true', item)
+          ladd = [item[1], item[0]]
+          AddToRow(test, ladd)
         else :
-            #new row
-            ladd = [item[0], item[1]]
-            test.append(ladd)
-            count = count +1
+          #new row
+          ladd = [item[0], item[1]]
+          test.append(ladd)
+          #print('Append tuple ', len(test), ' tuple ', ladd)
+          count = count +1
     else:
-        ladd = [item[0], item[1]]
-        if uniq[item[1]] == False :
-            AddToRow(test, ladd)
+      ladd = [item[0], item[1]]
+      if uniq[item[1]] == False :
+        #print('true, false', item)
+        AddToRow(test, ladd)
     #item processed
     uniq[item[0]] = True
     uniq[item[1]] = True
@@ -110,7 +116,10 @@ for pp in adj :
 #        break   #debug
 
 print ('processed ', s, ' pairs and ', count, ' rows calculated')
-print(len(test), '\r\n TEST = ', test, '\r\n-----------')
+print('tuples: ', len(test), '\\r\nTEST =')
+for i in range(len(test)):
+  print(test[i])
+#print(len(test), '\r\n TEST = ', test, '\r\n-----------')
 same.sort(reverse = True)
 print('Same = \r\n',same, '\r\n----------')
 conc =[]
@@ -154,8 +163,8 @@ for pp in range(len(test)):
 print('Mout has ', len(mout), ' elements. MOUT = ')
 k = 0
 for p in mout:
-  print(k, ') ', p)
-  name =  './images/'+str(k) + '.html'
+  print(k,'->',img[p[0]], ' (',len(p),') ', p, '\r\n', np.take(img, p), '\r\n')
+  name =  './images/'+str(k).zfill(3) + '.html'
   create_text_file(name, p, img)
   k = k + 1
 print (str(k)+' files was creted')
