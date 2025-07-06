@@ -149,11 +149,11 @@ int CalcIDArray(uint8_t* red, uint8_t* blue, uint8_t* green, float* kof)
 		if (data) {
 			for (int i = 128 - 1; i >= 0; i--) {
 				for (int j = 0; j < shape[2]; j++) {
-					ftmp = 0.333333333333f * (blue[sz - (i + 1) * shape[2] + j] + 
-						green[sz - (i + 1) * shape[2] + j] + red[sz - (i + 1) * shape[2] + j]);
-					data[i * shape[2] + j] = ftmp;// 1.f * blue[sz - (i + 1) * shape[2] + j];
-					data[sz + i * shape[2] + j] = ftmp;// 1.f * green[sz - (i + 1) * shape[2] + j];
-					data[2 * sz + i * shape[2] + j] = ftmp;// 1.f * red[sz - (i + 1) * shape[2] + j];
+				//	ftmp = 0.114f * blue[sz - (i + 1) * shape[2] + j] + 
+				//		0.587f*green[sz - (i + 1) * shape[2] + j] + 0.299f*red[sz - (i + 1) * shape[2] + j];
+					data[i * shape[2] + j] =  1.f * blue[sz - (i + 1) * shape[2] + j];
+					data[sz + i * shape[2] + j] =  1.f * green[sz - (i + 1) * shape[2] + j];
+					data[2 * sz + i * shape[2] + j] =  1.f * red[sz - (i + 1) * shape[2] + j];
 
 				}
 			}

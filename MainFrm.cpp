@@ -923,6 +923,9 @@ void CMainFrame::OnToolsTestfaces()
 			//			SaveChannalToFile(stmp, test/*, CMainFrame::BMP*/);
 			this->SaveToFile(stmp, btest, gtest, rtest);
 			// try add re-idification		 !not complite
+			gtest.Sobel();
+			btest.Sobel();
+			rtest.Sobel();
 			gtest.Scale(TESTID);
 			btest.Scale(TESTID);
 			rtest.Scale(TESTID);
