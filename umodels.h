@@ -159,6 +159,7 @@ private:
 
  static const std::string FDNAME = "DLL/FP32/face-detection-0204.xml";
  static const std::string sIDFName = "DLL/FP32/face-reidentification-retail-0095.xml";
+ 
 
 class COpenVinoModel {
 public:
